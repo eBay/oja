@@ -12,6 +12,12 @@ Lightweight dependency injection framework to structure application business log
 [![Known Vulnerabilities](https://snyk.io/test/github/eBay/oja/badge.svg)](https://snyk.io/test/github/eBay/oja)
 [![Greenkeeper badge](https://badges.greenkeeper.io/eBay/oja.svg)](https://greenkeeper.io/)
 
+## Idea
+
+The context based approach allows a developer to slice the business logic into small, isolated business actions that communicate to each other via context. That encourages developers to use the same action interface across application code, which makes the code more predictable, easy to define/compose, and test with mock data. And yes - it makes it boring.
+
+![context diagram](./packages/oja-context/docs/images/context.png)
+
 ## Documentation and Packages
 
 Each package is documented in a separate readme:
