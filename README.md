@@ -42,7 +42,7 @@ In order to realize all benefits of using oja framework you need to do the follo
 
 * Example
 
-    Feel free to to explore [examples](https://github.com/eBay/oja/blob/master/packages/examples/README.md), a fully functional application.
+    Feel free to explore [examples](https://github.com/eBay/oja/blob/master/packages/examples/README.md), a fully functional application.
 
 ## Documentation and Packages
 
