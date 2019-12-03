@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/trooba/branding/raw/master/images/oja.png" alt="Oja logo" width="200" /> <span style="font-size: 2em;">v2.0</span><br /><br />
+    <img src="https://github.com/trooba/branding/raw/master/images/oja.png" alt="Oja logo" width="200" /> <span style="font-size: 3em;">v2.0</span><br /><br />
 </p>
 
 Lightweight dependency injection framework to structure application business logic.
