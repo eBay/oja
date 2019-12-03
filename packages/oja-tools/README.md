@@ -54,9 +54,7 @@ module.exports = context => async next => {
 * calling action:
 
 ```js
-const createContextFactory = require('@ebay/oja-action');
-const createContext = await createContextFactory();
+const { createContext } = require('@ebay/oja-action');
 const context = await createContext();
-
 const result = await context.action('PIPE-EXAMPLE/route');
 ```

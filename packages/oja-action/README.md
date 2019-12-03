@@ -37,9 +37,7 @@ module.exports = context => (a, b) => a + b;
 ### Calling action
 
 ```js
-const createContextFactory = require('@ebay/oja-action');
-// this can be called once to build context factory
-const createContext = await createContextFactory();
+const { createContext } = require('@ebay/oja-action');
 // context creation can be called for every new flow
 const context = await createContext();
 // calling action can be done many times within the same context
