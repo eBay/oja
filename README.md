@@ -16,25 +16,25 @@ Lightweight dependency injection framework to structure application business log
 
 Each package is documented in a separate readme:
 
-- [oja-action](https://github/eBay/oja/blob/master/packages/oja-action/README.md) -
+- [oja-action](https://github.com/eBay/oja/blob/master/packages/oja-action/README.md) -
   Provides action discovery for oja actions based on dependency injection.
-- [oja-context](https://github/eBay/oja/blob/master/packages/oja-context/README.md) -
+- [oja-context](https://github.com/eBay/oja/blob/master/packages/oja-context/README.md) -
   Provides dependency injection.
-- [oja-generators](https://github/eBay/oja/blob/master/packages/hygen-oja-generators/README.md) -
+- [oja-generators](https://github.com/eBay/oja/blob/master/packages/hygen-oja-generators/README.md) -
   Provides code and unit test generation for oja-action framework.
-- [oja-flow](https://github/eBay/oja/blob/master/packages/oja-flow/README.md) -
+- [oja-flow](https://github.com/eBay/oja/blob/master/packages/oja-flow/README.md) -
   Provides a flow components based on pub/sub pattern with event backlog. This is former oja 1.0 implementation.
-- [oja-tools](https://github/eBay/oja/blob/master/packages/oja-tools/README.md) -
+- [oja-tools](https://github.com/eBay/oja/blob/master/packages/oja-tools/README.md) -
   Builds on oja-action to provide tools compose actions into higher level actions and/or instrument them via pipe pattern.
-- [examples](https://github/eBay/oja/blob/master/packages/examples/README.md) -
+- [examples](https://github.com/eBay/oja/blob/master/packages/examples/README.md) -
   Example project demonstrating the use of dependency injection based on oja-action
-- [vscode-oja](https://github/eBay/oja/blob/master/packages/vscode-oja/README.md) -
+- [vscode-oja](https://github.com/eBay/oja/blob/master/packages/vscode-oja/README.md) -
   VS Code extension that makes use of oja-action dependency injection layer easy with automatic suggestions and action discovery.
-- [oja-linter](https://github/eBay/oja/blob/master/packages/oja-linter/README.md) -
+- [oja-linter](https://github.com/eBay/oja/blob/master/packages/oja-linter/README.md) -
   Oja linter for oja-action dependency injection layer that validates your project and discovers any unreachable actions (deleted/modified) at the point of the use of the action.  
-- TBD: [oja-workers](https://github/eBay/oja/blob/master/packages/oja-workers/README.md) -
+- TBD: [oja-workers](https://github.com/eBay/oja/blob/master/packages/oja-workers/README.md) -
   Provides actions pool that can be used to separate actions or group of actions into their own isolated execution environments based on Node v12 lightweight workers.
-- TBD: [oja-cloud](https://github/eBay/oja/blob/master/packages/oja-cloud/README.md) -
+- TBD: [oja-cloud](https://github.com/eBay/oja/blob/master/packages/oja-cloud/README.md) -
   Provides an adaptor layer to organize and deploy actions to distributed environments aka lambda/serverless.
 
 ## Code of Conduct
