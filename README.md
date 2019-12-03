@@ -2,7 +2,7 @@
     <img src="https://github.com/trooba/branding/raw/master/images/oja.png" alt="Oja logo" width="200" /> <span style="font-size: 3em;">v2.0</span><br /><br />
 </p>
 
-<h1>Not Yet Published</h1>
+<h1>Status: Not Yet Published</h1>
 
 Lightweight dependency injection framework to structure application business logic.
 
