@@ -11,7 +11,7 @@
 const caller = require('caller');
 /**
  * Creates a context out of functions and properties.
- * 
+ *
  * The function must be of the following signature "context => (args) => value",
  * which is function factory with injected context that will be created by
  * runtime and passed to every factory function before execution of the returned function instance
@@ -19,6 +19,7 @@ const caller = require('caller');
 module.exports = (opts = {}) => {
     if (opts instanceof Function) {
         const factory = opts;
+        // eslint-disable-next-line no-shadow
         return opts => createContext({
             ... opts,
             baseContext: factory(opts)
@@ -34,9 +35,9 @@ module.exports = (opts = {}) => {
             };
         }
         const { name, ...selectors } = actionRequest;
-        const addSelectors = {...(systemSelectors), ...(selectors)};
+        const addSelectors = { ...(systemSelectors), ...(selectors) };
         return Object.keys(addSelectors).length ? {
-            namespace: name, 
+            namespace: name,
             selectors: addSelectors
         } : {
             namespace: name
@@ -90,7 +91,7 @@ module.exports = (opts = {}) => {
         Object.assign(baseContext, properties, {
             initAct
         });
-    
+
         return baseContext;
 
         async function initAct(act) {
