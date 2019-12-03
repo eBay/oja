@@ -33,7 +33,7 @@ module.exports = context => async parameters => {
         try {
             const [buyerInfo, sellerInfo] = await Promise.all([buyerInfoPromise, sellerInfoPromise])
             // calc rates
-            return context.action('ACTIONS/calculateRates',
+            return await context.action('ACTIONS/calculateRates',
                 sellerInfo.zipCode,
                 buyerInfo.zipCode);
         }

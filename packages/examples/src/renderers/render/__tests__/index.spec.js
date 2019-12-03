@@ -3,7 +3,7 @@
 const Assert = require('assert');
 const { EventEmitter } = require('events');
 
-const createContext = require('src/app-context');
+const { createContext } = require('@ebay/oja-action');
 
 describe(__filename, () => {
     test('action render should fail', async() => {
@@ -12,7 +12,7 @@ describe(__filename, () => {
                 'RENDERERS/render': new Error('BOOM')
             },
             selectors: {
-                env: 'test'
+                env: 'production'
             }
         });
         try {
@@ -43,7 +43,7 @@ describe(__filename, () => {
                 response
             },
             selectors: {
-                env: 'test'
+                env: 'production'
             }
         });
         let rendered;
@@ -79,6 +79,9 @@ describe(__filename, () => {
         const context = await createContext({
             properties: {
                 response
+            },
+            selectors: {
+                env: 'production'
             }
         });
 

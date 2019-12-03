@@ -1,7 +1,7 @@
 'use strict';
 
 const Assert = require('assert');
-const createContext = require('src/app-context');
+const { createContext } = require('@ebay/oja-action');
 
 describe(__filename, () => {
     test('action userDetails should fail', async () => {

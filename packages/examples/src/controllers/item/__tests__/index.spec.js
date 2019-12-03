@@ -1,7 +1,7 @@
 'use strict';
 
 const Assert = require('assert');
-const createContext = require('src/app-context');
+const { createContext } = require('@ebay/oja-action');
 require('marko/node-require').install();
 
 describe(__filename, () => {

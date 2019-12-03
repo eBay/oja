@@ -1,11 +1,6 @@
 'use strict';
 
-const createContextFactory = require('@ebay/oja-action');
-
-const createContext = module.exports = async options => {
-    const createContext = await createContextFactory();
-    return await createContext(options);
-};
+const { createContext } = require('@ebay/oja-action');
 
 module.exports.createExpressHandler = pageActionName => {
     return async function expressContextHandler(request, response, next) {

@@ -12,6 +12,7 @@ This is a demo application that shows how application business logic can be stru
 
 ### Install
 ```bash
+cd examples
 npm install
 ```
 
