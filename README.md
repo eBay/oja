@@ -25,11 +25,11 @@ Each package is documented in a separate readme:
 - [oja-flow](https://github.com/eBay/oja/blob/master/packages/oja-flow/README.md) -
   Provides a flow components based on pub/sub pattern with event backlog. This is former oja 1.0 implementation.
 - [oja-tools](https://github.com/eBay/oja/blob/master/packages/oja-tools/README.md) -
-  Builds on oja-action to provide tools compose actions into higher level actions and/or instrument them via pipe pattern.
+  Builds on oja-action to provide tools composing actions into higher level actions and/or instrument them via pipe pattern.
 - [examples](https://github.com/eBay/oja/blob/master/packages/examples/README.md) -
   Example project demonstrating the use of dependency injection based on oja-action
 - [vscode-oja](https://github.com/eBay/oja/blob/master/packages/vscode-oja/README.md) -
-  VS Code extension that makes use of oja-action dependency injection layer easy with automatic suggestions and action discovery.
+  VS Code extension that simplifies oja-action dependency injection usage with automatic suggestions and action discovery.
 - [oja-linter](https://github.com/eBay/oja/blob/master/packages/oja-linter/README.md) -
   Oja linter for oja-action dependency injection layer that validates your project and discovers any unreachable actions (deleted/modified) at the point of the use of the action.  
 - TBD: [oja-workers](https://github.com/eBay/oja/blob/master/packages/oja-workers/README.md) -
