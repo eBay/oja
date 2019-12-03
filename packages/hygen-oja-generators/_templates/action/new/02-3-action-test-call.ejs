@@ -5,7 +5,6 @@ after: describe
 skip_if: 'action <%=name%> should be called'
 ---
     test('action <%=name%> should be called', async () => {
-        const createContext = await createContextFactory();
         const context = await createContext();
         Assert.equal(`<%=name%> is called`,
             await context.action('<%=name%>'));
