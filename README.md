@@ -24,25 +24,25 @@ In order to realize all benefits of using oja framework you need to do the follo
 
 * Install the following modules as part of your application
 
-```
-npm install @ebay/oja-context @ebay/oja-action --save
-npm install @ebay/oja-linter --save-dev
-```
+    ```
+    npm install @ebay/oja-context @ebay/oja-action --save
+    npm install @ebay/oja-linter --save-dev
+    ```
 
 * Install VSCode extension as part of your VSCode Editor (TBD)
 
-Note: VSCode extension uses oja-linter to validate your project files (action.json, *.js/mjs) and it will start working as soon as you install @ebay/oja-linter under your application dependencies.
+    Note: VSCode extension uses oja-linter to validate your project files (action.json, *.js/mjs) and it will start working as soon as you install @ebay/oja-linter under your application dependencies.
 
 * Install optional hygen generator
 
-```
-npm install hygen hygen-add -G
-hygen-add oja-generators
-```
+    ```
+    npm install hygen hygen-add -G
+    hygen-add oja-generators
+    ```
 
 * Example
 
-Feel free to to explore [examples](https://github.com/eBay/oja/blob/master/packages/examples/README.md), a fully functional application.
+    Feel free to to explore [examples](https://github.com/eBay/oja/blob/master/packages/examples/README.md), a fully functional application.
 
 ## Documentation and Packages
 
