@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<body>
+    <div class="content">
+        <div>Item: ${data['itemDetails'].title}</div>
+        <div>Description: ${data['itemDetails'].description}</div>
+        <div>Description: ${data['itemDetails'].price}</div>
+        <div>Seller: ${data['sellerInfo'].username}</div>
+        <div>Shipping options:</div>
+        <select>
+            <option value=opt.name for(opt in data['rates'])>
+                ${opt.desc}
+            </option>
+        </select>
+    </div>
+</body>
+</html>

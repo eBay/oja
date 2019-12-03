@@ -1,0 +1,6 @@
+{
+    "RENDERERS/render": {
+        "function": "index",
+        "env": "test"
+    }
+}

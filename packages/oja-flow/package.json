@@ -1,0 +1,51 @@
+{
+  "name": "@ebay/oja-flow",
+  "version": "2.0.0",
+  "description": "Lightweight pub/sub module with event backlog, timeout support that maps events to promises and back as well as chains them to other topics and flows.",
+  "main": "index.js",
+  "scripts": {
+    "test": "yarn jest __tests__/*.js",
+    "coverage": "yarn jest --collect-coverage __tests__/*.js",
+    "lint": "eslint --quiet -c .eslintrc *.js",
+    "lint-fix": "eslint --fix *.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eBay/oja.git"
+  },
+  "keywords": [
+    "stream",
+    "flow",
+    "pub",
+    "sub",
+    "pub-sub",
+    "event",
+    "eventemitter",
+    "emitter"
+  ],
+  "author": "Dmytro Semenov <dimichsdg@yahoo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dimichgh/oja/issues"
+  },
+  "homepage": "https://github.com/dimichgh/oja#readme",
+  "devDependencies": {
+    "async": "^2.5.0",
+    "eslint": "^5.16.0",
+    "eslint-config-ebay": "^1.0.0",
+    "eslint-plugin-mocha": "^5.3.0",
+    "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "request-local": "^1.0.4"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^ebay@oja-flow$": "<rootDir>/index.js"
+    },
+    "collectCoverageFrom" : [
+      "<rootDir>/*\\.js"
+    ],
+    "clearMocks": true
+  }
+}

@@ -1,0 +1,20 @@
+---
+inject: true
+to: <%=locals.target || '.'%>/__tests__/<%=h.actionName(name)%>.spec.js
+after: describe
+skip_if: 'action <%=name%> should fail'
+---
+    test('action <%=name%> should fail', async () => {
+        const createContext = await createContextFactory();
+        const context = await createContext({
+            functions: {
+                '<%=name%>': new Error('BOOM')
+            }
+        });
+        try {
+            await context.action('<%=name%>');
+        }
+        catch (err) {
+            Assert.equal('BOOM', err.message);
+        }
+    });

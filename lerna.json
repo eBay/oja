@@ -1,0 +1,18 @@
+{
+  "lerna": "3.18.1",
+  "command": {
+    "publish": {
+      "conventionalCommits": true
+    }
+  },
+  "packages": [
+    "packages/oja-*",
+    "packages/hygen-oja-*"
+  ],
+  "ignoreChanges": [
+    "**/__tests__/**",
+    "**/test/**",
+    "**/*.md"
+  ],
+  "version": "independent"
+}

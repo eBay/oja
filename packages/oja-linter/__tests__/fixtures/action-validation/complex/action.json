@@ -1,0 +1,12 @@
+{
+    "WSX/wsx": {
+        "function": "bad-file",
+        "selector1": "sel1"
+    },
+    "FOO/foo": {
+        "function": "foo",
+        "some": "some"
+    },
+    "QAZ/qaz": "bad-file2",
+    "WSX/good": "bar"
+}

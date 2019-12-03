@@ -1,0 +1,10 @@
+{
+    "FOO/foo": {
+        "function": "foo",
+        "version": "1.0.0"
+    },
+    "BAR/bar": {
+        "function": "bar",
+        "sel2": "boo"
+    }
+}

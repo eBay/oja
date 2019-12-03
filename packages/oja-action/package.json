@@ -1,0 +1,52 @@
+{
+  "name": "@ebay/oja-action",
+  "version": "2.0.0",
+  "description": "Dependency injection via actions",
+  "main": "index.js",
+  "scripts": {
+    "test": "yarn jest __tests__/*.js",
+    "coverage": "yarn jest --collect-coverage __tests__/*.js",
+    "lint": "eslint --quiet -c .eslintrc **/*.js",
+    "lint-fix": "eslint --fix **/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eBay/oja/tree/master/packages/oja.git"
+  },
+  "keywords": [
+    "dependency",
+    "injection",
+    "context",
+    "structure"
+  ],
+  "author": "Dmytro Semenov <dsemenov@ebay.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eBay/oja/issues"
+  },
+  "homepage": "https://github.com/eBay/oja/blob/master/packages/oja-action/README.md",
+  "devDependencies": {
+    "async": "^2.6.3",
+    "eslint": "^5.16.0",
+    "eslint-config-ebay": "^1.1.1",
+    "eslint-plugin-mocha": "^5.3.0",
+    "jest": "^24.9.0",
+    "shelljs": "^0.8.3"
+  },
+  "dependencies": {
+    "resolve-from": "^5.0.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@ebay/oja-context$": "<rootDir>/../oja-context/index.js",
+      "^@ebay/oja-action$": "<rootDir>/index.js",
+      "^external-action$": "<rootDir>/__tests__/fixtures/external-action/index.js",
+      "(.+)(/action\\.json)": "$1/$2",
+      "(.*)lib/actions": "$1lib/actions"
+    },
+    "collectCoverageFrom": [
+      "<rootDir>/*\\.js",
+      "<rootDir>/lib/*\\.js"
+    ]
+  }
+}

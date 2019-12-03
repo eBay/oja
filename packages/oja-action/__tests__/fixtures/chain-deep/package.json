@@ -1,0 +1,7 @@
+{
+    "name": "app",
+    "version": "2.0.0",
+    "dependencies": {
+        "qaz": "1.0.0"
+    }
+}

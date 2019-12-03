@@ -1,0 +1,10 @@
+---
+to: <%=locals.target || '.'%>/__tests__/<%=h.actionName(name)%>.spec.js
+---
+'use strict';
+
+const Assert = require('assert');
+const createContextFactory = require('@ebay/oja-action');
+
+describe(__filename, () => {
+});

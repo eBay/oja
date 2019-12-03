@@ -1,0 +1,4 @@
+{
+    "app/action": "index",
+    "runtime/codeNotFound": "codeNotFound"
+}

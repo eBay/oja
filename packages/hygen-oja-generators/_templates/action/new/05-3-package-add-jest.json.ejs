@@ -1,0 +1,7 @@
+---
+inject: true
+to: package.json
+after: '"testMatch": \['
+message: <%=h.getTestMatch()%>
+---
+      <%-h.getTestMatch()-%>

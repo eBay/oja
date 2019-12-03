@@ -1,0 +1,163 @@
+[{
+    "code": "functionNotFound",
+    "codeType": "error",
+    "function": {
+        "loc": {
+            "end": {
+                "column": 30,
+                "line": 3
+            },
+            "start": {
+                "column": 20,
+                "line": 3
+            }
+        },
+        "raw": "\"bad-file\"",
+        "type": "Literal",
+        "value": "bad-file"
+    },
+    "message": "Cannot locate action at /app/complex/bad-file",
+    "namespace": {
+        "loc": {
+            "end": {
+                "column": 13,
+                "line": 2
+            },
+            "start": {
+                "column": 4,
+                "line": 2
+            }
+        },
+        "raw": "\"WSX/wsx\"",
+        "type": "Literal",
+        "value": "WSX/wsx"
+    },
+    "path": "/app/complex/action.json"
+}, {
+    "code": "functionNotFound",
+    "codeType": "error",
+    "function": {
+        "loc": {
+            "end": {
+                "column": 42,
+                "line": 3
+            },
+            "start": {
+                "column": 28,
+                "line": 3
+            }
+        },
+        "raw": "\"codeNotFound\"",
+        "type": "Literal",
+        "value": "codeNotFound"
+    },
+    "message": "Cannot locate action at /app/codeNotFound",
+    "namespace": {
+        "loc": {
+            "end": {
+                "column": 26,
+                "line": 3
+            },
+            "start": {
+                "column": 4,
+                "line": 3
+            }
+        },
+        "raw": "\"runtime/codeNotFound\"",
+        "type": "Literal",
+        "value": "runtime/codeNotFound"
+    },
+    "path": "/app/action.json"
+}, {
+    "code": "functionNotFound",
+    "codeType": "error",
+    "function": {
+        "loc": {
+            "end": {
+                "column": 26,
+                "line": 10
+            },
+            "start": {
+                "column": 15,
+                "line": 10
+            }
+        },
+        "raw": "\"bad-file2\"",
+        "type": "Literal",
+        "value": "bad-file2"
+    },
+    "message": "Cannot locate action at /app/complex/bad-file2",
+    "namespace": {
+        "loc": {
+            "end": {
+                "column": 13,
+                "line": 10
+            },
+            "start": {
+                "column": 4,
+                "line": 10
+            }
+        },
+        "raw": "\"QAZ/qaz\"",
+        "type": "Literal",
+        "value": "QAZ/qaz"
+    },
+    "path": "/app/complex/action.json"
+}, {
+    "code": "notFound",
+    "codeType": "error",
+    "namespace": {
+        "loc": {
+            "end": {
+                "column": 35,
+                "line": 8
+            },
+            "start": {
+                "column": 14,
+                "line": 8
+            }
+        },
+        "raw": "'ACTIONS/itemDetails'",
+        "type": "Literal",
+        "value": "ACTIONS/itemDetails"
+    },
+    "path": "/app/index.js"
+}, {
+    "code": "circular",
+    "codeType": "warn",
+    "namespace": {
+        "loc": {
+            "end": {
+                "column": 28,
+                "line": 5
+            },
+            "start": {
+                "column": 19,
+                "line": 5
+            }
+        },
+        "raw": "'BAR/bar'",
+        "type": "Literal",
+        "value": "BAR/bar"
+    },
+    "path": "/app/modules/bar.js"
+}, {
+    "code": "notFound",
+    "codeType": "error",
+    "namespace": {
+        "loc": {
+            "end": {
+                "column": 42,
+                "line": 23
+            },
+            "start": {
+                "column": 25,
+                "line": 23
+            }
+        },
+        "raw": "'oja/nonExistent'",
+        "type": "Literal",
+        "value": "oja/nonExistent"
+    },
+    "path": "/app/index.js"
+}]

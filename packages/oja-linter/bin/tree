@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+const { tree } = require('../index');
+
+const targetDir = process.argv[2] || process.cwd();
+
+tree(targetDir);

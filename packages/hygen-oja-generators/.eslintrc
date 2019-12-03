@@ -1,0 +1,26 @@
+{
+    "extends": "ebay",
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "parserOptions": {
+      "ecmaFeatures": {
+          "experimentalObjectRestSpread": true
+      }
+    },
+    "rules": {
+      "space-before-function-paren": ["error", {"anonymous": "always", "named": "never", "asyncArrow": "always"}],
+      "brace-style": ["warn"],
+      "eol-last": 0,
+      "no-unused-expressions": 0,
+      "no-unused-vars": ["error", { "args": "none" }],
+      "no-use-before-define": ["warn"],
+      "arrow-body-style": ["warn"],
+      "new-cap": ["warn"],
+      "max-len": ["warn"],
+      "no-param-reassign": ["warn", {"props": false}],
+      "no-console": ["error", { "allow": ["debug", "info", "warn", "error"] }],
+      "no-shadow": ["warn", { "builtinGlobals": false, "hoist": "functions", "allow": ["err", "typeDef"] }]
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "name": "app",
+    "version": "2.0.0",
+    "dependencies": {
+        "qaz": "0.0.0"
+    },
+    "devDependencies": {
+        "wsx": "1.0.0"
+    },
+    "peerDependencies": {
+        "edc": "1.0.0",
+        "rfv": "1.0.0",
+        "wsx": "1.0.0"
+    }
+}

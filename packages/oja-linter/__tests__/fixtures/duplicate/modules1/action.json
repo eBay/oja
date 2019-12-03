@@ -1,0 +1,8 @@
+{
+    "FOO/foo": "foo",
+    "BAR/bar": {
+        "function": "bar",
+        "sel1": "boo"
+    },
+    "QAZ/qaz": "qaz"
+}

@@ -1,0 +1,109 @@
+[{
+        "namespace": {
+            "type": "Literal",
+            "value": "ACTIONS/itemDetails",
+            "raw": "'ACTIONS/itemDetails'"
+        },
+        "parameters": [{
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+                "type": "Identifier",
+                "name": "context"
+            },
+            "property": {
+                "type": "Identifier",
+                "name": "itemId"
+            }
+        }]
+    },
+    {
+        "namespace": {
+            "type": "Literal",
+            "value": "ACTIONS/userDetails",
+            "raw": "'ACTIONS/userDetails'"
+        },
+        "parameters": [{
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+                "type": "Identifier",
+                "name": "context"
+            },
+            "property": {
+                "type": "Identifier",
+                "name": "userId"
+            }
+        }]
+    },
+    {
+        "namespace": {
+            "type": "Literal",
+            "value": "ACTIONS/calculateRates",
+            "raw": "'ACTIONS/calculateRates'"
+        },
+        "parameters": [{
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                    "type": "Identifier",
+                    "name": "sellerInfo"
+                },
+                "property": {
+                    "type": "Identifier",
+                    "name": "zipCode"
+                }
+            },
+            {
+                "type": "AwaitExpression",
+                "argument": {
+                    "type": "CallExpression",
+                    "callee": {
+                        "type": "Identifier",
+                        "name": "foo"
+                    },
+                    "arguments": [{
+                            "type": "Identifier",
+                            "name": "koo"
+                        },
+                        {
+                            "type": "Identifier",
+                            "name": "bar"
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                    "type": "Identifier",
+                    "name": "buyerInfo"
+                },
+                "property": {
+                    "type": "Identifier",
+                    "name": "zipCode"
+                }
+            }
+        ]
+    },
+    {
+        "namespace": {
+            "type": "Literal",
+            "value": "ACTIONS/sellerInfo",
+            "raw": "'ACTIONS/sellerInfo'"
+        },
+        "parameters": [{
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+                "type": "Identifier",
+                "name": "itemDetails"
+            },
+            "property": {
+                "type": "Identifier",
+                "name": "sellerId"
+            }
+        }]
+    }
+]

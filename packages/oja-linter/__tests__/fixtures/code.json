@@ -1,0 +1,283 @@
+[{
+        "namespace": {
+            "type": "Literal",
+            "value": "ACTIONS/itemDetails",
+            "raw": "'ACTIONS/itemDetails'",
+            "loc": {
+                "start": {
+                    "line": 9,
+                    "column": 46
+                },
+                "end": {
+                    "line": 9,
+                    "column": 67
+                }
+            }
+        },
+        "parameters": [{
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+                "type": "Identifier",
+                "name": "context",
+                "loc": {
+                    "start": {
+                        "line": 9,
+                        "column": 69
+                    },
+                    "end": {
+                        "line": 9,
+                        "column": 76
+                    }
+                }
+            },
+            "property": {
+                "type": "Identifier",
+                "name": "itemId",
+                "loc": {
+                    "start": {
+                        "line": 9,
+                        "column": 77
+                    },
+                    "end": {
+                        "line": 9,
+                        "column": 83
+                    }
+                }
+            },
+            "loc": {
+                "start": {
+                    "line": 9,
+                    "column": 69
+                },
+                "end": {
+                    "line": 9,
+                    "column": 83
+                }
+            }
+        }]
+    },
+    {
+        "namespace": {
+            "type": "Literal",
+            "value": "ACTIONS/userDetails",
+            "raw": "'ACTIONS/userDetails'",
+            "loc": {
+                "start": {
+                    "line": 13,
+                    "column": 44
+                },
+                "end": {
+                    "line": 13,
+                    "column": 65
+                }
+            }
+        },
+        "parameters": [{
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+                "type": "Identifier",
+                "name": "context",
+                "loc": {
+                    "start": {
+                        "line": 13,
+                        "column": 67
+                    },
+                    "end": {
+                        "line": 13,
+                        "column": 74
+                    }
+                }
+            },
+            "property": {
+                "type": "Identifier",
+                "name": "userId",
+                "loc": {
+                    "start": {
+                        "line": 13,
+                        "column": 75
+                    },
+                    "end": {
+                        "line": 13,
+                        "column": 81
+                    }
+                }
+            },
+            "loc": {
+                "start": {
+                    "line": 13,
+                    "column": 67
+                },
+                "end": {
+                    "line": 13,
+                    "column": 81
+                }
+            }
+        }]
+    },
+    {
+        "namespace": {
+            "type": "Literal",
+            "value": "ACTIONS/calculateRates",
+            "raw": "'ACTIONS/calculateRates'",
+            "loc": {
+                "start": {
+                    "line": 35,
+                    "column": 34
+                },
+                "end": {
+                    "line": 35,
+                    "column": 58
+                }
+            }
+        },
+        "parameters": [{
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                    "type": "Identifier",
+                    "name": "sellerInfo",
+                    "loc": {
+                        "start": {
+                            "line": 36,
+                            "column": 16
+                        },
+                        "end": {
+                            "line": 36,
+                            "column": 26
+                        }
+                    }
+                },
+                "property": {
+                    "type": "Identifier",
+                    "name": "zipCode",
+                    "loc": {
+                        "start": {
+                            "line": 36,
+                            "column": 27
+                        },
+                        "end": {
+                            "line": 36,
+                            "column": 34
+                        }
+                    }
+                },
+                "loc": {
+                    "start": {
+                        "line": 36,
+                        "column": 16
+                    },
+                    "end": {
+                        "line": 36,
+                        "column": 34
+                    }
+                }
+            },
+            {
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                    "type": "Identifier",
+                    "name": "buyerInfo",
+                    "loc": {
+                        "start": {
+                            "line": 37,
+                            "column": 16
+                        },
+                        "end": {
+                            "line": 37,
+                            "column": 25
+                        }
+                    }
+                },
+                "property": {
+                    "type": "Identifier",
+                    "name": "zipCode",
+                    "loc": {
+                        "start": {
+                            "line": 37,
+                            "column": 26
+                        },
+                        "end": {
+                            "line": 37,
+                            "column": 33
+                        }
+                    }
+                },
+                "loc": {
+                    "start": {
+                        "line": 37,
+                        "column": 16
+                    },
+                    "end": {
+                        "line": 37,
+                        "column": 33
+                    }
+                }
+            }
+        ],
+        "commentCommand": {
+            "no-warn": true
+        }
+    },
+    {
+        "namespace": {
+            "type": "Literal",
+            "value": "ACTIONS/sellerInfo",
+            "raw": "'ACTIONS/sellerInfo'",
+            "loc": {
+                "start": {
+                    "line": 48,
+                    "column": 30
+                },
+                "end": {
+                    "line": 48,
+                    "column": 50
+                }
+            }
+        },
+        "parameters": [{
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+                "type": "Identifier",
+                "name": "itemDetails",
+                "loc": {
+                    "start": {
+                        "line": 48,
+                        "column": 52
+                    },
+                    "end": {
+                        "line": 48,
+                        "column": 63
+                    }
+                }
+            },
+            "property": {
+                "type": "Identifier",
+                "name": "sellerId",
+                "loc": {
+                    "start": {
+                        "line": 48,
+                        "column": 64
+                    },
+                    "end": {
+                        "line": 48,
+                        "column": 72
+                    }
+                }
+            },
+            "loc": {
+                "start": {
+                    "line": 48,
+                    "column": 52
+                },
+                "end": {
+                    "line": 48,
+                    "column": 72
+                }
+            }
+        }]
+    }
+]

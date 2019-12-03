@@ -1,0 +1,17 @@
+{
+    "oja/configure": "./actions/configure",
+    "oja/resolveAllActions": {
+        "function": "./actions/resolve",
+        "operation": "resolveAllActions"
+    },
+    "oja/resolveAllUniqueActions": {
+        "function": "./actions/resolve",
+        "operation": "resolveAllUniqueActions"
+    },
+    "oja/resolveFirstAction": {
+        "function": "./actions/resolve",
+        "operation": "resolveFirstAction"
+    },
+    "oja/reset": "./actions/reset",
+    "oja/action": "./actions/action"
+}

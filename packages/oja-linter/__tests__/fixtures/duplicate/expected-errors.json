@@ -1,0 +1,20 @@
+[
+    {
+        "files": [
+            "/modules1/foo.js",
+            "/modules2/foo.js"
+        ],
+        "namespace": "FOO/foo",
+        "code": "duplicate",
+        "codeType": "warn"
+    },
+    {
+        "files": [
+            "/modules1/bar.js",
+            "/modules2/bar.js"
+        ],
+        "namespace": "BAR/bar",
+        "code": "duplicate",
+        "codeType": "warn"
+    }
+]

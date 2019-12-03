@@ -1,0 +1,10 @@
+{
+    "BARNS": {
+        "bar": "index",
+        "rab": {
+            "function": "rab",
+            "env": "test"
+        }
+    },
+    "EXTERNAL/action": "external-action"
+}

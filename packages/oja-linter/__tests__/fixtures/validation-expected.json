@@ -1,0 +1,97 @@
+[{
+    "code": "notFound",
+    "codeType": "error",
+    "namespace": {
+        "loc": {
+            "end": {
+                "column": 35,
+                "line": 7
+            },
+            "start": {
+                "column": 14,
+                "line": 7
+            }
+        },
+        "raw": "'ACTIONS/itemDetails'",
+        "type": "Literal",
+        "value": "ACTIONS/itemDetails"
+    },
+    "path": "/index.js"
+}, {
+    "code": "notFound",
+    "codeType": "error",
+    "namespace": {
+        "loc": {
+            "end": {
+                "column": 24,
+                "line": 15
+            },
+            "start": {
+                "column": 14,
+                "line": 15
+            }
+        },
+        "raw": "'oja/some'",
+        "type": "Literal",
+        "value": "oja/some"
+    },
+    "path": "/index.js"
+}, {
+    "code": "circular",
+    "codeType": "warn",
+    "namespace": {
+        "loc": {
+            "end": {
+                "column": 37,
+                "line": 18
+            },
+            "start": {
+                "column": 25,
+                "line": 18
+            }
+        },
+        "raw": "'app/action'",
+        "type": "Literal",
+        "value": "app/action"
+    },
+    "path": "/index.js"
+}, {
+    "code": "notFound",
+    "codeType": "error",
+    "namespace": {
+        "loc": {
+            "end": {
+                "column": 42,
+                "line": 20
+            },
+            "start": {
+                "column": 25,
+                "line": 20
+            }
+        },
+        "raw": "'oja/nonExistent'",
+        "type": "Literal",
+        "value": "oja/nonExistent"
+    },
+    "path": "/index.js"
+}, {
+    "code": "codeNotFound",
+    "codeType": "error",
+    "message": "Cannot locate action at /codeNotFound",
+    "namespace": {
+        "loc": {
+            "end": {
+                "column": 47,
+                "line": 22
+            },
+            "start": {
+                "column": 25,
+                "line": 22
+            }
+        },
+        "raw": "'runtime/codeNotFound'",
+        "type": "Literal",
+        "value": "runtime/codeNotFound"
+    },
+    "path": "/index.js"
+}]

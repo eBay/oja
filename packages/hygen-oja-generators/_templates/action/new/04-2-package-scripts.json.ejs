@@ -1,0 +1,8 @@
+---
+inject: true
+to: package.json
+after: '"scripts":'
+skip_if: '"test:actions":'
+---
+    "test:actions": "yarn jest",
+    "test:actions:coverage": "yarn jest --collect-coverage"<%=(!h.isEmptyPath(h.tryRequire(`package.json`), 'scripts') && ',' || '')%>

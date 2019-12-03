@@ -1,0 +1,7 @@
+{
+    "BAR/bar": {
+        "function": "bar",
+        "selector1": "sel1"
+    },
+    "FOO/foo": "foo"
+}

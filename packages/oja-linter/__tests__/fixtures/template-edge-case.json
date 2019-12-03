@@ -1,0 +1,67 @@
+[{
+    "namespace": {
+        "type": "TemplateLiteral",
+        "quasis": [{
+                "type": "TemplateElement",
+                "value": {
+                    "raw": "CONTROLLERS/",
+                    "cooked": "CONTROLLERS/"
+                },
+                "tail": false,
+                "loc": {
+                    "start": {
+                        "line": 4,
+                        "column": 25
+                    },
+                    "end": {
+                        "line": 4,
+                        "column": 40
+                    }
+                }
+            },
+            {
+                "type": "TemplateElement",
+                "value": {
+                    "raw": "",
+                    "cooked": ""
+                },
+                "tail": true,
+                "loc": {
+                    "start": {
+                        "line": 4,
+                        "column": 50
+                    },
+                    "end": {
+                        "line": 4,
+                        "column": 52
+                    }
+                }
+            }
+        ],
+        "expressions": [{
+            "type": "Identifier",
+            "name": "actionName",
+            "loc": {
+                "start": {
+                    "line": 4,
+                    "column": 40
+                },
+                "end": {
+                    "line": 4,
+                    "column": 50
+                }
+            }
+        }],
+        "loc": {
+            "start": {
+                "line": 4,
+                "column": 25
+            },
+            "end": {
+                "line": 4,
+                "column": 52
+            }
+        }
+    },
+    "parameters": []
+}]

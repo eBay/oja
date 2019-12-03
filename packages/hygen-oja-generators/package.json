@@ -1,0 +1,35 @@
+{
+  "name": "hygen-generators-ebay",
+  "version": "1.0.1",
+  "description": "Module provides basic generators for backend and front-end",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test yarn jest __tests__/*.js",
+    "coverage": "yarn jest --collect-coverage __tests__/*.js",
+    "lint": "eslint --quiet -c .eslintrc .",
+    "lint-fix": "eslint --fix --quiet -c .eslintrc ."
+  },
+  "keywords": [
+    "hygen",
+    "oja",
+    "context",
+    "generate",
+    "helper"
+  ],
+  "author": "Dmytro Semenov <dsemenov@ebay.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eBay/oja/issues"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-ebay": "^1.1.1",
+    "eslint-plugin-mocha": "^6.1.1",
+    "hygen": "^4.0.11",
+    "jest": "^24.9.0",
+    "shelljs": "^0.8.3"
+  },
+  "publishConfig": {
+    "registry": "https://npm.corp.ebay.com"
+  }
+}

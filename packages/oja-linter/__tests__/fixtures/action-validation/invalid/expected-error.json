@@ -1,0 +1,6 @@
+[{
+    "path": "/fixtures/action-validation/invalid/action.json",
+    "message": "Failed to parse action file /fixtures/action-validation/invalid/action.json, error: Line 1: Unexpected end of input",
+    "codeType": "error",
+    "code": "parseError"
+}]

@@ -1,0 +1,17 @@
+[
+    {
+        "name": "3day-shipping",
+        "desc": "Three day shipping",
+        "rate": 6.99
+    },
+    {
+        "name": "2day-shipping",
+        "desc": "Two day shipping",
+        "rate": 9.99
+    },
+    {
+        "name": "same-day-shipping",
+        "desc": "Same day shipping",
+        "rate": 15.99
+    }
+]

@@ -1,0 +1,5 @@
+{
+    "FOONS/foo": {
+        "function": "lib/index"
+    }
+}

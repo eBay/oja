@@ -1,0 +1,16 @@
+{
+    "PIPE-EXAMPLE/route": {
+        "function": "@ebay/oja-tools/create-and-call",
+        "action": "OJA/pipe",
+        "arguments": {
+            "pipe": [
+                "FOONS/foo",
+                "BARNS/bar",
+                "QAZNS/qaz"
+            ]
+        }
+    },
+    "FOONS/foo": "foo",
+    "BARNS/bar": "bar",
+    "QAZNS/qaz": "qaz"
+}

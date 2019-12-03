@@ -1,0 +1,13 @@
+---
+to: <%=locals.target || '.'%>/<%=h.actionName(name)%>.js
+---
+'use strict';
+
+/**
+ * Namespace: <%=name%>
+ */
+module.exports = context => async parameters => {
+    // put your action logic here
+    // you can use async/await and return promise or direct object
+    return `<%=name%> is called`;
+};

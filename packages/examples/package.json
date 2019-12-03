@@ -1,0 +1,62 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "description": "Example of structuring app business logic using oja action with dependency injection",
+  "main": "index.js",
+  "scripts": {
+    "test": "yarn jest src",
+    "coverage": "yarn jest --collect-coverage src",
+    "lint": "eslint --quiet -c .eslintrc *.js",
+    "lint-fix": "eslint --fix *.js"
+  },
+  "keywords": [
+    "oja",
+    "structure",
+    "business",
+    "logic",
+    "flow"
+  ],
+  "author": "Dmytro Semenov <dimichsdg@yahoo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eBay/oja/issues"
+  },
+  "homepage": "https://github.com/eBay/oja/packages/oja-selling-example#readme",
+  "dependencies": {
+    "@ebay/oja-action": "../oja-action/",
+    "@ebay/oja-context": "../oja-context/",
+    "@ebay/oja-linter": "../oja-linter/",
+    "app-module-path": "^2.2.0",
+    "express": "^4.16.1",
+    "marko": "^4.4.28",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "@marko/jest": "^2.1.0",
+    "jest": "^24.9.0"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@ebay/oja-context$": "<rootDir>/../oja-context/index.js",
+      "^@ebay/oja-action$": "<rootDir>/../oja-action/index.js",
+      "^@ebay/oja-tools$": "<rootDir>/index.js",
+      "^@ebay/oja-tools/call": "<rootDir>/call.js",
+      "^@ebay/oja-tools/create": "<rootDir>/create-and-call.js",
+      "^(mock-data)/(.+)$": "<rootDir>/mock-data/$2",
+      "^(src/)(.+)$": "<rootDir>/src/$2"
+    },
+    "testMatch": [
+      "**/__tests__/**/*.spec.[jt]s?(x)"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "marko"
+    ],
+    "transform": {
+      "\\.marko$": "@marko/jest"
+    }
+  }
+}

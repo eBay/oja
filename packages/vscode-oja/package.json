@@ -1,0 +1,60 @@
+{
+	"name": "vscode-oja",
+	"displayName": "Oja Actions",
+	"version": "0.1.0",
+	"publisher": "dimichgh",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/eBay/oja"
+	},
+	"icon": "images/oja.png",
+	"categories": [
+	  "Programming Languages",
+	  "Other"
+	],
+	"contributes": {
+		"languages": [
+			{
+			  "id": "javascript",
+			  "extensions": [".js", ".mjs"]
+			},
+			{
+				"id": "json",
+				"extensions": [".json"]
+			}
+		]
+	},
+	"bugs": {
+		"url": "https://github.com/eBay/oja/issues"
+	},
+	"engines": {
+		"vscode": "^1.40.0"
+	},
+	"activationEvents": [
+		"onLanguage:javascript",
+		"onLanguage:json",
+		"workspaceContains:**/action.json"
+	],
+	"main": "index.js",
+	"scripts": {
+		"test": "node ./test/runTest.js",
+		"lint": "eslint --quiet -c .eslintrc *.js",
+		"lint-fix": "eslint --fix *.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.7",
+		"@types/node": "^12.11.7",
+		"@types/vscode": "^1.40.0",
+		"eslint": "^6.6.0",
+		"eslint-config-ebay": "^1.1.1",
+		"eslint-plugin-mocha": "^5.3.0",
+		"glob": "^7.1.5",
+		"mocha": "^6.2.2",
+		"typescript": "^3.6.4",
+		"vscode-test": "^1.2.2"
+	},
+	"dependencies": {
+		"resolve-from": "^5.0.0"
+	}
+}

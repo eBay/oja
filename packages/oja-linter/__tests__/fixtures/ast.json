@@ -1,0 +1,656 @@
+{
+    "type": "Program",
+    "body": [
+      {
+        "type": "ExpressionStatement",
+        "expression": {
+          "type": "Literal",
+          "value": "use strict",
+          "raw": "'use strict'"
+        },
+        "directive": "use strict"
+      },
+      {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "template"
+            },
+            "init": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "Identifier",
+                "name": "require"
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "./index.marko",
+                  "raw": "'./index.marko'"
+                }
+              ]
+            }
+          }
+        ],
+        "kind": "const"
+      },
+      {
+        "type": "ExpressionStatement",
+        "expression": {
+          "type": "AssignmentExpression",
+          "operator": "=",
+          "left": {
+            "type": "MemberExpression",
+            "computed": false,
+            "object": {
+              "type": "Identifier",
+              "name": "module"
+            },
+            "property": {
+              "type": "Identifier",
+              "name": "exports"
+            }
+          },
+          "right": {
+            "type": "ArrowFunctionExpression",
+            "id": null,
+            "params": [
+              {
+                "type": "Identifier",
+                "name": "context"
+              }
+            ],
+            "body": {
+              "type": "ArrowFunctionExpression",
+              "id": null,
+              "params": [
+                {
+                  "type": "Identifier",
+                  "name": "parameters"
+                }
+              ],
+              "body": {
+                "type": "BlockStatement",
+                "body": [
+                  {
+                    "type": "VariableDeclaration",
+                    "declarations": [
+                      {
+                        "type": "VariableDeclarator",
+                        "id": {
+                          "type": "Identifier",
+                          "name": "itemDetailsPromise"
+                        },
+                        "init": {
+                          "type": "CallExpression",
+                          "callee": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "Identifier",
+                              "name": "context"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "action"
+                            }
+                          },
+                          "arguments": [
+                            {
+                              "type": "Literal",
+                              "value": "ACTIONS/itemDetails",
+                              "raw": "'ACTIONS/itemDetails'"
+                            },
+                            {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "context"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "itemId"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "kind": "const"
+                  },
+                  {
+                    "type": "VariableDeclaration",
+                    "declarations": [
+                      {
+                        "type": "VariableDeclarator",
+                        "id": {
+                          "type": "Identifier",
+                          "name": "sellerInfoPromise"
+                        },
+                        "init": {
+                          "type": "CallExpression",
+                          "callee": {
+                            "type": "Identifier",
+                            "name": "getSellerInfo"
+                          },
+                          "arguments": []
+                        }
+                      }
+                    ],
+                    "kind": "const"
+                  },
+                  {
+                    "type": "VariableDeclaration",
+                    "declarations": [
+                      {
+                        "type": "VariableDeclarator",
+                        "id": {
+                          "type": "Identifier",
+                          "name": "buyerInfoPromise"
+                        },
+                        "init": {
+                          "type": "CallExpression",
+                          "callee": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "Identifier",
+                              "name": "context"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "action"
+                            }
+                          },
+                          "arguments": [
+                            {
+                              "type": "Literal",
+                              "value": "ACTIONS/userDetails",
+                              "raw": "'ACTIONS/userDetails'"
+                            },
+                            {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "context"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "userId"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "kind": "const"
+                  },
+                  {
+                    "type": "VariableDeclaration",
+                    "declarations": [
+                      {
+                        "type": "VariableDeclarator",
+                        "id": {
+                          "type": "Identifier",
+                          "name": "ratesPromise"
+                        },
+                        "init": {
+                          "type": "CallExpression",
+                          "callee": {
+                            "type": "Identifier",
+                            "name": "getRates"
+                          },
+                          "arguments": []
+                        }
+                      }
+                    ],
+                    "kind": "const"
+                  },
+                  {
+                    "type": "VariableDeclaration",
+                    "declarations": [
+                      {
+                        "type": "VariableDeclarator",
+                        "id": {
+                          "type": "ArrayPattern",
+                          "elements": [
+                            {
+                              "type": "Identifier",
+                              "name": "itemDetails"
+                            },
+                            {
+                              "type": "Identifier",
+                              "name": "sellerInfo"
+                            },
+                            {
+                              "type": "Identifier",
+                              "name": "buyerInfo"
+                            },
+                            {
+                              "type": "Identifier",
+                              "name": "rates"
+                            }
+                          ]
+                        },
+                        "init": {
+                          "type": "AwaitExpression",
+                          "argument": {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "Promise"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "all"
+                              }
+                            },
+                            "arguments": [
+                              {
+                                "type": "ArrayExpression",
+                                "elements": [
+                                  {
+                                    "type": "Identifier",
+                                    "name": "itemDetailsPromise"
+                                  },
+                                  {
+                                    "type": "Identifier",
+                                    "name": "sellerInfoPromise"
+                                  },
+                                  {
+                                    "type": "Identifier",
+                                    "name": "buyerInfoPromise"
+                                  },
+                                  {
+                                    "type": "Identifier",
+                                    "name": "ratesPromise"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ],
+                    "kind": "const"
+                  },
+                  {
+                    "type": "ReturnStatement",
+                    "argument": {
+                      "type": "ObjectExpression",
+                      "properties": [
+                        {
+                          "type": "Property",
+                          "key": {
+                            "type": "Identifier",
+                            "name": "template"
+                          },
+                          "computed": false,
+                          "value": {
+                            "type": "Identifier",
+                            "name": "template"
+                          },
+                          "kind": "init",
+                          "method": false,
+                          "shorthand": true
+                        },
+                        {
+                          "type": "Property",
+                          "key": {
+                            "type": "Identifier",
+                            "name": "model"
+                          },
+                          "computed": false,
+                          "value": {
+                            "type": "ObjectExpression",
+                            "properties": [
+                              {
+                                "type": "Property",
+                                "key": {
+                                  "type": "Identifier",
+                                  "name": "itemDetails"
+                                },
+                                "computed": false,
+                                "value": {
+                                  "type": "Identifier",
+                                  "name": "itemDetails"
+                                },
+                                "kind": "init",
+                                "method": false,
+                                "shorthand": true
+                              },
+                              {
+                                "type": "Property",
+                                "key": {
+                                  "type": "Identifier",
+                                  "name": "sellerInfo"
+                                },
+                                "computed": false,
+                                "value": {
+                                  "type": "Identifier",
+                                  "name": "sellerInfo"
+                                },
+                                "kind": "init",
+                                "method": false,
+                                "shorthand": true
+                              },
+                              {
+                                "type": "Property",
+                                "key": {
+                                  "type": "Identifier",
+                                  "name": "buyerInfo"
+                                },
+                                "computed": false,
+                                "value": {
+                                  "type": "Identifier",
+                                  "name": "buyerInfo"
+                                },
+                                "kind": "init",
+                                "method": false,
+                                "shorthand": true
+                              },
+                              {
+                                "type": "Property",
+                                "key": {
+                                  "type": "Identifier",
+                                  "name": "rates"
+                                },
+                                "computed": false,
+                                "value": {
+                                  "type": "Identifier",
+                                  "name": "rates"
+                                },
+                                "kind": "init",
+                                "method": false,
+                                "shorthand": true
+                              }
+                            ]
+                          },
+                          "kind": "init",
+                          "method": false,
+                          "shorthand": false
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "FunctionDeclaration",
+                    "id": {
+                      "type": "Identifier",
+                      "name": "getRates"
+                    },
+                    "params": [],
+                    "body": {
+                      "type": "BlockStatement",
+                      "body": [
+                        {
+                          "type": "TryStatement",
+                          "block": {
+                            "type": "BlockStatement",
+                            "body": [
+                              {
+                                "type": "VariableDeclaration",
+                                "declarations": [
+                                  {
+                                    "type": "VariableDeclarator",
+                                    "id": {
+                                      "type": "ArrayPattern",
+                                      "elements": [
+                                        {
+                                          "type": "Identifier",
+                                          "name": "buyerInfo"
+                                        },
+                                        {
+                                          "type": "Identifier",
+                                          "name": "sellerInfo"
+                                        }
+                                      ]
+                                    },
+                                    "init": {
+                                      "type": "AwaitExpression",
+                                      "argument": {
+                                        "type": "CallExpression",
+                                        "callee": {
+                                          "type": "MemberExpression",
+                                          "computed": false,
+                                          "object": {
+                                            "type": "Identifier",
+                                            "name": "Promise"
+                                          },
+                                          "property": {
+                                            "type": "Identifier",
+                                            "name": "all"
+                                          }
+                                        },
+                                        "arguments": [
+                                          {
+                                            "type": "ArrayExpression",
+                                            "elements": [
+                                              {
+                                                "type": "Identifier",
+                                                "name": "buyerInfoPromise"
+                                              },
+                                              {
+                                                "type": "Identifier",
+                                                "name": "sellerInfoPromise"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                ],
+                                "kind": "const"
+                              },
+                              {
+                                "type": "ReturnStatement",
+                                "argument": {
+                                  "type": "CallExpression",
+                                  "callee": {
+                                    "type": "MemberExpression",
+                                    "computed": false,
+                                    "object": {
+                                      "type": "Identifier",
+                                      "name": "context"
+                                    },
+                                    "property": {
+                                      "type": "Identifier",
+                                      "name": "action"
+                                    }
+                                  },
+                                  "arguments": [
+                                    {
+                                      "type": "Literal",
+                                      "value": "ACTIONS/calculateRates",
+                                      "raw": "'ACTIONS/calculateRates'"
+                                    },
+                                    {
+                                      "type": "MemberExpression",
+                                      "computed": false,
+                                      "object": {
+                                        "type": "Identifier",
+                                        "name": "sellerInfo"
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "name": "zipCode"
+                                      }
+                                    },
+                                    {
+                                      "type": "AwaitExpression",
+                                      "argument": {
+                                        "type": "CallExpression",
+                                        "callee": {
+                                          "type": "Identifier",
+                                          "name": "foo"
+                                        },
+                                        "arguments": [
+                                          {
+                                            "type": "Identifier",
+                                            "name": "koo"
+                                          },
+                                          {
+                                            "type": "Identifier",
+                                            "name": "bar"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "type": "MemberExpression",
+                                      "computed": false,
+                                      "object": {
+                                        "type": "Identifier",
+                                        "name": "buyerInfo"
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "name": "zipCode"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          },
+                          "handler": {
+                            "type": "CatchClause",
+                            "param": {
+                              "type": "Identifier",
+                              "name": "err"
+                            },
+                            "body": {
+                              "type": "BlockStatement",
+                              "body": [
+                                {
+                                  "type": "ReturnStatement",
+                                  "argument": {
+                                    "type": "ObjectExpression",
+                                    "properties": [
+                                      {
+                                        "type": "Property",
+                                        "key": {
+                                          "type": "Identifier",
+                                          "name": "error"
+                                        },
+                                        "computed": false,
+                                        "value": {
+                                          "type": "Literal",
+                                          "value": "Shipping is temporary not available",
+                                          "raw": "'Shipping is temporary not available'"
+                                        },
+                                        "kind": "init",
+                                        "method": false,
+                                        "shorthand": false
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "finalizer": null
+                        }
+                      ]
+                    },
+                    "generator": false,
+                    "expression": false,
+                    "async": true
+                  },
+                  {
+                    "type": "FunctionDeclaration",
+                    "id": {
+                      "type": "Identifier",
+                      "name": "getSellerInfo"
+                    },
+                    "params": [],
+                    "body": {
+                      "type": "BlockStatement",
+                      "body": [
+                        {
+                          "type": "VariableDeclaration",
+                          "declarations": [
+                            {
+                              "type": "VariableDeclarator",
+                              "id": {
+                                "type": "Identifier",
+                                "name": "itemDetails"
+                              },
+                              "init": {
+                                "type": "AwaitExpression",
+                                "argument": {
+                                  "type": "Identifier",
+                                  "name": "itemDetailsPromise"
+                                }
+                              }
+                            }
+                          ],
+                          "kind": "const"
+                        },
+                        {
+                          "type": "ReturnStatement",
+                          "argument": {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "context"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "action"
+                              }
+                            },
+                            "arguments": [
+                              {
+                                "type": "Literal",
+                                "value": "ACTIONS/sellerInfo",
+                                "raw": "'ACTIONS/sellerInfo'"
+                              },
+                              {
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "itemDetails"
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "sellerId"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    "generator": false,
+                    "expression": false,
+                    "async": true
+                  }
+                ]
+              },
+              "generator": false,
+              "expression": false,
+              "async": true
+            },
+            "generator": false,
+            "expression": true,
+            "async": false
+          }
+        }
+      }
+    ],
+    "sourceType": "script"
+  }

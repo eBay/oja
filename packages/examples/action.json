@@ -1,0 +1,6 @@
+[
+    "src",
+    "src/actions",
+    "src/controllers",
+    "src/renderers"
+]

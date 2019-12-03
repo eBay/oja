@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+const { scan } = require('../index');
+
+const targetDir = process.argv[2] || process.cwd();
+
+if (String(process.env.OJA_LINT_NO_COLOR_OUTPUT) !== 'true' && /darwin|win32/.test(process.platform)) {
+    const _error = console.error;
+    console.error = (...args) => {
+        return _error.call(console, '\033[0;31m', ...args, '\033[0m');
+    };
+    const _warn = console.warn;
+    console.warn = (...args) => {
+        return _warn.call(console, '\033[0;31m', ...args, '\033[0m');
+    }
+}
+
+scan(targetDir, true);

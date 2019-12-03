@@ -1,0 +1,11 @@
+---
+inject: true
+to: <%=locals.target || '.'%>/__tests__/<%=h.actionName(name)%>.spec.js
+after: describe
+skip_if: 'action <%=name%> should be discovered'
+---
+    test('action <%=name%> should be discovered', async () => {
+        const createContext = await createContextFactory();
+        const context = await createContext();
+        Assert.ok(context.action('<%=name%>'));
+    });
