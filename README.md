@@ -65,7 +65,7 @@ Each package is documented in a separate readme:
 - [oja-linter](https://github.com/eBay/oja/blob/master/packages/oja-linter/README.md) -
   Oja linter for oja-action dependency injection layer that validates your project and discovers any unreachable actions (deleted/modified) at the point of the use of the action.  
 - TBD: [oja-workers](https://github.com/eBay/oja/blob/master/packages/oja-workers/README.md) -
-  Provides actions pool that can be used to separate actions or group of actions into their own isolated execution environments based on Node v12 lightweight workers.
+  Provides an action pool that can be used to separate actions or group of actions into their own isolated execution environments based on Node v12 lightweight workers.
 - TBD: [oja-cloud](https://github.com/eBay/oja/blob/master/packages/oja-cloud/README.md) -
   Provides an adaptor layer to organize and deploy actions to distributed environments aka lambda/serverless.
 
