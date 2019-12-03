@@ -41,7 +41,8 @@ const { createContext } = require('@ebay/oja-action');
 // context creation can be called for every new flow
 const context = await createContext();
 // calling action can be done many times within the same context
-const result = await context.action('MATH/sum', 1, 2);
+console.log(await context.action('MATH/sum', 1, 2)); // >> 3
+console.log(await context.action('MATH/sum', 5, 2)); // >> 7
 ```
 
 #### Action execution logic

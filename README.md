@@ -22,12 +22,49 @@ The context based approach allows a developer to slice the business logic into s
 
 ## Usage
 
+### Defining an action
+
+* folder structure:
+
+```
+  module-root/
+    action.json
+    action.js
+```
+
+* action.json:
+
+```JSON
+{
+    "MATH/sum": "./action"
+}
+```
+
+* action.js
+
+```js
+module.exports = context => (a, b) => a + b;
+```
+
+### Calling action
+
+```js
+const { createContext } = require('@ebay/oja-action');
+// context creation can be called for every new flow
+const context = await createContext();
+// calling action can be done many times within the same context
+console.log(await context.action('MATH/sum', 1, 2)); // >> 3
+console.log(await context.action('MATH/sum', 5, 2)); // >> 7
+```
+
+## Install
+
 In order to realize all benefits of using oja framework you need to do the following:
 
 * Install the following modules as part of your application
 
     ```
-    npm install @ebay/oja-context @ebay/oja-action --save
+    npm install @ebay/oja-action --save
     npm install @ebay/oja-linter --save-dev
     ```
 
