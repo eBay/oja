@@ -19,5 +19,6 @@ app.get('/item', createExpressHandler('item'));
 app.get('/error', createExpressHandler('error'));
 
 app.listen(8000, () => {
-    console.log('The server is ready');
+    // eslint-disable-next-line no-console
+    console.info('The server is ready');
 });
