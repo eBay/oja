@@ -462,7 +462,7 @@ module.exports = (testName) => {
                 'oja/resolveFirstAction',
                 'oja/reset',
                 'oja/action'
-            ], Object.keys(Actions.cache[moduleRoot(Path.resolve(root, '..'))]));
+            ], Object.keys(Actions.cache[moduleRoot(Path.resolve(root, '..'))]), `Actual ${JSON.stringify(Actions.cache)}`);
             Assert.equal(16, Object.keys(actions).length);
 
             // now we can try other root
