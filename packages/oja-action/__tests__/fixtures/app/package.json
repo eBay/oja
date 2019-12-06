@@ -2,7 +2,8 @@
     "name": "app",
     "version": "2.0.0",
     "dependencies": {
-        "qaz": "0.0.0"
+        "qaz": "0.0.0",
+        "@ebay/oja-action": "^1"
     },
     "devDependencies": {
         "wsx": "1.0.0"

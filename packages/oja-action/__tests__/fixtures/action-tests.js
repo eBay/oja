@@ -265,7 +265,7 @@ module.exports = (testName) => {
     });
 
     test('should get all modules dependencies', () => {
-        Assert.deepEqual(['qaz', 'edc', 'rfv', 'wsx'],
+        Assert.deepEqual(['qaz', '@ebay/oja-action', 'edc', 'rfv', 'wsx'],
             getAllDependencyNames(Path.resolve(__dirname, 'app')));
     });
 
@@ -383,9 +383,15 @@ module.exports = (testName) => {
     });
 
     describe('resolve', () => {
-        const tmpBase = Path.resolve(__dirname, `.tmp-${testName}`);
-        const tmpDir = Path.resolve(tmpBase, `${Date.now()}`);
-        const appDir = Path.resolve(tmpDir, 'app');
+        let tmpBase;
+        let tmpDir;
+        let appDir;
+
+        beforeAll(() => {
+            tmpBase = Path.resolve(__dirname, `.tmp-${testName}`);
+            tmpDir = Path.resolve(tmpBase, `${Date.now()}`);
+            appDir = Path.resolve(tmpDir, 'app');    
+        });
 
         function createMockModule(name, dir = appDir, actionJson = {}, pkg = {
             version: '1.0.0',
@@ -439,6 +445,12 @@ module.exports = (testName) => {
                 'NESTNS/nest',
                 'FOONS/foo',
                 'QAZNS/qaz',
+                'oja/extension',
+                'oja/resolveAllActions',
+                'oja/resolveAllUniqueActions',
+                'oja/resolveFirstAction',
+                'oja/reset',
+                'oja/action',
                 'EDCNS/edc',
                 'RFVNS/rfv',
                 'WSXNS/wsx'
