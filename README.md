@@ -7,7 +7,7 @@
 Lightweight dependency injection framework to structure application business logic.
 
 [![Lerna](https://img.shields.io/badge/monorepo-lerna-531099.svg)](https://github.com/lerna/lerna)
-[![License](https://img.shields.io/github/license/ebay/oja.svg)](./LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![codecov](https://codecov.io/gh/eBay/oja/branch/master/graph/badge.svg)](https://codecov.io/gh/eBay/oja)
 [![Build Status](https://travis-ci.org/eBay/oja.svg?branch=master)](https://travis-ci.org/eBay/oja) [![NPM](https://img.shields.io/npm/v/oja.svg)](https://www.npmjs.com/package/oja)
 [![Downloads](https://img.shields.io/npm/dm/oja.svg)](http://npm-stat.com/charts.html?package=oja)
