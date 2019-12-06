@@ -31,7 +31,7 @@ class DataContainer {
 }
 
 /**
- * The pipe class provides a way to build asynchronous pipelines with map/reduce where 
+ * The pipe class provides a way to build asynchronous pipelines with map/reduce where
  * each item travels in parallel to the reduce handler
  */
 class Pipe {
@@ -78,7 +78,7 @@ class Pipe {
                 // prevent error from stopping the flow
                 return new ErrorContainer(error, index);
             }
-        }
+        };
     }
 
     catch(fn) {
@@ -99,7 +99,7 @@ class Pipe {
                     // use promise all to keep order of events and block end of stream till all promises are resolved
                     rets.length > 0 && await Promise.all(rets);
                     context.define(nextTopic, END_OF_STREAM);
-                }    
+                }
             });
         });
         return this;
@@ -130,12 +130,12 @@ class Pipe {
             context.streamData[nextTopic] = true;
             context.consume(prevTopic, async data => {
                 if (!Array.isArray(data.data)) {
-                    context.define(nextTopic, 
+                    context.define(nextTopic,
                         new ErrorContainer(new Error(`map requires array data ${data.data}`)));
                     context.define(nextTopic, END_OF_STREAM);
                     return;
                 }
-                // use promise all to keep order of events and block end of stream till all promises are resolved                
+                // use promise all to keep order of events and block end of stream till all promises are resolved
                 await Promise.all(data.data.map((itm, index) => {
                     const ret = fn(itm, index);
                     context.define(nextTopic, ret);
@@ -192,7 +192,7 @@ class Pipe {
                     new ErrorContainer(new Error(`merge requires mapped data`)));
                 return;
             }
-            let accumulator = {};
+            const accumulator = {};
             context.consume(prevTopic, data => {
                 if (data === END_OF_STREAM) {
                     const ret = fn ? fn(accumulator) : new DataContainer(accumulator);
@@ -254,29 +254,27 @@ class Pipe {
     build() {
         const handlers = this.handlers.slice(0);
         // unwrap data handler
-        Pipe[unwrap](handlers); 
+        Pipe[unwrap](handlers);
 
-        return properties => {
-            return (...incoming) => {
-                if (incoming.length === 1) {
-                    incoming = incoming[0];
-                } 
-                const context = Object.assign(new Flow(), {
-                    streamData: {}
-                }, properties);
-        
-                handlers.forEach(handler => {
-                    handler(context);
-                });
-    
-                context.define('phase_0', new DataContainer(incoming));
-                const topic = Pipe[nextTopicSymbol](handlers);
-                if (context.streamData[Pipe[prevTopicSymbol](handlers)]) {
-                    return context.consumeStream(topic);
-                }
-                return context.consume(topic);
-            };
-        }
+        return properties => (...incoming) => {
+            if (incoming.length === 1) {
+                incoming = incoming[0];
+            }
+            const context = Object.assign(new Flow(), {
+                streamData: {}
+            }, properties);
+
+            handlers.forEach(handler => {
+                handler(context);
+            });
+
+            context.define('phase_0', new DataContainer(incoming));
+            const topic = Pipe[nextTopicSymbol](handlers);
+            if (context.streamData[Pipe[prevTopicSymbol](handlers)]) {
+                return context.consumeStream(topic);
+            }
+            return context.consume(topic);
+        };
     }
 }
 

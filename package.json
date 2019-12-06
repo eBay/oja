@@ -5,7 +5,10 @@
   "scripts": {
     "clean": "lerna exec -- rm -rf ./node_modules",
     "bootstrap": "lerna bootstrap",
+    "coverage": "lerna exec -- yarn coverage",
     "test": "lerna exec -- yarn test",
-    "clean": "lerna exec 'rm -rf node_modules yarn.lock'"
+    "lint": "lerna exec -- yarn lint",
+    "lint-fix": "lerna exec -- yarn lint-fix",
+    "clean": "lerna exec -- rm -rf node_modules yarn.lock"
   }
 }

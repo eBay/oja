@@ -10,9 +10,7 @@
 
 /**
  */
-module.exports = (context, config) => {
-    return async (...args) => {
-        const pipe = await context.action(config.action, config.arguments);
-        return pipe(...args);
-    };
+module.exports = (context, config) => async (...args) => {
+    const pipe = await context.action(config.action, config.arguments);
+    return pipe(...args);
 };

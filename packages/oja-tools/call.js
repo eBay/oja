@@ -10,6 +10,4 @@
 
 /**
  */
-module.exports = (context, config) => {
-    return context.action(config.action, config.arguments);
-};
+module.exports = (context, config) => context.action(config.action, config.arguments);

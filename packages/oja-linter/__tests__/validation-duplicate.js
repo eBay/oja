@@ -11,7 +11,7 @@ describe(__filename, () => {
         const { createContext } = require('@ebay/oja-action');
         const context = await createContext();
 
-        const [errors, _] = await context.action('oja/lint', 'scan', appDir);
+        const [errors] = await context.action('oja/lint', 'scan', appDir);
 
         Assert.deepEqual(require('./fixtures/validation-duplicate-expected.json'), errors.map(err => {
             err.files = err.files.map(file => file.replace(appDir, ''));
