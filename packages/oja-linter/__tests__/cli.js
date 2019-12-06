@@ -65,6 +65,7 @@ describe(__filename, () => {
     }
 
     test('should scan via cli with color', () => {
+        process.env.OJA_LINT_NO_COLOR_OUTPUT = 'false';
         const cmd = `node --require ${
             Path.resolve(appDir, 'bootstrap.js')} ${
             Path.resolve(__dirname, '../bin/lint')} ${appDir}`;
