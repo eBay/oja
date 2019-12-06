@@ -9,8 +9,8 @@ const createContextCode = () => `
 'use strict';
 
 // use relative path from .tmp/app folder
-const createContextFactory = require('./node_modules/@ebay/oja-action');
-const ojaContext = require('./node_modules/@ebay/oja-context');
+const createContextFactory = require('@ebay/oja-action');
+const ojaContext = require('@ebay/oja-context');
 
 module.exports = async (...args) => {
     const createContext = await createContextFactory({
@@ -24,7 +24,6 @@ module.exports = async (...args) => {
 
 describe(__filename, () => {
     // need to avoid loading action json files into require cache
-    process.env.VS_CODE_OJA_EXTENSION = true;
     const tmpBase = Path.resolve(__dirname, '.tmp-action-resolve');
     const tmpDir = Path.resolve(tmpBase, `${Date.now()}`);
     const appDir = Path.resolve(tmpDir, 'app');
@@ -48,26 +47,28 @@ describe(__filename, () => {
     }
 
     // eslint-disable-next-line no-undef
-    beforeAll(() => {
-        Shell.rm('-rf', tmpDir);
+    beforeAll(async () => {
+        Shell.rm('-rf', tmpBase);
         Shell.mkdir('-p', tmpDir);
 
         Shell.cp('-r', Path.resolve(__dirname, 'fixtures/app'), tmpDir);
         Shell.cd(appDir);
         const pkgPath = Path.resolve(appDir, 'package.json');
+        // get package content
         const pkg = JSON.parse(Fs.readFileSync(pkgPath).toString());
-        Fs.writeFileSync(pkgPath, JSON.stringify({
-            name: 'app',
-            version: '2.0.0'
-        }));
-        Fs.writeFileSync(Path.resolve(appDir, 'context.js'), createContextCode(true));
-        Shell.exec(`cd ${appDir} && yarn add ../../../.. ../../../../../oja-context`);
-        Object.assign(pkg.dependencies, JSON.parse(Fs.readFileSync(pkgPath).toString()).dependencies);
+        // add oja deps
+        Object.assign(pkg.dependencies, {
+            '@ebay/oja-action': '^2',
+            '@ebay/oja-context': '^2'
+        });
         Fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
+        Fs.writeFileSync(Path.resolve(appDir, 'context.js'), createContextCode(true));
+
         createMockModule('qaz');
         createMockModule('wsx');
         createMockModule('edc');
         createMockModule('rfv');
+        process.env.VS_CODE_OJA_EXTENSION = true;
     });
 
     // eslint-disable-next-line no-undef
@@ -102,7 +103,7 @@ describe(__filename, () => {
             'should resolve external module action');
     });
 
-    test('should allow to resolve actions via context.action("oja/resolve") with in-line actions', async () => {
+    test('should allow to resolve actions via context.action("oja/resolve") with injected actions', async () => {
         createMockModule('rfv',
             `
             module.exports = context => options => {
@@ -113,16 +114,15 @@ describe(__filename, () => {
                     }
                 }
             };
-            `,
-            {
+            `, {
                 'override': true
             },
-            'oja/configure'
+            'oja/extension/context'
         );
 
         const callAction = require(Path.resolve(tmpDir, 'app/context'));
         // first reset it after earlier tests
-        await callAction('oja/reset')
+        await callAction('oja/reset');
 
         const actions = await callAction('oja/resolveAllActions', '*', appDir);
 

@@ -4,8 +4,8 @@
   "description": "Lightweight pub/sub module with event backlog, timeout support that maps events to promises and back as well as chains them to other topics and flows.",
   "main": "index.js",
   "scripts": {
-    "test": "yarn jest __tests__/*.js",
-    "coverage": "yarn jest --collect-coverage __tests__/*.js",
+    "test": "jest __tests__/*.js",
+    "coverage": "jest --collect-coverage __tests__/*.js",
     "lint": "eslint --quiet -c .eslintrc *.js",
     "lint-fix": "eslint --fix *.js"
   },

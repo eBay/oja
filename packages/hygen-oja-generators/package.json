@@ -4,7 +4,7 @@
   "description": "Module provides basic generators for backend and front-end",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test yarn jest __tests__/*.js",
+    "test": "NODE_ENV=test jest __tests__/*.js",
     "coverage": "yarn jest --collect-coverage __tests__/*.js",
     "lint": "eslint --quiet -c .eslintrc .",
     "lint-fix": "eslint --fix --quiet -c .eslintrc ."

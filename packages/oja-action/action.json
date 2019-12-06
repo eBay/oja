@@ -1,5 +1,5 @@
 {
-    "oja/configure": "./actions/configure",
+    "oja/extension": "./actions/extension",
     "oja/resolveAllActions": {
         "function": "./actions/resolve",
         "operation": "resolveAllActions"

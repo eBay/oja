@@ -8,10 +8,13 @@
  * https://opensource.org/licenses/MIT.
 **/
 
+const caller = require('caller');
+
 const { resolve, annotate } = require('./lib/actions');
 
 const createContextFactory =
 module.exports = async (options = {}) => {
+    const callerLocation = caller(1);
     // for now async is used to denote that in future the factory may be async
     // and force people use await for context creation
     const {
@@ -36,10 +39,8 @@ module.exports = async (options = {}) => {
 
     // allow platform or app to re-configure/add to the context
     // eslint-disable-next-line no-param-reassign
-    options = await baseContext.action({
-        name: 'oja/configure',
-        '~override': true
-    }, options);
+    options = await baseContext.action('oja/extension',
+        'oja/extension/context', callerLocation, options) || options;
 
     return (runtimeOptions = {}) => createContext({
         resolve: options.resolve || resolve,

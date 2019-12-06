@@ -33,6 +33,15 @@ function tryResolveFrom(from, name) {
     }
 }
 
+function safeResolveFrom(from, name) {
+    try {
+        return tryResolveFrom(from, name);
+    }
+    catch (err) {
+        // skip
+    }
+}
+
 /**
  * Resolves action for the given module root
  * @param {String} modRoot
@@ -135,6 +144,7 @@ function resolveFirstAction(namespace, modRoot, skipDeps) {
     }
     const modName = modRoot.split('/').pop();
     const parentDir = getParentModuleDir(modRoot);
+    // eslint-disable-next-line no-param-reassign
     modRoot = parentDir && moduleRoot(parentDir);
     return modRoot && resolveFirstAction(namespace,
         modRoot, [modName]) || undefined;
@@ -321,19 +331,17 @@ function requireAction(name) {
 }
 
 function lazyActionResolve(name, parent) {
-    const location = parent && Path.resolve(parent, name);
-    let modRef;
+    let modRef; // caching
     return () => {
         if (modRef) {
             return modRef;
         }
-        modRef = tryResolve(location);
-        if (modRef) {
-            return modRef;
-        }
-        // try as external module
-        modRef = tryResolve(name);
-        if (modRef) {
+        const location = parent && Path.resolve(parent, name);
+        const loc = parent && (tryResolve(location) || safeResolveFrom(parent, name)) ||
+            !parent && tryResolve(name);
+
+        if (loc && !(loc instanceof Error)) {
+            modRef = loc.toString();
             return modRef;
         }
         throw new Error(`Cannot locate action at ${location || name}`);

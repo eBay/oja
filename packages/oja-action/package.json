@@ -4,8 +4,8 @@
   "description": "Dependency injection via actions",
   "main": "index.js",
   "scripts": {
-    "test": "yarn jest __tests__/*.js",
-    "coverage": "yarn jest --collect-coverage __tests__/*.js",
+    "test": "jest __tests__/*.js",
+    "coverage": "jest --collect-coverage __tests__/*.js",
     "lint": "eslint --quiet -c .eslintrc **/*.js",
     "lint-fix": "eslint --fix **/*.js"
   },
@@ -34,12 +34,14 @@
     "shelljs": "^0.8.3"
   },
   "dependencies": {
+    "caller": "^1.0.1",
     "resolve-from": "^5.0.0"
   },
   "jest": {
     "moduleNameMapper": {
       "^@ebay/oja-context$": "<rootDir>/../oja-context/index.js",
       "^@ebay/oja-action$": "<rootDir>/index.js",
+      "^@ebay/oja-action/resolver$": "<rootDir>/resolver.js",
       "^external-action$": "<rootDir>/__tests__/fixtures/external-action/index.js",
       "(.+)(/action\\.json)": "$1/$2",
       "(.*)lib/actions": "$1lib/actions"

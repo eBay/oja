@@ -5,7 +5,6 @@ const Assert = require('assert');
 const Fs = require('fs');
 const Path = require('path');
 const Shell = require('shelljs');
-const linter = require('@ebay/oja-linter');
 
 const CODE = `
 'use strict';
@@ -45,14 +44,7 @@ describe(__filename, () => {
 
         Shell.cp('-r', Path.resolve(__dirname, 'fixtures/app'), tmpDir);
         Shell.cd(appDir);
-        Fs.writeFileSync(Path.resolve(appDir, 'package.json'), JSON.stringify({
-            'name': 'app',
-            'version': '1.0.0',
-            'license': 'MIT'
-        }, null, 2));
-        Assert.equal(0, Shell.exec(
-            'yarn add ../../../../../oja-context  ../../../../../oja-action  ../../../../').code);
-        
+
         // add more actions
         Shell.cp('-r', Path.resolve(__dirname, 'fixtures/modules'), appDir);
         Shell.cp('-r', Path.resolve(__dirname, 'fixtures/action-validation/complex'), appDir);
@@ -64,46 +56,58 @@ describe(__filename, () => {
         Shell.rm('-rf', tmpBase);
     });
 
-    test('should scan via cli with color', () => {
-        const output = Shell.exec(`cd ${appDir} && yarn ojalint ${appDir}`);
-        Assert.equal(1, output.code);
-        const outputMessage = output.stderr.replace(new RegExp(appDir, 'g'), '');
+    function outputToJson(output) {
+        return output
+            .replace(new RegExp(appDir, 'g'), '')
+            .split(/[\n\r\t]/)
+            .filter(item => !!item)
+            .map(item => item.trim());
+    }
 
-        Assert.equal(Fs.readFileSync(Path.resolve(
-            __dirname, 'fixtures/cli/color-errors-expected.txt')).toString(),
-        outputMessage);
+    test('should scan via cli with color', () => {
+        const cmd = `node --require ${
+            Path.resolve(appDir, 'bootstrap.js')} ${
+            Path.resolve(__dirname, '../bin/lint')} ${appDir}`;
+        const output = Shell.exec(cmd);
+        Assert.equal(1, output.code);
+        const messageOutput = outputToJson(output.stderr);
+
+        Assert.deepEqual(require('./fixtures/cli/color-errors-expected.json'),
+            messageOutput);
     });
 
     test('should scan via cli without color', () => {
         process.env.OJA_LINT_NO_COLOR_OUTPUT = 'true';
-        const output = Shell.exec(`cd ${appDir} && yarn ojalint ${appDir}`);
+        const cmd = `node --require ${
+            Path.resolve(appDir, 'bootstrap.js')} ${
+            Path.resolve(__dirname, '../bin/lint')} ${appDir}`;
+        const output = Shell.exec(cmd);
         Assert.equal(1, output.code);
-        const outputMessage = output.stderr.replace(new RegExp(appDir, 'g'), '');
+        const messageOutput = outputToJson(output.stderr);
 
-        Assert.equal(Fs.readFileSync(Path.resolve(
-            __dirname, 'fixtures/cli/errors-expected.txt')).toString(),
-        outputMessage);
+        Assert.deepEqual(require('./fixtures/cli/errors-expected.json'),
+            messageOutput);
     });
 
     test('should scan via cli without color and default folder', () => {
         process.env.OJA_LINT_NO_COLOR_OUTPUT = 'true';
-        const output = Shell.exec(`cd ${appDir} && yarn ojalint`);
+        const cmd = `cd ${appDir} && node --require ${
+            Path.resolve(appDir, 'bootstrap.js')} ${
+            Path.resolve(__dirname, '../bin/lint')}`;
+        const output = Shell.exec(cmd);
         Assert.equal(1, output.code);
-        const outputMessage = output.stderr.replace(new RegExp(appDir, 'g'), '');
+        const messageOutput = outputToJson(output.stderr);
 
-        Assert.equal(Fs.readFileSync(Path.resolve(
-            __dirname, 'fixtures/cli/errors-expected.txt')).toString(),
-        outputMessage);
+        Assert.deepEqual(require('./fixtures/cli/errors-expected.json'),
+            messageOutput);
     });
 
     test('should scan via cli with no errors', () => {
         Fs.writeFileSync(Path.resolve(appDir, '.ojalintignore'), '.*');
-        const output = Shell.exec(`cd ${appDir} && yarn ojalint ${appDir}`);
+        const cmd = `node --require ${
+            Path.resolve(appDir, 'bootstrap.js')} ${
+            Path.resolve(__dirname, '../bin/lint')} ${appDir}`;
+        const output = Shell.exec(cmd);
         Assert.equal(0, output.code);
-        const outputMessage = output.stderr.replace(new RegExp(appDir, 'g'), '');
-
-        Assert.equal(Fs.readFileSync(Path.resolve(
-            __dirname, 'fixtures/cli/no-errors-expected.txt')).toString(),
-        outputMessage);
     });
 });

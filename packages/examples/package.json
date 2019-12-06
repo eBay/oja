@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest src",
-    "coverage": "yarn jest --collect-coverage src",
+    "coverage": "jest --collect-coverage src",
     "elint": "eslint --quiet -c .eslintrc *.js",
     "lint": "yarn ojalint && yarn elint",
     "lint-fix": "eslint --fix *.js"

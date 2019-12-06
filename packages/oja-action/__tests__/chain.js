@@ -35,7 +35,7 @@ describe(__filename, () => {
     }
 
     beforeEach(() => {
-        Shell.rm('-rf', tmpDir);
+        Shell.rm('-rf', tmpBase);
         Shell.mkdir('-p', tmpDir);
     });
 

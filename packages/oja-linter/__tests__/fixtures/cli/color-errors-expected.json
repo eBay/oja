@@ -1,0 +1,12 @@
+[
+  "\u001b[0;31m error: action \"WSX/wsx\" not found: /complex/action.json:2,4,",
+  "original error: Cannot locate action at /complex/bad-file \u001b[0m",
+  "\u001b[0;31m error: action \"runtime/codeNotFound\" not found: /action.json:3,4,",
+  "original error: Cannot locate action at /codeNotFound \u001b[0m",
+  "\u001b[0;31m error: action \"QAZ/qaz\" not found: /complex/action.json:10,4,",
+  "original error: Cannot locate action at /complex/bad-file2 \u001b[0m",
+  "\u001b[0;31m error: action \"ACTIONS/itemDetails\" not found: /index.js:8,14 \u001b[0m",
+  "\u001b[0;31m warn: circular call of \"BAR/bar\" action: /modules/bar.js:5,19 \u001b[0m",
+  "\u001b[0;31m error: action \"oja/nonExistent\" not found: /index.js:23,25 \u001b[0m",
+  "\u001b[0;31m Total errors: 5 \u001b[0m"
+]

@@ -4,8 +4,8 @@
   "description": "Instrumentation of actions via hooks",
   "main": "index.js",
   "scripts": {
-    "test": "yarn jest __tests__/*.js",
-    "coverage": "yarn jest --collect-coverage __tests__/*.js",
+    "test": "jest __tests__/*.js",
+    "coverage": "jest --collect-coverage __tests__/*.js",
     "lint": "eslint --quiet -c .eslintrc *.js",
     "lint-fix": "eslint --fix *.js"
   },

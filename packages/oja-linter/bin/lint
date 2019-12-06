@@ -3,6 +3,8 @@
 const { scan } = require('../index');
 
 const targetDir = process.argv[2] || process.cwd();
+// eslint-disable-next-line no-console
+console.info('scanning', targetDir);
 
 if (String(process.env.OJA_LINT_NO_COLOR_OUTPUT) !== 'true' && /darwin|win32/.test(process.platform)) {
     const _error = console.error;

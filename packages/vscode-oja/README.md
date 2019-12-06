@@ -6,11 +6,11 @@ With the introduction of dependency injection, we lose the ability to easily nav
 
 This VS Code extension brings us back this functionality and even more - you can now view all reachable actions from the given point in a popup window.
 
-![Demo Discovery](images/vscode.gif)
+![Demo Discovery](https://raw.githubusercontent.com/eBay/oja/master/packages/vscode-oja/images/vscode.gif)
 
 The extension also does automatic validations for your project upon saving.
 
-![Demo Linting](images/oja-lint.gif)
+![Demo Linting](https://raw.githubusercontent.com/eBay/oja/master/packages/vscode-oja/images/oja-lint.gif)
 
 ## Install
 

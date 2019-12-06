@@ -406,7 +406,7 @@ module.exports = (testName) => {
         }
 
         beforeEach(() => {
-            Shell.rm('-rf', tmpDir);
+            Shell.rm('-rf', tmpBase);
             Shell.mkdir('-p', tmpDir);
             Shell.cp('-r', Path.resolve(__dirname, 'app'), tmpDir);
             createMockModule('qaz');
@@ -444,7 +444,7 @@ module.exports = (testName) => {
                 'WSXNS/wsx'
             ], Object.keys(Actions.cache[root]));
             Assert.deepEqual([
-                'oja/configure',
+                'oja/extension',
                 'oja/resolveAllActions',
                 'oja/resolveAllUniqueActions',
                 'oja/resolveFirstAction',
@@ -470,8 +470,6 @@ module.exports = (testName) => {
 
             Assert.equal(undefined, resolve('NONE/rfv',
                 moduleRoot(Path.resolve(appDir, 'modules/bar'))));
-
-            Assert.equal(undefined, resolveActions('.'));
         });
 
         test('should resolve resolveFirstAction', () => {

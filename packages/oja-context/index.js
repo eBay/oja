@@ -54,6 +54,7 @@ module.exports = (opts = {}) => {
         const actions = {};
         Object.assign(baseContext, {
             async proxyAction(callerLocation, actionRequest, ...args) {
+                // eslint-disable-next-line no-param-reassign
                 actionRequest = normalizeActionRequest(actionRequest, selectors);
                 // use cache per caller location
                 // each location can match different versions of the same action

@@ -10,21 +10,22 @@
 
 const Actions = require('../lib/actions');
 
-module.exports = async (context, { operation }) => {
-    // allow platform or app to re-configure/add to the options
-    // by default it will call default action (use selectors to override)
-    // eslint-disable-next-line no-param-reassign
-    const options = await context.action({
-        name: 'oja/configure',
-        '~override': true
-    });
-
-    // we are interested in functions attribute
-    // to build our virtual actions
-    // and wrap them into the same action wrapper with attributes
-    const vactions = await convertFunctionsToActions(options && options.functions);
-
+/**
+ * This action is mainly for IDE extensions to resolve actions
+ */
+module.exports = (context, { operation }) => {
     return async (namespace, path) => {
+        // allow platform or app to re-configure/add to the options
+        // by default it will call default action (use selectors to override)
+        // eslint-disable-next-line no-param-reassign
+        const options = await context.action('oja/extension',
+            'oja/extension/context', path);
+
+        // we are interested in functions attribute
+        // to build our virtual actions
+        // and wrap them into the same action wrapper with attributes
+        const vactions = await convertFunctionsToActions(options && options.functions);
+
         // then get discoverable actions
         const actions = Actions[operation](namespace, Actions.moduleRoot(path));
         if (!vactions || Object.keys(vactions).length === 0) {

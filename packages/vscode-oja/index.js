@@ -210,8 +210,7 @@ async function getOjaContext(path) {
     if (context) {
         return context;
     }
-    const createContextFactory = require(resolveFrom(path, '@ebay/oja-action'));
-    const createContext = await createContextFactory();
+    const { createContext } = require(resolveFrom(path, '@ebay/oja-action'));
     context = await createContext();
     ojaContextByLocation[rootPath] = context;
     return context;

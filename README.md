@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/trooba/branding/raw/master/images/oja.png" alt="Oja logo" width="200" /> <span style="font-size: 3em;">v2.0</span><br /><br />
+    <img src="https://raw.githubusercontent.com/eBay/oja/master/packages/vscode-oja/images/oja.png" alt="Oja logo" width="200" /> <span style="font-size: 3em;">v2.0</span><br /><br />
 </p>
 
 <h1>Status: Not Yet Published</h1>
@@ -18,7 +18,7 @@ Lightweight dependency injection framework to structure application business log
 
 The context based approach allows a developer to slice the business logic into small, isolated business actions that communicate to each other via context. That encourages developers to use the same action interface across application code, which makes the code more predictable, easy to define/compose, and test with mock data. And yes - it makes it boring.
 
-![context diagram](./packages/oja-context/docs/images/context.png)
+![context diagram](https://raw.githubusercontent.com/eBay/oja/master/packages/oja-context/docs/images/context.png)
 
 ## Usage
 
@@ -64,7 +64,7 @@ In order to realize all benefits of using oja framework you need to do the follo
 * Install the following modules as part of your application
 
     ```
-    npm install @ebay/oja-action --save
+    npm install @ebay/oja-context @ebay/oja-action --save
     npm install @ebay/oja-linter --save-dev
     ```
 
@@ -103,10 +103,25 @@ Each package is documented in a separate readme:
   VS Code extension that simplifies oja-action dependency injection usage with automatic suggestions and action discovery.
 - [oja-linter](https://github.com/eBay/oja/blob/master/packages/oja-linter/README.md) -
   Oja linter for oja-action dependency injection layer that validates your project and discovers any unreachable actions (deleted/modified) at the point of the use of the action.  
+- TBD: [oja-pubsub](https://github.com/eBay/oja/blob/master/packages/oja-pubsub/README.md) - Provides a way to organize actions into publishers and subscribers roles when the same business events need to be consumed by multiple consumer actions.
 - TBD: [oja-workers](https://github.com/eBay/oja/blob/master/packages/oja-workers/README.md) -
   Provides an action pool that can be used to separate actions or group of actions into their own isolated execution environments based on Node v12 lightweight workers.
 - TBD: [oja-cloud](https://github.com/eBay/oja/blob/master/packages/oja-cloud/README.md) -
   Provides an adaptor layer to organize and deploy actions to distributed environments aka lambda/serverless.
+
+## Example Use-Cases
+
+* Extension point
+
+* Middleware
+
+* Feature activation/selection
+
+* Flow selection
+
+* Pub/sub pattern to decouple producer actions from consumer actions
+
+* What if you are "stuck" with express, but like Koa syntax?
 
 ## Code of Conduct
 

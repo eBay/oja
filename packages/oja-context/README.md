@@ -16,7 +16,7 @@ npm install @ebay/oja-context --save
 
 The module provides a way to slice the code into isolated, small, and independent actions that can later be used to compose much more complex applications with dependency injection via a context object.
 
-![context diagram](./docs/images/context.png)
+![context diagram](https://raw.githubusercontent.com/eBay/oja/master/packages/oja-context/docs/images/context.png)
 
 ## API
 
@@ -85,10 +85,10 @@ These are the main properties used for context creation:
 * resolve allows to inject resolution of the actions
 
 ```js
-const ojaContext = require('@ebay/oja-context');
+const createContext = require('@ebay/oja-context');
 
 // inject/configure context
-const context = ojaContext({
+const context = createContext({
     // injecting properteis
     properties: {
         parameters: {
@@ -118,12 +118,12 @@ Context can extend any base object, for example, you can extend Flow class, and 
 
 ```js
 
-const ojaContextFactory = require('@ebay/oja-context');
+const createContextFactory = require('@ebay/oja-context');
 const Flow = require('@ebay/oja-pipe').Flow;
-const ojaContext = ojaContextFactory(() => new Flow());
+const createContext = createContextFactory(() => new Flow());
 
 // inject/configure context
-const context = ojaContext({
+const context = createContext({
     ...
 });
 
