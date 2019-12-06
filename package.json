@@ -5,6 +5,7 @@
   "scripts": {
     "clean": "lerna exec -- rm -rf ./node_modules",
     "bootstrap": "lerna bootstrap",
-    "test": "lerna exec -- yarn test"
+    "test": "lerna exec -- yarn test",
+    "clean": "lerna exec 'rm -rf node_modules yarn.lock'"
   }
 }
