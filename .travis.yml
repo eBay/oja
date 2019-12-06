@@ -1,8 +1,8 @@
 node_js:
-- "8"
 - "10"
 - "12"
 language: node_js
+before_install: "npm i -g yarn@latest"
 install: "yarn bootstrap"
 script: "yarn lint && yarn test"
 after_success: "yarn coverage"
