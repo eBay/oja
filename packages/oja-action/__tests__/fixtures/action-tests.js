@@ -455,21 +455,6 @@ module.exports = (testName) => {
                 'RFVNS/rfv',
                 'WSXNS/wsx'
             ], Object.keys(Actions.cache[root]));
-            // eslint-disable-next-line no-console
-            console.log('----------step 1', testName, Actions.cache);
-            const cache = Actions.cache[moduleRoot(Path.resolve(root, '..'))];
-            // eslint-disable-next-line no-console
-            console.log('----------step 2', testName, Actions.cache);
-            // eslint-disable-next-line no-console
-            console.log('----------step 3', testName, cache);
-            Assert.deepEqual([
-                'oja/extension',
-                'oja/resolveAllActions',
-                'oja/resolveAllUniqueActions',
-                'oja/resolveFirstAction',
-                'oja/reset',
-                'oja/action'
-            ], cache && Object.keys(cache), `Actual: ${JSON.stringify(Actions.cache)}`);
             Assert.equal(16, Object.keys(actions).length);
 
             // now we can try other root
