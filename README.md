@@ -22,7 +22,7 @@ The context based approach allows a developer to slice the business logic into s
 
 ## Usage
 
-### Defining an action
+### Action definition
 
 * folder structure:
 
