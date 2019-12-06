@@ -455,6 +455,7 @@ module.exports = (testName) => {
                 'RFVNS/rfv',
                 'WSXNS/wsx'
             ], Object.keys(Actions.cache[root]));
+            const cache = Actions.cache[moduleRoot(Path.resolve(root, '..'))];
             Assert.deepEqual([
                 'oja/extension',
                 'oja/resolveAllActions',
@@ -462,7 +463,7 @@ module.exports = (testName) => {
                 'oja/resolveFirstAction',
                 'oja/reset',
                 'oja/action'
-            ], Object.keys(Actions.cache[moduleRoot(Path.resolve(root, '..'))]), `Actual ${JSON.stringify(Actions.cache)}`);
+            ], cache && Object.keys(cache), `Actual: ${JSON.stringify(cache)}`);
             Assert.equal(16, Object.keys(actions).length);
 
             // now we can try other root
