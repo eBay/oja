@@ -30,7 +30,7 @@ const ojaContextByLocation = {};
 // your extension is activated the very first time the command is executed
 module.exports.activate = context => {
     validateOjaInstallation();
-    
+
     const provider = vscode.languages.registerCompletionItemProvider(
         // eslint-disable-next-line no-use-before-define
         DOCUMENT_SELECTORS, new OjaCompletionItemProvider(),
