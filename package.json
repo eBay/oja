@@ -3,7 +3,6 @@
     "lerna": "^3.18.1"
   },
   "scripts": {
-    "clean": "lerna exec -- rm -rf ./node_modules",
     "bootstrap": "lerna bootstrap",
     "coverage": "lerna exec -- yarn coverage",
     "test": "lerna exec -- yarn test",

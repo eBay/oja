@@ -1,6 +1,6 @@
 # vscode-oja
 
-[![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/installs-short/ebay.oja.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=ebay.oja)
+[![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/installs-short/oja.vscode-oja.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=oja.vscode-oja)
 
 VS Code extension for [oja-action](https://github.com/eBay/oja/blob/master/packages/oja-action#readme) dependency injection layer with action discovery and code completion.
 

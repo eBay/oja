@@ -2,7 +2,7 @@
 	"name": "vscode-oja",
 	"displayName": "vscode-oja",
 	"version": "0.2.0",
-	"publisher": "dimichgh",
+	"publisher": "oja",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/eBay/oja"

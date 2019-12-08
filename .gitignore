@@ -65,3 +65,4 @@ yarn.lock
 package-lock.json
 coverage
 **/__tests__/.tmp*
+packages/vscode-oja/vscode-oja-*
