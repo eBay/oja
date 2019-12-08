@@ -29,6 +29,8 @@ const ojaContextByLocation = {};
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 module.exports.activate = context => {
+    validateOjaInstallation();
+    
     const provider = vscode.languages.registerCompletionItemProvider(
         // eslint-disable-next-line no-use-before-define
         DOCUMENT_SELECTORS, new OjaCompletionItemProvider(),
@@ -208,6 +210,24 @@ function getProjectRoot() {
     return vscode.workspace.getWorkspaceFolder(
         vscode.window.activeTextEditor.document.uri
     ).uri.fsPath;
+}
+
+function assertModule(root, name) {
+    try {
+        resolveFrom(root, name);
+    }
+    catch (err) {
+        vscode.window.showInformationMessage(
+            `vscode-oja: module ${name} is not found, please install it`);
+    }
+}
+
+function validateOjaInstallation() {
+    const root = getProjectRoot();
+
+    assertModule(root, '@ebay/oja-context');
+    assertModule(root, '@ebay/oja-action');
+    assertModule(root, '@ebay/oja-linter');
 }
 
 function loadOjaResolve(path) {
