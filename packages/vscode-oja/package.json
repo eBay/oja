@@ -66,5 +66,6 @@
 	},
 	"publishConfig": {
 		"registry": "https://no-publish"
-	}
+	},
+	"private": true
 }

@@ -62,5 +62,6 @@
     "transform": {
       "\\.marko$": "@marko/jest"
     }
-  }
+  },
+  "private": true
 }
