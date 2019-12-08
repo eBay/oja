@@ -7,7 +7,6 @@
   },
   "packages": [
     "packages/oja-*",
-    "packages/vscode-oja",
     "packages/hygen-oja-*"
   ],
   "ignoreChanges": [
