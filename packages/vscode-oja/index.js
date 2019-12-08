@@ -118,7 +118,6 @@ async function lintOnChange(diagnosticCollection, reset) {
     diagnosticCollection.clear();
     const diagnosticMap = new Map();
     errors.forEach(error => {
-
         if (error.code === 'duplicate') {
             error.files.forEach(file => {
                 const canonicalFile = vscode.Uri.file(file).toString();
