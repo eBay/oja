@@ -1,6 +1,10 @@
 # vscode-oja
 
-VS Code extension for [oja-action](../oja-action/README.md) dependency injection layer with action discovery and code completion.
+[![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/installs-short/ebay.oja.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=ebay.oja)
+
+VS Code extension for [oja-action](https://github.com/eBay/oja/blob/master/packages/oja-action#readme) dependency injection layer with action discovery and code completion.
+
+This modue is a subset of [Oja](https://github.com/eBay/oja#readme) framework.
 
 With the introduction of dependency injection, we lose the ability to easily navigate the code through import links.
 

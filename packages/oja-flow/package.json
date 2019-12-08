@@ -26,9 +26,9 @@
   "author": "Dmytro Semenov <dimichsdg@yahoo.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dimichgh/oja/issues"
+    "url": "https://github.com/eBay/oja/issues"
   },
-  "homepage": "https://github.com/dimichgh/oja#readme",
+  "homepage": "https://github.com/eBay/oja/tree/master/packages/oja-flow#readme",
   "devDependencies": {
     "async": "^2.5.0",
     "eslint": "^5.16.0",
@@ -47,5 +47,8 @@
       "<rootDir>/*\\.js"
     ],
     "clearMocks": true
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   }
 }

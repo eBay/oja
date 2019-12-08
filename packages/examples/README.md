@@ -1,8 +1,10 @@
-# oja-selling-example-context
+# oja selling example
 
-An example of structuring app business logic using [oja](https://github.com/dimichgh/oja) actions.
+An example of structuring app business logic using [Oja](https://github.com/eBay/oja#readme) actions.
 
-This is a demo application that shows how application business logic can be structured into independent, shareable actions that can be tested independently and later used to compose more complex actions/pages/responses.
+This demo application demonstrates how application business logic can be structured into independent, shareable actions that can be tested independently and later used to compose more complex actions/pages/responses.
+
+The application uses code generation to automate action and component creation and that includes unit tests generation as well.
 
 <p align="center">
     <img src="demo.svg" />
@@ -13,13 +15,13 @@ This is a demo application that shows how application business logic can be stru
 ### Install
 ```bash
 cd examples
-npm install
+yarn
 ```
 
 ### Running tests
 
 ```bash
-npm test
+yarn test
 ```
 
 ### Running app
@@ -28,6 +30,10 @@ node .
 ```
 
 ### Creating new action
+
+To speed up the process of creating new actions and controllers and required unit tests, the application uses (https://github.com/eBay/oja/blob/master/packages/hygen-oja-generators#readme), a [hygen](https://www.hygen.io/) code generation plugin.
+
+Once you install the templates, you can start extending them with your own templates.
 
 #### Install hygen plugin
 

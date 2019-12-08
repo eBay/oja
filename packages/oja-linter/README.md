@@ -1,6 +1,10 @@
 # oja-linter
 
-Searches directory tree of js/mjs files for `context.action('action namespace', ...args)` starting from the given or current working folder. If found, it would validate the availability of the action at the point of use.
+[![Downloads](https://img.shields.io/npm/dm/oja-linter.svg)](http://npm-stat.com/charts.html?package=oja-linter)
+
+This module is a subset of eBay [Oja](https://github.com/eBay/oja#readme) framework.
+
+The module traverses directory tree starting from the given or the current working folder and searches js/mjs files for `context.action('action namespace', ...args)`. If found, it would validate the availability of the action at the point of use. It also validates action.json files for duplicate actions as well as action handlers existence.
 
 ## Installation
 

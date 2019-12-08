@@ -1,5 +1,9 @@
 # oja-flow
 
+[![Downloads](https://img.shields.io/npm/dm/oja-flow.svg)](http://npm-stat.com/charts.html?package=oja-flow)
+
+This is the original Oja v1.0 that is now a subset of Oja v2.0+.
+
 The module provides a way to assemble independent actions/events into a single flow based pub/sub pattern with event backlog, timeout support. It can map events to promises and back as well as chain them to other topics. Use it to structure your application business logic.
 
 # Idea

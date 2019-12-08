@@ -12,6 +12,20 @@ const DOCUMENT_SELECTORS = [{
 
 const ojaContextByLocation = {};
 
+/**
+ * TODO:
+ *  - support complex action queries
+ *    - add support of mjs
+ *    - auto suggest and validate selectors
+ *    - suggest fallback selectors when no matching actions can be found
+ *    - exclude action in focus from the popup list
+ *    - support proxyAction `context.proxyAction(...)`
+ *    - provide signatures for suggested actions
+ *  - find where it is used from action.json to references
+ *  - show a map of available actions (lense)
+ *  - rename support
+ */
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 module.exports.activate = context => {
@@ -269,25 +283,3 @@ class OjaDefinitionProvider {
         return Promise.resolve(locations);
     }
 }
-
-/**
- * TODO:
- *  - support complex action queries
- *    - add support of mjs
- *    - auto suggest and validate selectors
- *    - suggest fallback selectors when no matching actions can be found
- *    - exclude action in focus from the popup list
- *    - support proxyAction
- *    - provide signatures
- *  - validation of missing/deleted actions
- *     - also validate direct circular dependency
- *  - linter support
- *  - find where it is used from action.json to references
- *  - show a map of available actions (lense)
- *  - rename support
- */
-
-/**
- * { language: 'typescript', scheme: 'file' }
-{ language: 'json', pattern: '**\/package.json' }
- */

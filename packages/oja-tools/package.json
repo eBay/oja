@@ -48,5 +48,8 @@
     "collectCoverageFrom" : [
       "<rootDir>/*\\.js"
     ]
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   }
 }

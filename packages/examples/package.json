@@ -1,6 +1,6 @@
 {
   "name": "examples",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Example of structuring app business logic using oja action with dependency injection",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/eBay/oja/issues"
   },
-  "homepage": "https://github.com/eBay/oja/packages/oja-selling-example#readme",
+  "homepage": "https://github.com/eBay/oja/tree/master/packages/examples#readme",
   "dependencies": {
     "@ebay/oja-action": "../oja-action/",
     "@ebay/oja-context": "../oja-context/",

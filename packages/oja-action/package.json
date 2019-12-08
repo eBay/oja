@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/eBay/oja/issues"
   },
-  "homepage": "https://github.com/eBay/oja/blob/master/packages/oja-action/README.md",
+  "homepage": "https://github.com/eBay/oja/blob/master/packages/oja-action#readme",
   "devDependencies": {
     "async": "^2.6.3",
     "eslint": "^5.16.0",
@@ -50,5 +50,8 @@
       "<rootDir>/*\\.js",
       "<rootDir>/lib/*\\.js"
     ]
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   }
 }

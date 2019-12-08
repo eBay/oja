@@ -2,17 +2,13 @@
     <img src="https://raw.githubusercontent.com/eBay/oja/master/packages/vscode-oja/images/oja.png" alt="Oja logo" width="200" /> <span style="font-size: 3em;">v2.0</span><br /><br />
 </p>
 
-<h1>Status: Not Yet Published</h1>
-
 Lightweight dependency injection framework to structure application business logic.
 
 [![Lerna](https://img.shields.io/badge/monorepo-lerna-531099.svg)](https://github.com/lerna/lerna)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![codecov](https://codecov.io/gh/eBay/oja/branch/master/graph/badge.svg)](https://codecov.io/gh/eBay/oja)
 [![Build Status](https://travis-ci.org/eBay/oja.svg?branch=master)](https://travis-ci.org/eBay/oja) [![NPM](https://img.shields.io/npm/v/oja.svg)](https://www.npmjs.com/package/oja)
-[![Downloads](https://img.shields.io/npm/dm/oja.svg)](http://npm-stat.com/charts.html?package=oja)
 [![Known Vulnerabilities](https://snyk.io/test/github/eBay/oja/badge.svg)](https://snyk.io/test/github/eBay/oja)
-[![Greenkeeper badge](https://badges.greenkeeper.io/eBay/oja.svg)](https://greenkeeper.io/)
 
 ## Idea
 
@@ -87,26 +83,26 @@ In order to realize all benefits of using oja framework you need to do the follo
 
 Each package is documented in a separate readme:
 
-- [oja-action](https://github.com/eBay/oja/blob/master/packages/oja-action/README.md) -
+- [oja-action](https://github.com/eBay/oja/blob/master/packages/oja-action#readme) -
   Provides action discovery for oja actions based on dependency injection.
-- [oja-context](https://github.com/eBay/oja/blob/master/packages/oja-context/README.md) -
+- [oja-context](https://github.com/eBay/oja/blob/master/packages/oja-context#readme) -
   Provides dependency injection.
-- [oja-generators](https://github.com/eBay/oja/blob/master/packages/hygen-oja-generators/README.md) -
+- [oja-generators](https://github.com/eBay/oja/blob/master/packages/hygen-oja-generators#readme) -
   Provides code and unit test generation for oja-action framework.
-- [oja-flow](https://github.com/eBay/oja/blob/master/packages/oja-flow/README.md) -
+- [oja-flow](https://github.com/eBay/oja/blob/master/packages/oja-flow#readme) -
   Provides a flow components based on pub/sub pattern with event backlog. This is former oja 1.0 implementation.
-- [oja-tools](https://github.com/eBay/oja/blob/master/packages/oja-tools/README.md) -
+- [oja-tools](https://github.com/eBay/oja/blob/master/packages/oja-tools#readme) -
   Builds on oja-action to provide tools composing actions into higher level actions and/or instrument them via pipe pattern.
-- [examples](https://github.com/eBay/oja/blob/master/packages/examples/README.md) -
+- [examples](https://github.com/eBay/oja/blob/master/packages/examples#readme) -
   Example project demonstrating the use of dependency injection based on oja-action
-- [vscode-oja](https://github.com/eBay/oja/blob/master/packages/vscode-oja/README.md) -
+- [vscode-oja](https://github.com/eBay/oja/blob/master/packages/vscode-oja#readme) -
   VS Code extension that simplifies oja-action dependency injection usage with automatic suggestions and action discovery.
-- [oja-linter](https://github.com/eBay/oja/blob/master/packages/oja-linter/README.md) -
+- [oja-linter](https://github.com/eBay/oja/blob/master/packages/oja-linter#readme) -
   Oja linter for oja-action dependency injection layer that validates your project and discovers any unreachable actions (deleted/modified) at the point of the use of the action.  
-- TBD: [oja-pubsub](https://github.com/eBay/oja/blob/master/packages/oja-pubsub/README.md) - Provides a way to organize actions into publishers and subscribers roles when the same business events need to be consumed by multiple consumer actions.
-- TBD: [oja-workers](https://github.com/eBay/oja/blob/master/packages/oja-workers/README.md) -
+- TBD: [oja-pubsub](https://github.com/eBay/oja/blob/master/packages/oja-pubsub#readme) - Provides a way to organize actions into publishers and subscribers roles when the same business events need to be consumed by multiple consumer actions.
+- TBD: [oja-workers](https://github.com/eBay/oja/blob/master/packages/oja-workers#readme) -
   Provides an action pool that can be used to separate actions or group of actions into their own isolated execution environments based on Node v12 lightweight workers.
-- TBD: [oja-cloud](https://github.com/eBay/oja/blob/master/packages/oja-cloud/README.md) -
+- TBD: [oja-cloud](https://github.com/eBay/oja/blob/master/packages/oja-cloud#readme) -
   Provides an adaptor layer to organize and deploy actions to distributed environments aka lambda/serverless.
 
 ## Example Use-Cases

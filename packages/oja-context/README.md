@@ -1,8 +1,20 @@
 # oja-context
 
+[![Downloads](https://img.shields.io/npm/dm/oja-context.svg)](http://npm-stat.com/charts.html?package=oja-context)
+
+Defines a basic Oja dependency injection API.
+
+This module is a subset of eBay [Oja](https://github.com/eBay/oja#readme) framework.
+
 ## Idea
 
-The context based approach allows a developer to slice the business logic into small, isolated business actions that communicate to each other via context. That encourages developers to use the same action interface across application code, which makes the code more predictable, easy to define, and test with mock data. And yes - it makes it boring.
+The dependency injection approach allows the developer to slice the business logic into small, isolated business actions that are injected via context. 
+
+That encourages developers to use the same action interface across application code and makes the code more predictable, easy to define, and test with mock data. And yes - it makes it boring.
+
+### Dependency injection diagram
+
+![context diagram](https://raw.githubusercontent.com/eBay/oja/master/packages/oja-context/docs/images/context.png)
 
 ## Install
 
@@ -10,17 +22,9 @@ The context based approach allows a developer to slice the business logic into s
 npm install @ebay/oja-context --save
 ```
 
-## Architecture
-
-### Dependency injection flow
-
-The module provides a way to slice the code into isolated, small, and independent actions that can later be used to compose much more complex applications with dependency injection via a context object.
-
-![context diagram](https://raw.githubusercontent.com/eBay/oja/master/packages/oja-context/docs/images/context.png)
-
 ## API
 
-While pub/sub is based on knowledge of topics consumed and published, the context based approach provides a more explicit way of determining what kind actions are available in an application.
+The context based approach provides a more explicit way of composing actions in the application while in [publisher/subscriber](https://github.com/eBay/oja/blob/master/packages/oja-pubsub#readme) pattern the consumers of the events are completely disconnected from the publishers.
 
 #### `ojaContext(createBaseContext: Function): Function`
 

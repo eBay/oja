@@ -29,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/eBay/oja/issues"
   },
-  "homepage": "https://github.com/eBay/oja/blob/master/packages/oja-tools/README.md",
+  "homepage": "https://github.com/eBay/oja/tree/master/packages/oja-linter#readme",
   "devDependencies": {
     "async": "^2.6.3",
     "eslint": "^5.16.0",
@@ -49,5 +49,8 @@
     "collectCoverageFrom": [
       "<rootDir>/*\\.js"
     ]
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   }
 }

@@ -1,6 +1,11 @@
 # oja-action
 
-Defines a standard oja action component API and provides an action discovery mechanism based on action.json file.
+[![Downloads](https://img.shields.io/npm/dm/oja-action.svg)](http://npm-stat.com/charts.html?package=oja-action)
+
+This module is a subset of eBay [Oja](https://github.com/eBay/oja#readme) framework.
+
+The module defines Oja Action Component API and provides an action discovery mechanism for Node.JS applications.
+
 
 ## Installation
 
@@ -10,7 +15,7 @@ $ npm install @ebay/oja-action --save
 
 ## Usage
 
-### Defining an action
+### Action definition
 
 * folder structure:
 
@@ -67,7 +72,7 @@ console.log(await context.action('MATH/inc')); // >> 1
 console.log(await context.action('MATH/inc')); // >> 2
 ```
 
-## Defining action component
+## Action component definition
 
 * The action component may define more than one action.
 

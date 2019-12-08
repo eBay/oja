@@ -1,6 +1,6 @@
 {
-  "name": "hygen-generators-ebay",
-  "version": "1.0.1",
+  "name": "hygen-oja-generators",
+  "version": "2.0.0",
   "description": "Module provides basic generators for backend and front-end",
   "main": "index.js",
   "scripts": {
@@ -21,6 +21,7 @@
   "bugs": {
     "url": "https://github.com/eBay/oja/issues"
   },
+  "homepage": "https://github.com/eBay/oja/blob/master/packages/hygen-oja-generators#readme"
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-ebay": "^1.0.0",
