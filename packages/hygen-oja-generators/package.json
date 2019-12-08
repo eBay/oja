@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/eBay/oja/issues"
   },
-  "homepage": "https://github.com/eBay/oja/blob/master/packages/hygen-oja-generators#readme"
+  "homepage": "https://github.com/eBay/oja/blob/master/packages/hygen-oja-generators#readme",
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-ebay": "^1.0.0",

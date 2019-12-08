@@ -18,4 +18,8 @@ The extension also does automatic validations for your project upon saving.
 
 ## Install
 
-TBD
+1. Open VS Code
+2. Press F1
+3. Type "install"
+4. Select "Extensions: Install Extension".
+5. Select vscode-oja from the list

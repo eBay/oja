@@ -1,7 +1,7 @@
 {
 	"name": "vscode-oja",
-	"displayName": "Oja Actions",
-	"version": "0.1.0",
+	"displayName": "vscode-oja",
+	"version": "0.2.0",
 	"publisher": "dimichgh",
 	"repository": {
 		"type": "git",
@@ -9,18 +9,23 @@
 	},
 	"icon": "images/oja.png",
 	"categories": [
-	  "Programming Languages",
-	  "Other"
+		"Programming Languages",
+		"Other"
 	],
 	"contributes": {
 		"languages": [
 			{
-			  "id": "javascript",
-			  "extensions": [".js", ".mjs"]
+				"id": "javascript",
+				"extensions": [
+					".js",
+					".mjs"
+				]
 			},
 			{
 				"id": "json",
-				"extensions": [".json"]
+				"extensions": [
+					".json"
+				]
 			}
 		]
 	},
@@ -39,7 +44,8 @@
 	"scripts": {
 		"test": "node ./test/runTest.js",
 		"lint": "eslint --quiet -c .eslintrc *.js",
-		"lint-fix": "eslint --fix *.js"
+		"lint-fix": "eslint --fix *.js",
+		"package": "vsce package"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
@@ -52,9 +58,13 @@
 		"glob": "^7.1.5",
 		"mocha": "^6.2.2",
 		"typescript": "^3.6.4",
+		"vsce": "^1.70.0",
 		"vscode-test": "^1.2.2"
 	},
 	"dependencies": {
 		"resolve-from": "^5.0.0"
+	},
+	"publishConfig": {
+		"registry": "https://no-publish"
 	}
 }
