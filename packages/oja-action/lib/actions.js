@@ -207,11 +207,21 @@ function resolve(actionRequest, caller) {
     return resolveFirstAction(namespace, modRoot);
 }
 
+const ctxActionsSymbol = Symbol.for('ctxActions');
+
 function createLazyAction(resolveAction, config) {
     let act;
-    return annotate(context => {
-        act = act || requireAction(resolveAction());
-        return act(context, config);
+    return annotate((context = {}) => {
+        const actionLocation = resolveAction();
+        const ctaActions = context[ctxActionsSymbol] = context[ctxActionsSymbol] || {};
+        let ctxAction = ctaActions[actionLocation];
+        if (ctxAction === undefined) {
+            // cache resolved action
+            act = act || requireAction(actionLocation);
+            // cache contextualized action
+            ctxAction = ctaActions[actionLocation] = act(context, config);
+        }
+        return ctxAction;
     }, { [locationSymbol]: resolveAction });
     // we do not call lazyActionResolve here to avoid unnecessary work
 }

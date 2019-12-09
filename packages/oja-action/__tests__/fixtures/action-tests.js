@@ -303,6 +303,24 @@ module.exports = (testName) => {
         Assert.equal(path, act[Symbol.for('oja@action')][Symbol.for('oja@location')]());
     });
 
+    test('should create cache contextualized actions in context', async () => {
+        const context = {};
+        const path = require.resolve('./lazy/action');
+        const originalAction = createLazyAction(lazyActionResolve(path));
+        const counter1 = originalAction(context);
+        const counter2 = createLazyAction(lazyActionResolve(path))(context);
+        const counter3 = originalAction(context);
+        Assert.equal(1, await counter1());
+        Assert.equal(2, await counter2());
+        Assert.equal(3, await counter1());
+        Assert.equal(4, await counter2());
+        Assert.equal(5, await counter3());
+        Assert.equal(6, await counter3());
+        Assert.equal(counter1, context[Symbol.for('ctxActions')][path]);
+        Assert.equal(counter2, context[Symbol.for('ctxActions')][path]);
+        Assert.equal(counter3, context[Symbol.for('ctxActions')][path]);
+    });
+
     test('should loadActions', () => {
         const actions = loadActions(Path.resolve(__dirname, 'app'));
         Assert.deepEqual([
