@@ -99,7 +99,7 @@ Each package is documented in a separate readme:
   VS Code extension that simplifies oja-action dependency injection usage with automatic suggestions and action discovery.
 - [oja-linter](https://github.com/eBay/oja/blob/master/packages/oja-linter#readme) -
   Oja linter for oja-action dependency injection layer that validates your project and discovers any unreachable actions (deleted/modified) at the point of the use of the action.  
-- TBD: [oja-pubsub](https://github.com/eBay/oja/blob/master/packages/oja-pubsub#readme) - Provides a way to organize actions into publishers and subscribers roles when the same business events need to be consumed by multiple consumer actions.
+- [oja-pubsub](https://github.com/eBay/oja/blob/master/packages/oja-pubsub#readme) - Provides a way to organize actions into publishers and subscribers roles when the same business events need to be consumed by multiple consumer actions.
 - TBD: [oja-workers](https://github.com/eBay/oja/blob/master/packages/oja-workers#readme) -
   Provides an action pool that can be used to separate actions or group of actions into their own isolated execution environments based on Node v12 lightweight workers.
 - TBD: [oja-cloud](https://github.com/eBay/oja/blob/master/packages/oja-cloud#readme) -

@@ -1,0 +1,55 @@
+{
+  "name": "@ebay/oja-pubsub",
+  "version": "2.0.0",
+  "description": "Instrumentation of actions via hooks",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest __tests__/*.js",
+    "coverage": "jest --collect-coverage __tests__/*.js",
+    "lint": "eslint --quiet -c .eslintrc *.js",
+    "lint-fix": "eslint --fix *.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eBay/oja/tree/master/packages/oja.git"
+  },
+  "keywords": [
+    "dependency",
+    "injection",
+    "context",
+    "structure",
+    "hooks",
+    "instrumentation"
+  ],
+  "author": "Dmytro Semenov <dsemenov@ebay.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eBay/oja/issues"
+  },
+  "homepage": "https://github.com/eBay/oja/blob/master/packages/oja-pubsub#readme",
+  "devDependencies": {
+    "async": "^2.6.3",
+    "eslint": "^5.16.0",
+    "eslint-config-ebay": "^1.0.0",
+    "eslint-plugin-mocha": "^5.3.0",
+    "shelljs": "^0.8.3",
+    "jest": "^24.9.0",
+    "@ebay/oja-linter": "^2"
+  },
+  "dependencies": {
+    "@ebay/oja-context": "^2",
+    "@ebay/oja-action": "^2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@ebay/oja-context$": "<rootDir>/../oja-context/index.js",
+      "^@ebay/oja-action$": "<rootDir>/../oja-action/index.js"
+    },
+    "collectCoverageFrom" : [
+      "<rootDir>/*\\.js"
+    ]
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  }
+}
