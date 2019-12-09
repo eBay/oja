@@ -1,6 +1,6 @@
 # oja-context
 
-[![Downloads](https://img.shields.io/npm/dm/oja-context.svg)](http://npm-stat.com/charts.html?package=oja-context)
+[![Downloads](https://img.shields.io/npm/dm/@ebay/oja-context.svg)](http://npm-stat.com/charts.html?package=@ebay/oja-context)
 
 Defines a basic Oja dependency injection API.
 

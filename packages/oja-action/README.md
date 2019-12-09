@@ -1,6 +1,6 @@
 # oja-action
 
-[![Downloads](https://img.shields.io/npm/dm/oja-action.svg)](http://npm-stat.com/charts.html?package=oja-action)
+[![Downloads](https://img.shields.io/npm/dm/@ebay/oja-action.svg)](http://npm-stat.com/charts.html?package=@ebay/oja-action)
 
 This module is a subset of eBay [Oja](https://github.com/eBay/oja#readme) framework.
 

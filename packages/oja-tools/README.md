@@ -1,6 +1,6 @@
 # oja-tools
 
-[![Downloads](https://img.shields.io/npm/dm/oja-tools.svg)](http://npm-stat.com/charts.html?package=oja-tools)
+[![Downloads](https://img.shields.io/npm/dm/@ebay/oja-tools.svg)](http://npm-stat.com/charts.html?package=@ebay/oja-tools)
 
 This module is a subset of eBay [Oja](https://github.com/eBay/oja#readme) framework.
 

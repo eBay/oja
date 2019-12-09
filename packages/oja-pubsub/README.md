@@ -1,6 +1,6 @@
 # oja-pubsub
 
-[![Downloads](https://img.shields.io/npm/dm/oja-pubsub.svg)](http://npm-stat.com/charts.html?package=oja-pubsub)
+[![Downloads](https://img.shields.io/npm/dm/@ebay/oja-pubsub.svg)](http://npm-stat.com/charts.html?package=@ebay/oja-pubsub)
 
 This module is a subset of eBay [Oja](https://github.com/eBay/oja#readme) framework.
 

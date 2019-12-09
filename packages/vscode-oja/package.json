@@ -5,7 +5,7 @@
 	"publisher": "oja",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/eBay/oja"
+		"url": "git+https://github.com/eBay/oja.git"
 	},
 	"icon": "images/oja.png",
 	"categories": [

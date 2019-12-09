@@ -1,6 +1,6 @@
 # oja-linter
 
-[![Downloads](https://img.shields.io/npm/dm/oja-linter.svg)](http://npm-stat.com/charts.html?package=oja-linter)
+[![Downloads](https://img.shields.io/npm/dm/@ebay/oja-linter.svg)](http://npm-stat.com/charts.html?package=@ebay/oja-linter)
 
 This module is a subset of eBay [Oja](https://github.com/eBay/oja#readme) framework.
 

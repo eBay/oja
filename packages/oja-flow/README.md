@@ -1,6 +1,6 @@
 # oja-flow
 
-[![Downloads](https://img.shields.io/npm/dm/oja-flow.svg)](http://npm-stat.com/charts.html?package=oja-flow)
+[![Downloads](https://img.shields.io/npm/dm/@ebay/oja-flow.svg)](http://npm-stat.com/charts.html?package=@ebay/oja-flow)
 
 This is the original Oja v1.0 that is now a subset of Oja v2.0+.
 
