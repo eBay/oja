@@ -1,6 +1,6 @@
 {
   "name": "@ebay/oja-linter",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Instrumentation of actions via hooks",
   "main": "index.js",
   "bin": {
@@ -38,7 +38,6 @@
     "jest": "^24.9.0",
     "shelljs": "^0.8.3"
   },
-  "dependencies": {},
   "jest": {
     "moduleNameMapper": {
       "@ebay/oja-context$": "<rootDir>/../oja-context/index.js",

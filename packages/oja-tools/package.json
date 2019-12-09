@@ -1,6 +1,6 @@
 {
   "name": "@ebay/oja-tools",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Instrumentation of actions via hooks",
   "main": "index.js",
   "scripts": {
@@ -32,10 +32,8 @@
     "eslint": "^5.16.0",
     "eslint-config-ebay": "^1.0.0",
     "eslint-plugin-mocha": "^5.3.0",
-    "shelljs": "^0.8.3",
-    "jest": "^24.9.0"
-  },
-  "dependencies": {
+    "jest": "^24.9.0",
+    "shelljs": "^0.8.3"
   },
   "jest": {
     "moduleNameMapper": {
@@ -45,7 +43,7 @@
       "^@ebay/oja-tools/call": "<rootDir>/call.js",
       "^@ebay/oja-tools/create": "<rootDir>/create-and-call.js"
     },
-    "collectCoverageFrom" : [
+    "collectCoverageFrom": [
       "<rootDir>/*\\.js"
     ]
   },

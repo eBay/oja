@@ -1,6 +1,6 @@
 {
   "name": "@ebay/oja-flow",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Lightweight pub/sub module with event backlog, timeout support that maps events to promises and back as well as chains them to other topics and flows.",
   "main": "index.js",
   "scripts": {
@@ -43,7 +43,7 @@
     "moduleNameMapper": {
       "^ebay@oja-flow$": "<rootDir>/index.js"
     },
-    "collectCoverageFrom" : [
+    "collectCoverageFrom": [
       "<rootDir>/*\\.js"
     ],
     "clearMocks": true

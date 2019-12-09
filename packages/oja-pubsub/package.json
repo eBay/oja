@@ -1,6 +1,6 @@
 {
   "name": "@ebay/oja-pubsub",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Organizing actions into pubblishers and subscribers",
   "main": "pubsub.js",
   "scripts": {
@@ -26,16 +26,15 @@
   },
   "homepage": "https://github.com/eBay/oja/blob/master/packages/oja-pubsub#readme",
   "devDependencies": {
+    "@ebay/oja-action": "^2.0.1",
+    "@ebay/oja-context": "^2.0.1",
+    "@ebay/oja-linter": "^2.0.1",
     "async": "^2.6.3",
     "eslint": "^5.16.0",
     "eslint-config-ebay": "^1.0.0",
     "eslint-plugin-mocha": "^5.3.0",
-    "shelljs": "^0.8.3",
     "jest": "^24.9.0",
-    "@ebay/oja-linter": "^2",
-
-    "@ebay/oja-context": "^2",
-    "@ebay/oja-action": "^2"
+    "shelljs": "^0.8.3"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"

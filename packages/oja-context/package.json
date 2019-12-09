@@ -1,6 +1,6 @@
 {
   "name": "@ebay/oja-context",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Dependency injection via actions",
   "main": "index.js",
   "scripts": {
@@ -38,9 +38,9 @@
   "jest": {
     "moduleNameMapper": {
       "^ebay@oja-flow$": "<rootDir>/../oja-flow/index.js",
-      "^ebay@oja-context$": "<rootDir>/index.js"    
+      "^ebay@oja-context$": "<rootDir>/index.js"
     },
-    "collectCoverageFrom" : [
+    "collectCoverageFrom": [
       "<rootDir>/*\\.js"
     ],
     "clearMocks": true

@@ -5,12 +5,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 2.0.1 (2019-12-09)
 
-**Note:** Version bump only for package @ebay/oja-flow
-
-
-
-
-
-# Changelog
-
-## v2.0.0 Initial release after migration to ebay repo
+**Note:** Version bump only for package @ebay/oja-tools
