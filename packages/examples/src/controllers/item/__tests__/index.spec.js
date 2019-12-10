@@ -25,7 +25,7 @@ describe(__filename, () => {
                 'ACTIONS/itemDetails': Promise.resolve({}),
                 'ACTIONS/sellerInfo': {},
                 'ACTIONS/userDetails': {},
-                'ACTIONS/calculateRates': {},
+                'ACTIONS/calculateRates': {}
             }
         });
 
@@ -86,40 +86,40 @@ describe(__filename, () => {
         const context = await createContext();
         const { model } = await context.action('CONTROLLERS/item');
         Assert.deepEqual({
-            "itemDetails": {
-                "id": 1234,
-                "title": "nike",
-                "description": "Nike Air Max Torch 4 IV Running Cross Training Shoes Sneakers NIB MENS",
-                "sellerId": "seller123",
-                "price": 49.99
+            'itemDetails': {
+                'id': 1234,
+                'title': 'nike',
+                'description': 'Nike Air Max Torch 4 IV Running Cross Training Shoes Sneakers NIB MENS',
+                'sellerId': 'seller123',
+                'price': 49.99
             },
-            "sellerInfo": {
-                "username": "john",
-                "location": {
-                    "zip": 12345
+            'sellerInfo': {
+                'username': 'john',
+                'location': {
+                    'zip': 12345
                 }
             },
-            "buyerInfo": {
-                "username": "bob",
-                "location": {
-                    "zip": 34527
+            'buyerInfo': {
+                'username': 'bob',
+                'location': {
+                    'zip': 34527
                 }
             },
-            "rates": [
+            'rates': [
                 {
-                    "name": "3day-shipping",
-                    "desc": "Three day shipping",
-                    "rate": 6.99
+                    'name': '3day-shipping',
+                    'desc': 'Three day shipping',
+                    'rate': 6.99
                 },
                 {
-                    "name": "2day-shipping",
-                    "desc": "Two day shipping",
-                    "rate": 9.99
+                    'name': '2day-shipping',
+                    'desc': 'Two day shipping',
+                    'rate': 9.99
                 },
                 {
-                    "name": "same-day-shipping",
-                    "desc": "Same day shipping",
-                    "rate": 15.99
+                    'name': 'same-day-shipping',
+                    'desc': 'Same day shipping',
+                    'rate': 15.99
                 }
             ]
         }, model);
