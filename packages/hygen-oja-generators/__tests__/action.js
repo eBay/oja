@@ -29,7 +29,7 @@ describe(__filename, () => {
             Shell.rm('-rf', `${tmpBase}`);
         });
 
-        test('should add a set of actions', () => {
+        test.only('should add a set of actions', () => {
             runCmd(`hygen oja init`);
             runCmd(`hygen action new FOONS/foo`);
             runCmd(`hygen action new FOONS/bar`);
@@ -40,7 +40,17 @@ describe(__filename, () => {
             runCmd('npm run test:actions:coverage');
         });
 
-        test('should add a set of actions with actions location file is present', () => {
+        test('should add a set of actions with actions location file being present', () => {
+            runCmd(`hygen oja init`);
+            runCmd(`hygen action init`);
+            runCmd(`hygen action new QAZNS/qaz --target src`);
+            runCmd(`hygen action new SERVICES/svc1 --target src/service`);
+            runCmd(`npm install ../../../../oja-context ../../../../oja-action`);
+            runCmd('npm run test:actions');
+            runCmd('npm run test:actions:coverage');
+        });
+
+        test('should add a set of actions with actions location file not being present', () => {
             runCmd(`hygen oja init`);
             runCmd(`hygen action new QAZNS/qaz --target src`);
             runCmd(`hygen action new SERVICES/svc1 --target src/service`);

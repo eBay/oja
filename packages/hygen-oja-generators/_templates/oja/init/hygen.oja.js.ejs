@@ -1,0 +1,127 @@
+---
+to: .hygen.oja.js
+---
+'use strict';
+
+class HygenOja {
+    constructor() {
+        this.helpers = {};
+        this.helpers.generatorDependencies = this.helpers.generatorDependencies || {};
+        this.helpers.generatorDependencies.action = [
+            '@ebay/oja-action',
+            '@ebay/oja-context',
+            'jest'
+        ];
+
+        Object.assign(this.helpers, {
+            throwError(message) {
+                console.error(`Error: ${message}`);
+                process.exit(1);
+            },
+
+            accessor(name) {
+                return /-/.test(name) ? `['${name}']` : `.${name}`;
+            },
+    
+            actionName(name) {
+                return name.split('/').pop();
+            },
+    
+            require(name) {
+                return require(name);
+            },
+    
+            isEmptyPath(json = {}, path) {
+                const data = this.get(json, path) || [];
+                return Object.keys(data).length === 0;
+            },
+    
+            assertActionLocation(target) {
+                const Path = require('path');
+                if (this.locationActionFileExists() &&
+                    process.cwd() === Path.resolve(target)) {
+                        this.throwError('Error: action.json for a single action cannot be placed' +
+                        ' at the root of the app or module, because it already has or' +
+                        ' will have location action.json created');
+                }
+            },
+    
+            locationActionFileExists() {
+                const Path = require('path');
+                const action = this.tryRequire(Path.resolve(process.cwd(), 'action.json'));
+                return action && Array.isArray(action);
+            },
+    
+            sourceFromTarget(target) {
+                const relative = require('relative');
+                // in addition to relative path, we need to make sure
+                return relative(process.cwd(), target || '.');
+            },
+    
+            get(json = {}, path) {
+                let current = json;
+                const keys = path.split('.');
+                for (let i = 0; i < keys.length; i++) {
+                    current = current[keys[i]];
+                    if (current === undefined) {
+                        return;
+                    }
+                }
+                return current;
+            },
+    
+            getTestMatch() {
+                const pkg = require(`./package.json`);
+                const testMatch = this.get(pkg, 'jest.testMatch');
+                if (testMatch && Object.keys(testMatch).length) {
+                    if (testMatch.indexOf('**/__tests__/**/*.spec.[jt]s?(x)') !== -1) {
+                        return '';
+                    }
+                    return '"**/__tests__/**/*.spec.[jt]s?(x)",'
+                }
+                return '"**/__tests__/**/*.spec.[jt]s?(x)"';
+            },
+    
+            tryRequire(name, defaultVal) {
+                const Path = require('path');
+                try {
+                    return require(name);
+                }
+                catch (err) {
+                    try {
+                        return require(Path.resolve(process.cwd(), name));
+                    }
+                    catch (err) {
+                        return defaultVal;
+                    }
+                }
+            },
+    
+            installDependenciesCmd(generator) {
+                const Fs = require('fs');
+                const requiredDevDependencies = this.generatorDependencies[generator];
+            
+                const dependencies = requiredDevDependencies.filter(dep => {
+                    return !Fs.existsSync(`./node_modules/${dep}`);
+                });
+    
+                return dependencies.length &&
+                    `cd ${process.cwd()} && yarn add ${dependencies.join(' ')}` ||
+                    'echo Nothing to install';
+            },
+    
+            existsSync(name) {
+                const Fs = require('fs');
+                return Fs.existsSync(name);
+            },
+    
+            loadJSONFile(path) {
+                const Fs = require('fs');
+                const content = Fs.readFileSync(path).toString();
+                return JSON.parse(content);
+            }
+        });
+    }
+}
+
+module.exports = HygenOja;
