@@ -16,7 +16,7 @@ The context based approach allows a developer to slice the business logic into s
 
 ![context diagram](https://raw.githubusercontent.com/eBay/oja/master/packages/oja-context/docs/images/context.png)
 
-## Usage
+## Example
 
 ### Action definition
 
@@ -64,9 +64,17 @@ In order to realize all benefits of using oja framework you need to do the follo
     npm install @ebay/oja-linter --save-dev
     ```
 
-* Install VSCode extension as part of your VSCode Editor (TBD)
+* Install VSCode extension as part of your VSCode Editor
+
+
+    1. Open VS Code
+    2. Press F1
+    3. Type "install"
+    4. Select "Extensions: Install Extension".
+    5. Select vscode-oja from the list
 
     Note: VSCode extension uses oja-linter to validate your project files (action.json, *.js/mjs) and it will start working as soon as you install @ebay/oja-linter under your application dependencies.
+    
 
 * Install optional hygen generator
 
