@@ -58,3 +58,6 @@ typings/
 .env
 
 *.marko.js
+_templates
+
+.hygen.js

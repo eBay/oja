@@ -1,7 +1,0 @@
----
-inject: true
-to: <%=locals.target || '.'%>/action.json
-after: \{
-skip_if: '"<%=name%>":'
----
-    "<%=name%>": "<%=h.actionName(name)%>"<%=(Object.keys(h.tryRequire(`${locals.target || '.'}/action.json`, {}) || {}).length ? ',' : '')%>

@@ -1,10 +1,11 @@
 ---
 to: .hygen.js
-unless_exists: true
 ---
 'use strict';
 
 const Fs = require('fs');
+const Path = require('path');
+const relative = require('relative');
 
 const generatorDependencies = {
     action: [
@@ -31,6 +32,26 @@ module.exports = {
         isEmptyPath(json = {}, path) {
             const data = this.get(json, path) || [];
             return Object.keys(data).length === 0;
+        },
+
+        assertActionLocation(target) {
+            if (this.locationActionFileExists() &&
+                process.cwd() === Path.resolve(target)) {
+                    console.error('Error: action.json for a single action cannot be placed' +
+                    ' at the root of the app or module, because it already has or' +
+                    ' will have location action.json created');
+                    process.exit(1);
+            }
+        },
+
+        locationActionFileExists() {
+            const action = this.tryRequire(Path.resolve(process.cwd(), 'action.json'));
+            return action && Array.isArray(action);
+        },
+
+        sourceFromTarget(target) {
+            // in addition to relative path, we need to make sure
+            return relative(process.cwd(), target || '.');
         },
 
         get(json = {}, path) {
@@ -62,7 +83,12 @@ module.exports = {
                 return require(name);
             }
             catch (err) {
-                return defaultVal;
+                try {
+                    return require(Path.resolve(process.cwd(), name));
+                }
+                catch (err) {
+                    return defaultVal;
+                }
             }
         },
 
@@ -72,12 +98,6 @@ module.exports = {
             const dependencies = requiredDevDependencies.filter(dep => {
                 return !Fs.existsSync(`./node_modules/${dep}`);
             });
-
-            if (process.env.NODE_ENV === 'test') {
-                dependencies.forEach((dep, index) => {
-                    dependencies[index] = dep.replace(/^@ebay/, '../../../../');
-                });
-            }
 
             return dependencies.length &&
                 `cd ${process.cwd()} && yarn add ${dependencies.join(' ')}` ||
