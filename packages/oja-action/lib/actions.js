@@ -58,11 +58,14 @@ function resolveActions(modRoot, skipDeps) {
             if (skipDeps && skipDeps.indexOf(name) !== -1) {
                 return;
             }
-            const modEntry = tryResolveFrom(modRoot, name);
-            const modLocation = Path.resolve(modEntry, '..');
-            const moduleActions = loadActions(modLocation);
-            if (moduleActions) {
-                actions = mergeActions(mergeActions({}, actions), moduleActions);
+            const modEntry = safeResolveFrom(modRoot, name);
+            // TODO: enforce only direct dependencies ???
+            if (modEntry) {
+                const modLocation = Path.resolve(modEntry, '..');
+                const moduleActions = loadActions(modLocation);
+                if (moduleActions) {
+                    actions = mergeActions(mergeActions({}, actions), moduleActions);
+                }
             }
         });
 
