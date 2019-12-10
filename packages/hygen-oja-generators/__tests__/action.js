@@ -29,7 +29,7 @@ describe(__filename, () => {
             Shell.rm('-rf', `${tmpBase}`);
         });
 
-        test.only('should add a set of actions', () => {
+        test('should add a set of actions', () => {
             runCmd(`hygen oja init`);
             runCmd(`hygen action new FOONS/foo`);
             runCmd(`hygen action new FOONS/bar`);
