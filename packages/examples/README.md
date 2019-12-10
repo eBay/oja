@@ -1,4 +1,4 @@
-# oja selling example
+# oja actions app example
 
 An example of structuring app business logic using [Oja](https://github.com/eBay/oja#readme) actions.
 
@@ -29,7 +29,7 @@ yarn test
 node .
 ```
 
-### Creating new action
+### New action via code generation
 
 To speed up the process of creating new actions and controllers and required unit tests, the application uses (https://github.com/eBay/oja/blob/master/packages/hygen-oja-generators#readme), a [hygen](https://www.hygen.io/) code generation plugin.
 
@@ -44,8 +44,16 @@ cd <your app dir>
 hygen-add oja-generators
 ```
 
+#### Init oja
+
 ```bash
-hygen action new <domain>/<actionName>
+hygen oja init
+```
+
+#### Create new action
+
+```bash
+hygen action new <action namespace> [--target <target dir>]
 # example
 # hygen action new consumer/buy
 ```

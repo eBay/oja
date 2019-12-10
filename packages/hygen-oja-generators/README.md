@@ -11,7 +11,7 @@ Given the fact that all actions have the same style and API, we now can use a si
 ## Installation
 
 ```bash
-npm install hygen hygen-add -G
+npm install hygen hygen-add -g
 hygen-add oja-generators
 ```
 

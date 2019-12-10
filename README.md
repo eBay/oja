@@ -79,7 +79,7 @@ In order to realize all benefits of using oja framework you need to do the follo
 * Install optional hygen generator
 
     ```
-    npm install hygen hygen-add -G
+    npm install hygen hygen-add -g
     hygen-add oja-generators
     ```
 
