@@ -23,3 +23,12 @@ The extension also does automatic validations for your project upon saving.
 3. Type "install"
 4. Select "Extensions: Install Extension".
 5. Select vscode-oja from the list
+
+## External dependencies
+
+The extension will work as longs as the following dependencies are installed as part of the application:
+
+```bash
+npm install @ebay/oja-context, @ebay/oja-action --save
+npm install  @ebay/oja-linter --save-dev
+```

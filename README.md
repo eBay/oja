@@ -73,7 +73,7 @@ In order to realize all benefits of using oja framework you need to do the follo
     4. Select "Extensions: Install Extension".
     5. Select vscode-oja from the list
 
-    Note: VSCode extension uses oja-linter to validate your project files (action.json, *.js/mjs) and it will start working as soon as you install @ebay/oja-linter under your application dependencies.
+    Note: VSCode extension uses oja-linter to validate your project files (action.json, *.js/mjs) and it will start working as soon as you install @ebay/oja-linter, @ebay/oja-action and @ebay/oja-context under your application dependencies.
     
 
 * Install optional hygen generator
