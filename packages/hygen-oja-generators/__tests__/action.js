@@ -26,7 +26,7 @@ describe(__filename, () => {
 
         afterEach(() => {
             Shell.cd(cwd);
-            // Shell.rm('-rf', `${tmpBase}`);
+            Shell.rm('-rf', `${tmpBase}`);
         });
 
         test('should add a set of actions', () => {
