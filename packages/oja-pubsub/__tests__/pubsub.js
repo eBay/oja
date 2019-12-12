@@ -140,4 +140,23 @@ describe(__filename, () => {
             'eventType': 'testEvent'
         }], events2);
     });
+
+    test('should trigger reset event', async () => {
+        const events = [];
+        const context = await createContext();
+        await context.action('oja/subscribe', 'oja:reset:event', (eventType, eventData) => {
+            events.push('sub1');
+        });
+
+        await context.action('oja/subscribe', 'oja:reset:event', (eventType, eventData) => {
+            events.push('sub2');
+        });
+
+        // trigger reset somewhere in the code
+        await context.action('oja/reset');
+        Assert.deepEqual([
+            'sub1',
+            'sub2'
+        ], events);
+    });
 });

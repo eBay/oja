@@ -63,3 +63,27 @@ context => {
 ```
 
 To trigger subscription, one needs to trigger the respective action.
+
+## Oja reset event
+
+In some cases it may be required to reset any cache related to oja.
+
+@ebay/oja-action makes an optional action call 'oja/extension/context/reset' that if extended can be used to reset respective caches. The only problem is it allows a single extenstion while we may need to reset more then one module.
+That's where pub/sub pattern comes handy - the module extends reset action and dispatches the event that can be listened by many subscribers.
+
+```js
+// this examples requires these modules to be installed: oja-context, oja-action, oja-pubsub
+// register reset listeners
+await context.action('oja/subscribe', 'oja:reset:event', (eventType, eventData) => {
+    console.log('sub1:', eventType); // >>> sub1: oja:reset:event
+    console.log(eventData); // >>> undefined, nothing to dispatch yet
+});
+
+await context.action('oja/subscribe', 'oja:reset:event', (eventType, eventData) => {
+    console.log('sub2:', eventType); // >>> sub2: oja:reset:event
+    console.log(eventData); // >>> undefined, nothing to dispatch yet
+});
+
+// trigger reset somewhere in the code
+await context.action('oja/reset');
+```
