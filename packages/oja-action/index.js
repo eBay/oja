@@ -44,7 +44,7 @@ module.exports = async (options = {}) => {
 
     return (runtimeOptions = {}) => createContext({
         resolve: options.resolve || resolve,
-        properties: Object.assign(properties,
+        properties: Object.assign({}, properties,
             options.properties, runtimeOptions.properties),
         functions: Object.assign({}, functions,
             options.functions, runtimeOptions.functions),

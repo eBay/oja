@@ -9,6 +9,9 @@ const Actions = require('../lib/actions');
  * https://opensource.org/licenses/MIT.
 **/
 
-module.exports = contexts => {
+module.exports = context => {
     Actions.resetCache();
+    // alow extend reset
+    // the reset extension should use pub/sub to notify all subscribers
+    return context.action('oja/extension', 'oja/extension/context/reset');
 };

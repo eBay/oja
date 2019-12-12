@@ -81,4 +81,22 @@ describe(__filename, () => {
             Assert.equal('Cannot find action "QAZNS/qaz"', err.message);
         }
     });
+
+    test('fix: should not share properties between two separate contexts', async () => {
+        const { createContext } = require('@ebay/oja-action');
+        const ctx1 = await createContext({
+            properties: {
+                deep: {
+                    down: {
+                        foo: 'foov'
+                    }
+                }
+            }
+        });
+
+        Assert.equal('foov', ctx1.deep.down.foo);
+
+        const ctx2 = await createContext();
+        Assert.equal(ctx2.deep, undefined);
+    });
 });

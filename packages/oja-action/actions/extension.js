@@ -11,6 +11,8 @@
 const Actions = require('../lib/actions');
 
 module.exports = context => async (namespace, caller, ...args) => {
+    // eslint-disable-next-line no-param-reassign
+    caller = caller || process.cwd();
     const action = Actions.resolve({ namespace }, caller);
     if (action) {
         const fn = await action(context);
