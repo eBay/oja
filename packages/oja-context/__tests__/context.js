@@ -245,7 +245,7 @@ describe(__filename, () => {
             }
         });
 
-        Assert.equal(5, await await ctx.action('actions/calc', 2));
+        Assert.equal(5, await ctx.action('actions/calc', 2));
     });
 
     test('should allow to form action chains. mock one action', async () => {
@@ -260,7 +260,7 @@ describe(__filename, () => {
             }
         });
 
-        Assert.equal(5, await await ctx.action('actions/calc', 2));
+        Assert.equal(5, await ctx.action('actions/calc', 2));
     });
 
     test('should define and consume topic in one of the actions', async () => {
@@ -281,6 +281,21 @@ describe(__filename, () => {
         });
 
         ctx.define('param1', 2);
-        Assert.equal(5, await await ctx.action('actions/calc'));
+        Assert.equal(5, await ctx.action('actions/calc'));
+    });
+
+    test('should provide caller location', async () => {
+        const ctx = createContext({
+            functions: {
+                'actions/getLocation': (context, runtime) =>
+                    runtime[Symbol.for('oja@callerLocation')],
+                'actions/getLocation2': (context, runtime) => arg =>
+                    `${runtime[Symbol.for('oja@callerLocation')]}-${arg}`
+            }
+        });
+
+        Assert.equal(__filename, await ctx.action('actions/getLocation'));
+        Assert.equal('foo/bar', await ctx.proxyAction('foo/bar', 'actions/getLocation'));
+        Assert.equal('foo/bar-qaz', await ctx.proxyAction('foo/bar', 'actions/getLocation2', 'qaz'));
     });
 });

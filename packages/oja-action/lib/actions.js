@@ -214,7 +214,7 @@ const ctxActionsSymbol = Symbol.for('ctxActions');
 
 function createLazyAction(resolveAction, config) {
     let act;
-    return annotate((context = {}) => {
+    return annotate((context = {}, runtime) => {
         const actionLocation = resolveAction();
         const ctaActions = context[ctxActionsSymbol] = context[ctxActionsSymbol] || {};
         let ctxAction = ctaActions[actionLocation];
@@ -222,7 +222,7 @@ function createLazyAction(resolveAction, config) {
             // cache resolved action
             act = act || requireAction(actionLocation);
             // cache contextualized action
-            ctxAction = ctaActions[actionLocation] = act(context, config);
+            ctxAction = ctaActions[actionLocation] = act(context, config, runtime);
         }
         return ctxAction;
     }, { [locationSymbol]: resolveAction });

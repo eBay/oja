@@ -99,4 +99,25 @@ describe(__filename, () => {
         const ctx2 = await createContext();
         Assert.equal(ctx2.deep, undefined);
     });
+
+    test('should provide caller location', async () => {
+        const { createContext } = require('@ebay/oja-action');
+        const ctx = await createContext({
+            functions: {
+                'actions/getLocation': (context, runtime) =>
+                    runtime[Symbol.for('oja@callerLocation')],
+                'actions/getLocation2': (context, runtime) => arg =>
+                    `${runtime[Symbol.for('oja@callerLocation')]}-${arg}`
+            }
+        });
+
+        Assert.equal(__filename, await ctx.action('actions/getLocation'));
+        Assert.equal('foo/bar', await ctx.proxyAction('foo/bar', 'actions/getLocation'));
+        Assert.equal('foo/bar-qaz', await ctx.proxyAction('foo/bar', 'actions/getLocation2', 'qaz'));
+
+        const caller = Path.resolve(__dirname, './fixtures/location/actions/index.js');
+        const act = require(caller);
+        Assert.equal(`undefined-${caller}`, await act('caller/getLocation'));
+        Assert.equal(`foo-${caller}`, await act('caller/getLocation2'));
+    });
 });

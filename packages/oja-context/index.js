@@ -10,7 +10,7 @@
 
 const caller = require('caller');
 
-const callerLocationSymbol = Symbol.for('callerLocation');
+const callerLocationSymbol = Symbol.for('oja@callerLocation');
 
 /**
  * Creates a context out of functions and properties.

@@ -1,0 +1,7 @@
+{
+    "caller/getLocation": "./action.js",
+    "caller/getLocation2": {
+        "function": "./action.js",
+        "operation": "foo"
+    }
+}
