@@ -6,9 +6,9 @@
   "scripts": {
     "test": "jest src",
     "coverage": "jest --collect-coverage src",
-    "elint": "eslint --quiet -c .eslintrc *.js",
+    "elint": "eslint --quiet -c .eslintrc *.js src/**/*.js",
     "lint": "yarn ojalint && yarn elint",
-    "lint-fix": "eslint --fix *.js"
+    "lint-fix": "eslint --fix *.js src/**/*.js"
   },
   "keywords": [
     "oja",

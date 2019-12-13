@@ -31,7 +31,8 @@ module.exports = context => async parameters => {
 
     async function getRates() {
         try {
-            const [buyerInfo, sellerInfo] = await Promise.all([buyerInfoPromise, sellerInfoPromise])
+            // eslint-disable-next-line no-shadow
+            const [buyerInfo, sellerInfo] = await Promise.all([buyerInfoPromise, sellerInfoPromise]);
             // calc rates
             return await context.action('ACTIONS/calculateRates',
                 sellerInfo.zipCode,
@@ -45,6 +46,7 @@ module.exports = context => async parameters => {
     }
 
     async function getSellerInfo() {
+        // eslint-disable-next-line no-shadow
         const itemDetails = await itemDetailsPromise;
         return context.action('ACTIONS/sellerInfo', itemDetails.sellerId);
     }
