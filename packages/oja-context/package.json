@@ -1,6 +1,6 @@
 {
   "name": "@ebay/oja-context",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Dependency injection via actions",
   "main": "index.js",
   "scripts": {
