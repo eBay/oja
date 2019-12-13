@@ -6,8 +6,8 @@
   "scripts": {
     "test": "jest __tests__/*.js",
     "coverage": "jest --collect-coverage __tests__/*.js",
-    "lint": "eslint --quiet -c .eslintrc *.js",
-    "lint-fix": "eslint --fix *.js"
+    "lint": "eslint --quiet -c .eslintrc *.js __tests__/*.js",
+    "lint-fix": "eslint --fix *.js __tests__/*.js"
   },
   "repository": {
     "type": "git",

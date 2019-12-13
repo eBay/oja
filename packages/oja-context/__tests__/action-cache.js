@@ -11,6 +11,7 @@
 const Assert = require('assert');
 const createContext = require('ebay@oja-context');
 
+// eslint-disable-next-line no-undef
 jest.mock('caller');
 
 let counter = 0;
@@ -24,25 +25,25 @@ const ctx = createContext({
 describe(__filename, () => {
     test('should cache actions per one caller location', async () => {
         require('caller').mockReturnValue('one-location');
-        Assert.equal('hello from foo', await ctx.action('foo'))
+        Assert.equal('hello from foo', await ctx.action('foo'));
         Assert.equal(1, counter);
-        Assert.equal('hello from foo', await ctx.action('foo'))
+        Assert.equal('hello from foo', await ctx.action('foo'));
         Assert.equal(1, counter);
     });
 
     test('should cache actions per the same one caller location', async () => {
         require('caller').mockReturnValue('one-location');
-        Assert.equal('hello from foo', await ctx.action('foo'))
+        Assert.equal('hello from foo', await ctx.action('foo'));
         Assert.equal(1, counter);
-        Assert.equal('hello from foo', await ctx.action('foo'))
+        Assert.equal('hello from foo', await ctx.action('foo'));
         Assert.equal(1, counter);
     });
 
     test('should cache actions per caller location', async () => {
         require('caller').mockReturnValue('other-location');
-        Assert.equal('hello from foo', await ctx.action('foo'))
+        Assert.equal('hello from foo', await ctx.action('foo'));
         Assert.equal(2, counter);
-        Assert.equal('hello from foo', await ctx.action('foo'))
+        Assert.equal('hello from foo', await ctx.action('foo'));
         Assert.equal(2, counter);
     });
 });

@@ -9,6 +9,9 @@
 **/
 
 const caller = require('caller');
+
+const callerLocationSymbol = Symbol.for('callerLocation');
+
 /**
  * Creates a context out of functions and properties.
  *
@@ -65,14 +68,14 @@ module.exports = (opts = {}) => {
                     // allow override
                     if (functions.hasOwnProperty(actionRequest.namespace)) {
                         // init once
-                        action = await initAct(functions[actionRequest.namespace]);
+                        action = await initAct(functions[actionRequest.namespace], callerLocation);
                     }
                     else if (resolve) {
                         // resolve
                         action = resolve(actionRequest, callerLocation);
                         if (action) {
                             // init once
-                            action = await initAct(action);
+                            action = await initAct(action, callerLocation);
                         }
                     }
                     if (!action) {
@@ -95,9 +98,11 @@ module.exports = (opts = {}) => {
 
         return baseContext;
 
-        async function initAct(act) {
+        async function initAct(act, callerLocation) {
             if (act instanceof Function) {
-                act = await act(baseContext);
+                act = await act(baseContext, {
+                    [callerLocationSymbol]: callerLocation
+                });
                 if (act instanceof Function) {
                     return act;
                 }

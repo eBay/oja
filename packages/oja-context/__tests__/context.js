@@ -64,41 +64,38 @@ describe(__filename, () => {
         Assert.equal('foov', ctx.props.foo);
 
         await ctx.action('actions/fail')
-        .then(() => {
-            throw new Error('Should have failed');
-        })
-        .catch(err => {
-            Assert.equal('BOOM', err.message);
-        })
+            .then(() => {
+                throw new Error('Should have failed');
+            })
+            .catch(err => {
+                Assert.equal('BOOM', err.message);
+            });
     });
 
     test('should handle completely async action', async () => {
         const ctx = createContext({
             functions: {
-                'actions/foo': context => {
-                    return new Promise(resolve => {
-                        setImmediate(() => resolve(() => {
-                            return new Promise(resolve => {
-                                setImmediate(() => resolve('foov'));
-                            });
-                        }));
-                    });
-                }
+                'actions/foo': context => new Promise(resolve => {
+                    // eslint-disable-next-line no-shadow
+                    setImmediate(() => resolve(() => new Promise(resolve => {
+                        setImmediate(() => resolve('foov'));
+                    })));
+                })
             }
         });
 
-        Assert.equal('foov', await ctx.action('actions/foo'))
+        Assert.equal('foov', await ctx.action('actions/foo'));
     });
 
     test('should report action not found', async () => {
         const ctx = createContext();
         await ctx.action('foo')
-        .then(() => {
-            throw new Error('Should have failed');
-        })
-        .catch(err => {
-            Assert.equal('Cannot find action "foo"', err.message);
-        });
+            .then(() => {
+                throw new Error('Should have failed');
+            })
+            .catch(err => {
+                Assert.equal('Cannot find action "foo"', err.message);
+            });
     });
 
     test('should resolve action via resolver', async () => {
@@ -117,7 +114,7 @@ describe(__filename, () => {
         const ctx = createContext({
             resolve: (name, caller) => {
                 Assert.deepEqual({ namespace: 'foo',
-                    selectors: { foo: 'foos', bar: 'bars' } 
+                    selectors: { foo: 'foos', bar: 'bars' }
                 }, name);
                 Assert.ok(/oja-context\/__tests__\/context\.js$/.test(caller));
                 return () => 'foov';
@@ -135,7 +132,7 @@ describe(__filename, () => {
         const ctx = createContext({
             resolve: (name, caller) => {
                 Assert.deepEqual({ namespace: 'foo',
-                    selectors: { foo: 'foos', bar: 'bars', wsx: 'wsxs' } 
+                    selectors: { foo: 'foos', bar: 'bars', wsx: 'wsxs' }
                 }, name);
                 Assert.ok(/oja-context\/__tests__\/context\.js$/.test(caller));
                 return () => 'foov';
@@ -156,13 +153,12 @@ describe(__filename, () => {
         const ctx = createContext({
             resolve: (name, caller) => {
                 Assert.deepEqual({ namespace: 'foo',
-                    selectors: { foo: 'fooo', bar: 'bars', wsx: 'wsxs' } 
+                    selectors: { foo: 'fooo', bar: 'bars', wsx: 'wsxs' }
                 }, name);
                 Assert.ok(/oja-context\/__tests__\/context\.js$/.test(caller));
                 return () => 'foov';
             },
             selectors: {
-                foo: 'foos',
                 bar: 'bars',
                 foo: 'fooo'
             }
@@ -178,7 +174,7 @@ describe(__filename, () => {
         const ctx = createContext({
             resolve: (name, caller) => {
                 Assert.deepEqual({ namespace: 'foo',
-                    selectors: { wsx: 'wsxs' } 
+                    selectors: { wsx: 'wsxs' }
                 }, name);
                 Assert.ok(/oja-context\/__tests__\/context\.js$/.test(caller));
                 return () => 'foov';
@@ -210,12 +206,12 @@ describe(__filename, () => {
             resolve: () => {}
         });
         await ctx.action('foo')
-        .then(() => {
-            throw new Error('Should have failed');
-        })
-        .catch(err => {
-            Assert.equal('Cannot find action "foo"', err.message);
-        });
+            .then(() => {
+                throw new Error('Should have failed');
+            })
+            .catch(err => {
+                Assert.equal('Cannot find action "foo"', err.message);
+            });
     });
 
     test('should allow properties with their own ref', async () => {
@@ -240,9 +236,7 @@ describe(__filename, () => {
     test('should allow to form action chains', async () => {
         const ctx = createContext({
             functions: {
-                'actions/calc': context => param1 => {
-                    return context.action('actions/mutate', param1);
-                },
+                'actions/calc': context => param1 => context.action('actions/mutate', param1),
                 'actions/mutate': context => async param1 => {
                     const val = await context.action('actions/three');
                     return param1 + val;
@@ -257,9 +251,7 @@ describe(__filename, () => {
     test('should allow to form action chains. mock one action', async () => {
         const ctx = createContext({
             functions: {
-                'actions/calc': context => param1 => {
-                    return context.action('actions/mutate', param1);
-                },
+                'actions/calc': context => param1 => context.action('actions/mutate', param1),
                 'actions/mutate': context => async param1 => {
                     const val = await context.action('actions/three');
                     return param1 + val;
@@ -273,9 +265,7 @@ describe(__filename, () => {
 
     test('should define and consume topic in one of the actions', async () => {
         const { Flow } = require('ebay@oja-flow');
-        const ctx = createContext(() => {
-            return new Flow();
-        })({
+        const ctx = createContext(() => new Flow())({
             functions: {
                 'actions/calc': context => async () => {
                     const param1 = await context.consume('param1');
