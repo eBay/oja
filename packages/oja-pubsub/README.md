@@ -7,6 +7,8 @@ This module is a subset of eBay [Oja](https://github.com/eBay/oja#readme) framew
 
 The module defines generic actions that can be used to organize actions into publishers and subscribers that are completely disconnected from each others.
 
+__Comparing to [Oja v1.0](https://github.com/eBay/oja/blob/master/packages/oja-flow#readme) this one is pub/sub on steroids - it defines pub/sub pattern for dependency injection.__
+
 ## Installation
 
 ```
