@@ -72,7 +72,7 @@ describe('ReadableStream', () => {
             next();
         });
         // first make it buffer
-        for (var i = 1; i < 20; i++) {
+        for (let i = 1; i < 20; i++) {
             emitter.emit('topic', i);
             expected.push(i);
         }
@@ -82,7 +82,7 @@ describe('ReadableStream', () => {
             emitter.emit('topic');
             setImmediate(() => {
                 // now generate more events
-                for (var i = 1; i < 20; i++) {
+                for (let i = 1; i < 20; i++) {
                     emitter.emit('topic', i);
                 }
                 setImmediate(next);
@@ -95,7 +95,7 @@ describe('ReadableStream', () => {
         const stream = new ReadableStream('topic', emitter);
         const buffer = [];
         const expected = [];
-        for (var i = 1; i < 20; i++) {
+        for (let i = 1; i < 20; i++) {
             emitter.emit('topic', i);
             expected.push(i);
         }
@@ -120,7 +120,8 @@ describe('ReadableStream', () => {
         const stream = new ReadableStream('topic', emitter);
         const buffer = [];
         const expected = [];
-        for (var i = 1; i < 20; i++) {
+        let i;
+        for (i = 1; i < 20; i++) {
             emitter.emit('topic', i);
             expected.push(i);
         }
@@ -146,7 +147,8 @@ describe('ReadableStream', () => {
         const stream = new ReadableStream('topic', emitter);
         const buffer = [];
         const expected = [];
-        for (var i = 1; i < 5; i++) {
+        let i;
+        for (i = 1; i < 5; i++) {
             emitter.emit('topic', i);
             expected.push(i);
         }
@@ -183,7 +185,7 @@ describe('ReadableStream', () => {
             next();
         });
         // first make it buffer
-        for (var i = 1; i < 20; i++) {
+        for (let i = 1; i < 20; i++) {
             emitter.emit('topic', i);
             expected.push(i);
         }
@@ -193,7 +195,7 @@ describe('ReadableStream', () => {
         setImmediate(() => {
             // buffer should be empty now
             Assert.equal(0, stream._buffer.length);
-            for (var i = 20; i <= 40; i++) {
+            for (let i = 20; i <= 40; i++) {
                 emitter.emit('topic', i);
                 expected.push(i);
             }
@@ -244,5 +246,4 @@ describe('ReadableStream', () => {
         });
         stream.emit('error', new Error('Boom'));
     });
-
 });

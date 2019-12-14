@@ -5,6 +5,7 @@ const Action = require('..').Action;
 
 describe(__filename, () => {
     test('should define action', () => {
+        // eslint-disable-next-line no-new
         new Action();
     });
 
@@ -94,7 +95,7 @@ describe(__filename, () => {
         class BaseAction extends Action {}
 
         const base = new BaseAction();
-        base.add(function (flow) {
+        base.add((flow) => {
             flow.define('foo', 'bar');
         });
         base.consume('foo').then(data => {
@@ -129,14 +130,14 @@ describe(__filename, () => {
         ]);
 
         base
-        .activate()
-        .consume(['foo', 'qax', 'edc'])
-        .then(data => {
-            Assert.equal('bar', data.foo);
-            Assert.equal('wsx', data.qax);
-            Assert.equal('rfv', data.edc);
-            next();
-        });
+            .activate()
+            .consume(['foo', 'qax', 'edc'])
+            .then(data => {
+                Assert.equal('bar', data.foo);
+                Assert.equal('wsx', data.qax);
+                Assert.equal('rfv', data.edc);
+                next();
+            });
     });
 
     test('should add array of actions as parameters', next => {
@@ -156,7 +157,7 @@ describe(__filename, () => {
 
         const base = new BaseAction();
         base.add(
-            function (flow) {
+            (flow) => {
                 flow.define('edc', 'rfv');
             },
             new MyQazAction(),
@@ -164,14 +165,14 @@ describe(__filename, () => {
         );
 
         base
-        .activate()
-        .consume(['foo', 'qax', 'edc'])
-        .then(data => {
-            Assert.equal('bar', data.foo);
-            Assert.equal('wsx', data.qax);
-            Assert.equal('rfv', data.edc);
-            next();
-        });
+            .activate()
+            .consume(['foo', 'qax', 'edc'])
+            .then(data => {
+                Assert.equal('bar', data.foo);
+                Assert.equal('wsx', data.qax);
+                Assert.equal('rfv', data.edc);
+                next();
+            });
     });
 
     test('should add action during execution of base and still execute them successfully', next => {
@@ -189,8 +190,9 @@ describe(__filename, () => {
 
         class BaseAction extends Action {
             execute() {
+                // eslint-disable-next-line no-use-before-define
                 base.add(
-                    function (flow) {
+                    (flow) => {
                         flow.define('edc', 'rfv');
                     },
                     new MyQazAction(),
@@ -202,18 +204,19 @@ describe(__filename, () => {
         const base = new BaseAction();
 
         base
-        .activate()
-        .consume(['foo', 'qax', 'edc'])
-        .then(data => {
-            Assert.equal('bar', data.foo);
-            Assert.equal('wsx', data.qax);
-            Assert.equal('rfv', data.edc);
-            next();
-        });
+            .activate()
+            .consume(['foo', 'qax', 'edc'])
+            .then(data => {
+                Assert.equal('bar', data.foo);
+                Assert.equal('wsx', data.qax);
+                Assert.equal('rfv', data.edc);
+                next();
+            });
     });
 
     describe('emitter warning', () => {
-        let _error = console.error;
+        const _error = console.error;
+        // eslint-disable-next-line no-undef
         afterAll(() => {
             console.error = _error;
         });
@@ -226,7 +229,7 @@ describe(__filename, () => {
                 _error.apply(console, arguments);
             };
             const action = new Action();
-            for (var i = 0; i < 15; i++) {
+            for (let i = 0; i < 15; i++) {
                 action.consume('topic', () => {});
             }
             setImmediate(next);
@@ -241,7 +244,7 @@ describe(__filename, () => {
             };
             const action = new Action();
             action.setMaxListeners(30);
-            for (var i = 0; i < 25; i++) {
+            for (let i = 0; i < 25; i++) {
                 action.consume('topic', () => {});
             }
             setImmediate(next);
@@ -296,12 +299,12 @@ describe(__filename, () => {
         }
 
         new QazAction()
-        .activate()
-        .define('common', 'common')
-        .consume(['foo', 'bar', 'qwe', 'qaz'])
-        .then(data => {
-            next();
-        })
-        .catch(next);
+            .activate()
+            .define('common', 'common')
+            .consume(['foo', 'bar', 'qwe', 'qaz'])
+            .then(data => {
+                next();
+            })
+            .catch(next);
     });
 });

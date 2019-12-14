@@ -32,7 +32,7 @@ describe(__filename, () => {
 
         const action = pipe.build()();
         const ret = await action('one,two');
-        Assert.deepEqual([ '-one-', '-two-' ], ret);
+        Assert.deepEqual(['-one-', '-two-'], ret);
     });
 
     test('should create pipe with map and merge', async () => {
@@ -55,15 +55,13 @@ describe(__filename, () => {
             .next(data => data.split(','))
             .map((data, index) => {
                 if (index > 0) {
-                    throw new Error('BOOM')
+                    throw new Error('BOOM');
                 }
                 const ret = {};
                 ret[data] = `-${data}-`;
                 return ret;
             })
-            .catch(err => {
-                return {'status': 'error'}
-            })
+            .catch(err => ({ 'status': 'error' }))
             .merge();
 
         const action = pipe.build()();
@@ -82,21 +80,15 @@ describe(__filename, () => {
                 ret[data] = `-${data}-`;
                 return ret;
             })
-            .catch(err => {
-                return {'status': 'error'}
-            })
+            .catch(err => ({ 'status': 'error' }))
             .merge()
-            .next(obj => {
-                return Object.keys(obj);
-            })
-            .filter(itm => {
-                return itm !== 'status';
-            })
+            .next(obj => Object.keys(obj))
+            .filter(itm => itm !== 'status')
             .reduce();
 
         const action = pipe.build()();
         const ret = await action('one,two');
-        Assert.deepEqual([ 'one' ], ret);
+        Assert.deepEqual(['one'], ret);
     });
 
     test('should catch error and proceed further and get another error', async () => {
@@ -108,27 +100,21 @@ describe(__filename, () => {
                 }
                 return `-${data}-`;
             })
-            .catch((err, index) => {
-                return 'boom';
-            })
+            .catch((err, index) => 'boom')
             .next((itm, index) => {
                 if (index === 0) {
                     throw new Error('BOOM2');
                 }
                 return itm;
             })
-            .catch(err => {
-                return 'boom';
-            })
-            .next(itm => {
-                return itm;
-            })
+            .catch(err => 'boom')
+            .next(itm => itm)
             .filter(itm => itm !== 'status')
             .reduce();
 
         const action = pipe.build()();
         const ret = await action('one,two');
-        Assert.deepEqual([ 'boom', 'boom' ], ret);
+        Assert.deepEqual(['boom', 'boom'], ret);
     });
 
     test('should handle order while error in stream', async () => {
@@ -141,27 +127,21 @@ describe(__filename, () => {
                 }
                 return itm;
             })
-            .catch(err => {
-                return {'status': 'error'}
-            })
+            .catch(err => ({ 'status': 'error' }))
             .next((itm, index) => {
                 if (index === 0) {
                     throw new Error('BOOM2');
                 }
                 return itm;
             })
-            .catch(err => {
-                return 'boom';
-            })
-            .next(itm => {
-                return itm;
-            })
+            .catch(err => 'boom')
+            .next(itm => itm)
             .filter(itm => itm !== 'status')
             .reduce();
 
         const action = pipe.build()();
         const ret = await action('one,two');
-        Assert.deepEqual([ 'boom', { status: 'error' } ], ret);
+        Assert.deepEqual(['boom', { status: 'error' }], ret);
     });
 
     test('should handle order while getting multiple errors', async () => {
@@ -174,25 +154,18 @@ describe(__filename, () => {
                 }
                 return itm;
             })
-            .catch(err => {
-                return 'boom'
-            })
-            .next((itm, index) => {
-                return itm;
-            })
-            .catch(err => {
-                return 'boom'; // this will never happen
-            })
-            .next(itm => {
-                return itm;
-            })
+            .catch(err => 'boom')
+            .next((itm, index) => itm)
+            .catch(err =>
+                'boom' // this will never happen
+            )
+            .next(itm => itm)
             .filter(itm => itm !== 'status')
             .reduce();
 
         const action = pipe.build()();
         const ret = await action('one,two,three,four,five');
-        console.log(ret && ret.stack)
-        Assert.deepEqual([ '-one-', 'boom', '-three-', 'boom', '-five-' ], ret);
+        Assert.deepEqual(['-one-', 'boom', '-three-', 'boom', '-five-'], ret);
     });
 
     test('should handle async actions in map', async () => {
@@ -201,14 +174,12 @@ describe(__filename, () => {
             .map((data, index) => new Promise(resolve => {
                 setTimeout(() => resolve(`-${data}-`), 100 - 10 * index);
             }))
-            .next((itm, index) => {
-                return itm;
-            })
+            .next((itm, index) => itm)
             .reduce();
 
         const action = pipe.build()();
         const ret = await action('one,two,three,four,five');
-        Assert.deepEqual([ '-five-', '-four-', '-three-', '-two-', '-one-' ], ret);
+        Assert.deepEqual(['-five-', '-four-', '-three-', '-two-', '-one-'], ret);
     });
 
     test('should handle explicit aggregation into array', async () => {
@@ -217,24 +188,20 @@ describe(__filename, () => {
             .map((data, index) => new Promise(resolve => {
                 setTimeout(() => resolve(`-${data}-`), 100 - 10 * index);
             }))
-            .next((itm, index) => {
-                return itm;
-            })
+            .next((itm, index) => itm)
             .reduce((accum, data, index) => {
                 accum.push({
                     data, index
                 });
                 return accum;
             }, [])
-            .next(itms => {
-                return itms
-                    .sort((a, b) => a.index - b.index)
-                    .map(itm => itm.data);
-            });
+            .next(itms => itms
+                .sort((a, b) => a.index - b.index)
+                .map(itm => itm.data));
 
         const action = pipe.build()();
         const ret = await action('one,two,three,four,five');
-        Assert.deepEqual([ '-one-', '-two-', '-three-', '-four-', '-five-' ], ret);
+        Assert.deepEqual(['-one-', '-two-', '-three-', '-four-', '-five-'], ret);
     });
 
     test('should handle explicit aggregation into map', async () => {
@@ -243,9 +210,7 @@ describe(__filename, () => {
             .map((data, index) => new Promise(resolve => {
                 setTimeout(() => resolve(`-${data}-`), 100 - 10 * index);
             }))
-            .next((itm, index) => {
-                return itm;
-            })
+            .next((itm, index) => itm)
             .reduce((accum, data, index) => {
                 accum[data] = data;
                 return accum;
@@ -273,7 +238,7 @@ describe(__filename, () => {
 
         const action = pipe.build()();
         const accum = [];
-        for await (const item of action('one')){
+        for await (const item of action('one')) {
             accum.push(item);
         }
         Assert.equal('ok', accum);
@@ -290,7 +255,7 @@ describe(__filename, () => {
 
         const action = pipe.build()();
         const accum = [];
-        for await (const item of action('one')){
+        for await (const item of action('one')) {
             accum.push(item);
         }
         Assert.equal('ok', accum);
@@ -314,7 +279,7 @@ describe(__filename, () => {
         const pipe = new Pipe()
             .merge((data) => data)
             .catch(err => {
-                
+
             })
             .next(d => d);
 
@@ -352,7 +317,7 @@ describe(__filename, () => {
         catch (err) {
             Assert.equal('reduce requires mapped data', err.message);
         }
-   });
+    });
 
     test('should throw error if no error handler', async () => {
         const pipe = new Pipe()

@@ -9,7 +9,7 @@ describe(__filename, () => {
     beforeEach(() => {
         process.removeAllListeners('unhandledRejection');
         process.once('unhandledRejection', err => {
-            throw new Error('Detected unhandled promise rejecttion for error:' + err.message);
+            throw new Error(`Detected unhandled promise rejecttion for error:${ err.message}`);
         });
     });
 
@@ -17,13 +17,14 @@ describe(__filename, () => {
         const runIt = async function () {
             try {
                 await new Flow()
-                .timeout('foo', 20)
-                .consume(['foo']);
-            } catch (e) {
+                    .timeout('foo', 20)
+                    .consume(['foo']);
+            }
+            catch (e) {
                 Assert.equal('Topic/s (foo) timed out, pending topics (none), queue state {}', e.message);
                 next();
             }
-        }
+        };
 
         runIt();
     });
@@ -38,15 +39,15 @@ describe(__filename, () => {
 
             try {
                 await action
-                .activate()
-                .consume(['foo']);
-            } catch (e) {
+                    .activate()
+                    .consume(['foo']);
+            }
+            catch (e) {
                 Assert.equal('Topic/s (foo) timed out, pending topics (none), queue state {}', e.message);
                 next();
             }
-        }
+        };
 
         runIt();
-
     });
 });
