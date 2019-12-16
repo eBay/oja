@@ -16,6 +16,11 @@ The context based approach allows a developer to slice the business logic into s
 
 ![context diagram](https://raw.githubusercontent.com/eBay/oja/master/packages/oja-context/docs/images/context.png)
 
+### Process
+
+![process](https://raw.githubusercontent.com/eBay/oja/master/packages/oja-context/docs/images/process.gif)
+
+
 ## Example
 
 ### Action definition
