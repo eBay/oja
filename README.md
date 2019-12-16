@@ -18,7 +18,7 @@ The context based approach allows a developer to slice the business logic into s
 
 ### Process
 
-![process](https://raw.githubusercontent.com/eBay/oja/master/packages/oja-context/docs/images/process.gif)
+![process](https://raw.githubusercontent.com/eBay/oja/master/packages/oja-context/docs/images/process1.gif)
 
 
 ## Example
