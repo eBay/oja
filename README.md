@@ -16,9 +16,9 @@ The context based approach allows a developer to slice the business logic into s
 
 ![context diagram](https://raw.githubusercontent.com/eBay/oja/master/packages/oja-context/docs/images/context.png)
 
-### Basic -> Components -> Actions
+### Basic -> Components -> Actions (Dependency Injection)
 
-![process](https://raw.githubusercontent.com/eBay/oja/master/packages/oja-context/docs/images/process1.gif)
+![process](https://raw.githubusercontent.com/eBay/oja/master/packages/oja-context/docs/images/process2.gif)
 
 
 ## Example
