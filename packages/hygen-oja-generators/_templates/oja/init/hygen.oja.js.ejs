@@ -100,12 +100,11 @@ class HygenOja {
             installDependenciesCmd(generator) {
                 const Fs = require('fs');
                 const requiredDevDependencies = this.generatorDependencies[generator];
-            
-                const dependencies = requiredDevDependencies.filter(dep => {
+                const dependencies = requiredDevDependencies && requiredDevDependencies.filter(dep => {
                     return !Fs.existsSync(`./node_modules/${dep}`);
                 });
     
-                return dependencies.length &&
+                return dependencies && dependencies.length &&
                     `cd ${process.cwd()} && yarn add ${dependencies.join(' ')}` ||
                     'echo Nothing to install';
             },
