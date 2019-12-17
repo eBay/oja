@@ -3,6 +3,11 @@ to: .hygen.oja.js
 ---
 'use strict';
 
+process.on('unhandledRejection', (err) => {
+    console.error(err.stack);
+    process.exit(1);
+});
+
 class HygenOja {
     constructor() {
         this.helpers = {};
