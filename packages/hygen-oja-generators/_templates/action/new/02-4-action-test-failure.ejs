@@ -4,7 +4,7 @@ to: <%=locals.target || '.'%>/__tests__/<%=h.actionName(name)%>.spec.js
 after: describe
 skip_if: 'action <%=name%> should fail'
 ---
-    test('action <%=name%> should fail', async () => {
+    <%= h.testCaseName(locals.mocha) %>('action <%=name%> should fail', async () => {
         const context = await createContext({
             functions: {
                 '<%=name%>': new Error('BOOM')

@@ -3,6 +3,7 @@ inject: true
 to: package.json
 before: '"scripts":'
 skip_if: '"jest": {'
+message: <%-(!locals.mocha || '')%>
 ---
   "jest": {
   },

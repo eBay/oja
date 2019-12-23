@@ -4,5 +4,15 @@ to: package.json
 after: '"scripts":'
 skip_if: '"test:actions":'
 ---
+<%
+const comma = (!h.isEmptyPath(h.tryRequire(`package.json`), 'scripts') && ',' || '');
+if (locals.mocha) {
+-%>
+    "test:actions": "mocha <%-h.getTestMatch('mocha')%> --exclude node_modules --exit",
+    "test:actions:coverage": "nyc npm run test:actions"<%=comma%><%
+} else {
+-%>
     "test:actions": "jest",
-    "test:actions:coverage": "jest --collect-coverage"<%=(!h.isEmptyPath(h.tryRequire(`package.json`), 'scripts') && ',' || '')%>
+    "test:actions:coverage": "jest --collect-coverage"<%-comma%><%
+}
+-%>

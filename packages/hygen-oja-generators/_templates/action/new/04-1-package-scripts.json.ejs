@@ -1,8 +1,3 @@
 ---
-inject: true
-to: package.json
-after: '"version":'
-skip_if: '"scripts":'
+message: <%-h.addScripts() || ''%>
 ---
-  "scripts": {
-  },

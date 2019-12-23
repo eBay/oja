@@ -42,9 +42,20 @@ describe(__filename, () => {
 
         test('should add a set of actions with actions location file being present', () => {
             runCmd(`hygen oja init`);
+            runCmd(`hygen action help`);
             runCmd(`hygen action init`);
             runCmd(`hygen action new QAZNS/qaz --target src`);
             runCmd(`hygen action new SERVICES/svc1 --target src/service`);
+            runCmd(`npm install ../../../../oja-context ../../../../oja-action`);
+            runCmd('npm run test:actions');
+            runCmd('npm run test:actions:coverage');
+        });
+
+        test('should add mocha and nyc when --mocha options is used', () => {
+            runCmd(`hygen oja init`);
+            runCmd(`hygen action init`);
+            runCmd(`hygen action new QAZNS/qaz --target src --mocha`);
+            runCmd(`hygen action new SERVICES/svc1 --target src/service --mocha`);
             runCmd(`npm install ../../../../oja-context ../../../../oja-action`);
             runCmd('npm run test:actions');
             runCmd('npm run test:actions:coverage');

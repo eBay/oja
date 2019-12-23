@@ -14,7 +14,13 @@ class HygenOja {
         this.helpers.generatorDependencies = this.helpers.generatorDependencies || {};
         this.helpers.generatorDependencies.action = [
             '@ebay/oja-action',
-            '@ebay/oja-context',
+            '@ebay/oja-context'
+        ];
+        this.helpers.generatorDependencies.mocha = [
+            'nyc',
+            'mocha'
+        ];
+        this.helpers.generatorDependencies.jest = [
             'jest'
         ];
 
@@ -75,16 +81,25 @@ class HygenOja {
                 return current;
             },
     
-            getTestMatch() {
+            getTestMatch(type) {
                 const pkg = require(`./package.json`);
-                const testMatch = this.get(pkg, 'jest.testMatch');
-                if (testMatch && Object.keys(testMatch).length) {
-                    if (testMatch.indexOf('**/__tests__/**/*.spec.[jt]s?(x)') !== -1) {
+                if (type === 'mocha') {
+                    if (/mocha/.test(this.get(pkg, 'scripts.test:actions'))) {
                         return '';
                     }
-                    return '"**/__tests__/**/*.spec.[jt]s?(x)",'
+                    return '**/__tests__/**/*.spec.js --exclude node_modules';
                 }
-                return '"**/__tests__/**/*.spec.[jt]s?(x)"';
+                const testMatch = this.get(pkg, 'jest.testMatch');
+                if (testMatch && Object.keys(testMatch).length) {
+                    if (testMatch.indexOf('**/__tests__/**/*.spec.js') !== -1) {
+                        return '';
+                    }
+                }
+                return '"**/__tests__/**/*.spec.js"';
+            },
+
+            testCaseName(isMocha) {
+                return isMocha ? 'it' : 'test';
             },
     
             tryRequire(name, defaultVal) {
@@ -102,7 +117,7 @@ class HygenOja {
                 }
             },
     
-            installDependenciesCmd(generator) {
+            installDependenciesCmd(generator, option = '') {
                 const Fs = require('fs');
                 const requiredDevDependencies = this.generatorDependencies[generator];
                 const dependencies = requiredDevDependencies && requiredDevDependencies.filter(dep => {
@@ -110,7 +125,7 @@ class HygenOja {
                 });
     
                 return dependencies && dependencies.length &&
-                    `cd ${process.cwd()} && yarn add ${dependencies.join(' ')}` ||
+                    `cd ${process.cwd()} && yarn add ${dependencies.join(' ')} ${option}` ||
                     'echo Nothing to install';
             },
     
@@ -123,6 +138,18 @@ class HygenOja {
                 const Fs = require('fs');
                 const content = Fs.readFileSync(path).toString();
                 return JSON.parse(content);
+            },
+
+            addScripts(generator) {
+                const Fs = require('fs');
+                const pkg = require(`./package.json`);
+                if (!pkg.scripts) {
+                    pkg.scripts = {
+                        test: 'echo no tests yet'
+                    };
+                    Fs.writeFileSync(require.resolve(`./package.json`), JSON.stringify(pkg, null, 2));
+                    return 'added scripts section';
+                }
             }
         });
     }

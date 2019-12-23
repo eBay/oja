@@ -34,5 +34,23 @@ $ hygen oja init
 ### Add action
 
 ```bash
-$ hygen action new {NAMESPACE}/{NAME} [--target {output dir}]
+$ hygen action new <ACTION_NAMESPACE> [--target {output dir}] [--mocha]
+```
+
+Note: By default command will generate jest unit tests, if you need mocha tests, you can use --mocha option
+
+Example:
+
+```
+# New action generation
+# will generate a new action with jest tests
+$ hygen action new selling/actions/buy --target src/selling
+
+# will generate a new action with mochs tests
+$ hygen action new selling/actions/buy --target src/selling --mocha
+
+# Run unit tests
+npm run test:actions
+# Run test coverage
+npm run test:actions:coverage
 ```
