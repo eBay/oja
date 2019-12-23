@@ -8,7 +8,7 @@ skip_if: '"test:actions":'
 const comma = (!h.isEmptyPath(h.tryRequire(`package.json`), 'scripts') && ',' || '');
 if (locals.mocha) {
 -%>
-    "test:actions": "mocha <%-h.getTestMatch('mocha')%> --exclude node_modules --exit",
+    "test:actions": "mocha <%-h.getTestMatch('mocha')%> --exit",
     "test:actions:coverage": "nyc npm run test:actions"<%=comma%><%
 } else {
 -%>
