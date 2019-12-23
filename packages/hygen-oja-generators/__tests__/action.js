@@ -47,6 +47,7 @@ describe(__filename, () => {
             runCmd(`hygen action new QAZNS/qaz --target src`);
             runCmd(`hygen action new SERVICES/svc1 --target src/service`);
             runCmd(`npm install ../../../../oja-context ../../../../oja-action`);
+            Assert.ok(Fs.existsSync(Path.resolve(tmpDir, 'node_modules/jest')));
             runCmd('npm run test:actions');
             runCmd('npm run test:actions:coverage');
         });

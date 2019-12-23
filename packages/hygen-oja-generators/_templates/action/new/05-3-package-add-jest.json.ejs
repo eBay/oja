@@ -2,6 +2,6 @@
 inject: true
 to: package.json
 after: '"testMatch": \['
-message: <%-!locals.mocha && h.getTestMatch(locals.mocha && 'mocha') || ''%>
+message: <%-!locals.mocha && h.getTestMatch(locals.mocha && 'mocha') && 'configuring jest tests' || ''%>
 ---
       <%-h.getTestMatch(locals.mocha && 'mocha' || '')-%>
