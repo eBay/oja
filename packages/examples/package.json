@@ -4,8 +4,6 @@
   "description": "Example of structuring app business logic using oja action with dependency injection",
   "main": "index.js",
   "scripts": {
-    "test:actions": "jest",
-    "test:actions:coverage": "jest --collect-coverage",
     "test": "jest src",
     "coverage": "jest --collect-coverage src",
     "elint": "eslint --quiet -c .eslintrc *.js src/**/*.js",
