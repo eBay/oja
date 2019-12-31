@@ -12,7 +12,7 @@ module.exports = context => itemId => {
         request({
             url: 'https://dimichgh.github.io/oja-selling-example/mock-data/item-details.json'
         },
-        function(err, response) {
+        (err, response) => {
             if (err) {
                 return reject(err);
             }

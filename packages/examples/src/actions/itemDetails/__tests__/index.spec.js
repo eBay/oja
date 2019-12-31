@@ -23,5 +23,4 @@ describe(__filename, () => {
         Assert.deepEqual(require('mock-data/item-details.json'),
             await context.action('ACTIONS/itemDetails'));
     });
-
 });
