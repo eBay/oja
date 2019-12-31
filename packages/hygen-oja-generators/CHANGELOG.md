@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.7](https://github.com/eBay/oja/compare/hygen-oja-generators@2.0.6...hygen-oja-generators@2.0.7) (2019-12-31)
+
+
+### Bug Fixes
+
+* corrected jest template logic ([6d13a06](https://github.com/eBay/oja/commit/6d13a06ffaef3e2902bab956c421e6505ca26447))
+* mocha options in generated code ([981ca75](https://github.com/eBay/oja/commit/981ca75c000042fbc9abb0f940cb02bf1af34f74))
+
+
+
+
+
 ## [2.0.6](https://github.com/eBay/oja/compare/hygen-oja-generators@2.0.5...hygen-oja-generators@2.0.6) (2019-12-23)
 
 **Note:** Version bump only for package hygen-oja-generators
