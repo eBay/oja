@@ -15,7 +15,7 @@ const ojaContextByLocation = {};
 /**
  * TODO:
  *  - support complex action queries
- *    - add support of mjs
+ *    - validate support of mjs
  *    - auto suggest and validate selectors
  *    - suggest fallback selectors when no matching actions can be found
  *    - exclude action in focus from the popup list
@@ -26,90 +26,30 @@ const ojaContextByLocation = {};
  *  - rename support
  */
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
-module.exports.activate = context => {
-    validateOjaInstallation();
+let reportedErrors = {};
+const runtimeErrorsCollection = vscode.languages.createDiagnosticCollection('oja-runtime');
+function errorHandler(fn) {
+    return async (...args) => {
+        try {
+            return await fn(...args);
+        }
+        catch (err) {
+            if (!reportedErrors[err.message]) {
+                const errorMessage = reportedErrors[err.message] =
+                    `vscode-oja: error detected ${err.message}, fix it and restart IDE or vscode plugin`;
+                vscode.window.showInformationMessage(errorMessage);
+                const range = new vscode.Range(0, 0, 0, 1);
+                const uri = vscode.Uri.parse(getProjectRoot());
+                const diagnostics = [...runtimeErrorsCollection.get(uri)] || [];
+                diagnostics.push(new vscode.Diagnostic(range, errorMessage, 1));
+                runtimeErrorsCollection.set(uri, diagnostics);
+            }
+            throw err;
+        }
+    };
+}
 
-    const provider = vscode.languages.registerCompletionItemProvider(
-        // eslint-disable-next-line no-use-before-define
-        DOCUMENT_SELECTORS, new OjaCompletionItemProvider(),
-        '.', '(', '\'', '"'); // triggered whenever any of these chars is being typed
-    context.subscriptions.push(provider);
-
-    context.subscriptions.push(vscode.languages.registerDefinitionProvider(
-        // eslint-disable-next-line no-use-before-define
-        DOCUMENT_SELECTORS, new OjaDefinitionProvider()));
-
-    const actionWatcher = vscode.workspace.createFileSystemWatcher(
-        new vscode.RelativePattern(
-            vscode.workspace.getWorkspaceFolder(
-                vscode.window.activeTextEditor.document.uri
-            ),
-            '**/action.json'
-        ),
-        false,
-        false,
-        false
-    );
-
-    const diagnosticCollection = vscode.languages.createDiagnosticCollection('go');
-    context.subscriptions.push(diagnosticCollection);
-
-    async function refresh(event) {
-        lintOnChange(diagnosticCollection, true);
-    }
-
-    actionWatcher.onDidChange(refresh);
-    actionWatcher.onDidCreate(refresh);
-    actionWatcher.onDidDelete(refresh);
-
-    // monitor the change of .ojalintignore
-    const codeWatcher = vscode.workspace.createFileSystemWatcher(
-        new vscode.RelativePattern(
-            vscode.workspace.getWorkspaceFolder(
-                vscode.window.activeTextEditor.document.uri
-            ),
-            '**/*.{js,mjs}'
-        ),
-        false,
-        false,
-        false
-    );
-
-    lintOnChange(diagnosticCollection);
-
-    function onCodeChange() {
-        lintOnChange(diagnosticCollection, true);
-    }
-    codeWatcher.onDidChange(onCodeChange);
-    codeWatcher.onDidCreate(onCodeChange);
-    codeWatcher.onDidDelete(onCodeChange);
-
-    const ignoreWatcher = vscode.workspace.createFileSystemWatcher(
-        new vscode.RelativePattern(
-            vscode.workspace.getWorkspaceFolder(
-                vscode.window.activeTextEditor.document.uri
-            ),
-            '.ojalintignore'
-        ),
-        false,
-        false,
-        false
-    );
-    ignoreWatcher.onDidChange(onCodeChange);
-    ignoreWatcher.onDidCreate(onCodeChange);
-    ignoreWatcher.onDidDelete(onCodeChange);
-
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    // eslint-disable-next-line no-console
-    console.info('Congratulations, your extension "vscode-oja" is now active!');
-    // let oja framework know we are running in vscode
-    process.env.VS_CODE_OJA_EXTENSION = 'true';
-};
-
-async function lintOnChange(diagnosticCollection, reset) {
+async function _lintOnChange(diagnosticCollection, reset) {
     const root = getProjectRoot();
     const context = await getOjaContext(root);
     if (reset) {
@@ -155,6 +95,101 @@ async function lintOnChange(diagnosticCollection, reset) {
         diagnosticCollection.set(vscode.Uri.parse(file), diags);
     });
 }
+
+const lintOnChange = errorHandler(_lintOnChange);
+
+// this method is called when your extension is activated
+// your extension is activated the very first time the command is executed
+module.exports.activate = context => {
+    reportedErrors = {};
+    validateOjaInstallation();
+
+    try {
+        const provider = vscode.languages.registerCompletionItemProvider(
+            // eslint-disable-next-line no-use-before-define
+            DOCUMENT_SELECTORS, new OjaCompletionItemProvider(),
+            '.', '(', '\'', '"'); // triggered whenever any of these chars is being typed
+        context.subscriptions.push(provider);
+
+        context.subscriptions.push(vscode.languages.registerDefinitionProvider(
+            // eslint-disable-next-line no-use-before-define
+            DOCUMENT_SELECTORS, new OjaDefinitionProvider()));
+
+        const actionWatcher = vscode.workspace.createFileSystemWatcher(
+            new vscode.RelativePattern(
+                vscode.workspace.getWorkspaceFolder(
+                    vscode.window.activeTextEditor.document.uri
+                ),
+                '**/action.json'
+            ),
+            false,
+            false,
+            false
+        );
+
+        const diagnosticCollection = vscode.languages.createDiagnosticCollection('oja-lint');
+        context.subscriptions.push(diagnosticCollection);
+        context.subscriptions.push(runtimeErrorsCollection);
+
+        // eslint-disable-next-line no-inner-declarations
+        async function refresh(event) {
+            lintOnChange(diagnosticCollection, true);
+        }
+
+        actionWatcher.onDidChange(refresh);
+        actionWatcher.onDidCreate(refresh);
+        actionWatcher.onDidDelete(refresh);
+
+        // monitor the change of .ojalintignore
+        const codeWatcher = vscode.workspace.createFileSystemWatcher(
+            new vscode.RelativePattern(
+                vscode.workspace.getWorkspaceFolder(
+                    vscode.window.activeTextEditor.document.uri
+                ),
+                '**/*.{js,mjs}'
+            ),
+            false,
+            false,
+            false
+        );
+
+        lintOnChange(diagnosticCollection);
+
+        // eslint-disable-next-line no-inner-declarations
+        function onCodeChange() {
+            lintOnChange(diagnosticCollection, true);
+        }
+        codeWatcher.onDidChange(onCodeChange);
+        codeWatcher.onDidCreate(onCodeChange);
+        codeWatcher.onDidDelete(onCodeChange);
+
+        const ignoreWatcher = vscode.workspace.createFileSystemWatcher(
+            new vscode.RelativePattern(
+                vscode.workspace.getWorkspaceFolder(
+                    vscode.window.activeTextEditor.document.uri
+                ),
+                '.ojalintignore'
+            ),
+            false,
+            false,
+            false
+        );
+        ignoreWatcher.onDidChange(onCodeChange);
+        ignoreWatcher.onDidCreate(onCodeChange);
+        ignoreWatcher.onDidDelete(onCodeChange);
+
+        // Use the console to output diagnostic information (console.log) and errors (console.error)
+        // This line of code will only be executed once when your extension is activated
+        // eslint-disable-next-line no-console
+        console.info('Congratulations, your extension "vscode-oja" is now active!');
+        // let oja framework know we are running in vscode
+        process.env.VS_CODE_OJA_EXTENSION = 'true';
+    }
+    catch (err) {
+        vscode.window.showInformationMessage(
+            `vscode-oja: activation failure due to ${err.message}`);
+    }
+};
 
 function selectErrorMessage(error) {
     if (error.code === 'functionNotFound') {
