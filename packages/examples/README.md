@@ -57,10 +57,3 @@ hygen action new <action namespace> [--target <target dir>]
 # example
 # hygen action new consumer/buy
 ```
-
-The output would be
-```
-Loaded templates: _templates
-       added: src/consumer/buy/unit-test/index.spec.js
-       added: src/consumer/buy/index.js
-```
