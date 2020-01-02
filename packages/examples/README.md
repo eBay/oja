@@ -7,7 +7,7 @@ This demo application demonstrates how application business logic can be structu
 The application uses code generation to automate action and component creation and that includes unit tests generation as well.
 
 <p align="center">
-    <img src="demo.svg" />
+    <img src="demo.gif" />
 </p>
 
 ## Usage
