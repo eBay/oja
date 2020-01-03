@@ -67,3 +67,4 @@ coverage
 **/__tests__/.tmp*
 packages/vscode-oja/vscode-oja-*
 .vscode-test
+.tmp

@@ -380,7 +380,7 @@ function tryResolve(name) {
  */
 function loadActions(dirOrModule) {
     // load actions if found
-    const actionJsonPath = Path.join(dirOrModule, 'action.json');
+    const actionJsonPath = Path.resolve(dirOrModule, 'action.json');
     const actions = tryRequire(actionJsonPath);
 
     if (actions) {
@@ -393,6 +393,10 @@ function loadActions(dirOrModule) {
             // location data
             return actions.reduce((memo, location) => {
                 const actionLocation = Path.resolve(dirOrModule, location);
+                if (dirOrModule === actionLocation) {
+                    // avoid parsing the same action
+                    return memo;
+                }
                 if (Fs.existsSync(Path.resolve(actionLocation, 'action.json'))) {
                     memo = mergeActions(memo,
                         loadActions(actionLocation));
