@@ -36,14 +36,13 @@
     "eslint-config-ebay": "^1.0.0",
     "eslint-plugin-mocha": "^5.3.0",
     "jest": "^24.9.0",
-    "shelljs": "^0.8.3"
+    "shelljs": "^0.8.3",
+    "@ebay/oja-action": "^2",
+    "@ebay/oja-context": "^2"
   },
   "jest": {
     "moduleNameMapper": {
-      "@ebay/oja-context$": "<rootDir>/../oja-context/index.js",
-      "@ebay/oja-action$": "<rootDir>/../oja-action/index.js",
-      "@ebay/oja-action/resolver$": "<rootDir>/../oja-action/resolver.js",
-      "@ebay/oja-linter$": "<rootDir>/index.js"
+      "^@ebay/oja-linter$": "<rootDir>/index.js"
     },
     "collectCoverageFrom": [
       "<rootDir>/*\\.js"
