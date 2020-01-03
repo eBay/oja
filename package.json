@@ -4,7 +4,7 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "coverage": "lerna exec -- yarn coverage",
+    "coverage": "lerna exec --no-private -- yarn coverage",
     "test": "lerna exec -- yarn test",
     "lint": "lerna exec -- yarn lint",
     "lint-fix": "lerna exec -- yarn lint-fix",
