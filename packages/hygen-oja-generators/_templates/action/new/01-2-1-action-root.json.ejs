@@ -1,7 +1,0 @@
----
-inject: true
-to: <%='.'%>/action.json
-after: \[
-skip_if: '"<%=h.sourceFromTarget(locals.target)%>"|^{'
----
-    "<%=h.sourceFromTarget(locals.target)%>"<%=(h.tryRequire(`./action.json`, []).length && ',' || '')%>

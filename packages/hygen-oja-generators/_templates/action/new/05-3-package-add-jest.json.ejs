@@ -1,7 +1,0 @@
----
-inject: true
-to: package.json
-after: '"testMatch": \['
-message: <%-!locals.mocha && h.getTestMatch() && 'configuring jest tests' || ''%>
----
-      <%-h.getTestMatch()-%>

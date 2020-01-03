@@ -1,9 +1,0 @@
----
-inject: true
-to: package.json
-after: '"jest": {'
-skip_if: '"testMatch":'
-message: <%-(!locals.mocha && 'adding jest testMatch' || '')%>
----
-    "testMatch": [
-    ]<%=(!h.isEmptyPath(h.tryRequire(`package.json`), 'jest') && ',' || '')%>

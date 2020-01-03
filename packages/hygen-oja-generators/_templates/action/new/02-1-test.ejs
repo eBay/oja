@@ -1,9 +1,18 @@
 ---
-inject: true
 to: <%=locals.target || '.'%>/__tests__/<%=h.actionName(name)%>.spec.js
-after: describe
-skip_if: 'action <%=name%> should fail'
 ---
+'use strict';
+
+const Assert = require('assert');
+const { createContext } = require('@ebay/oja-action');
+
+describe(__filename, () => {
+    <%= h.testCaseName(locals.mocha) %>('action <%=name%> should be called', async () => {
+        const context = await createContext();
+        Assert.equal(`<%=name%> is called`,
+            await context.action('<%=name%>'));
+    });
+    
     <%= h.testCaseName(locals.mocha) %>('action <%=name%> should fail', async () => {
         const context = await createContext({
             functions: {
@@ -17,3 +26,4 @@ skip_if: 'action <%=name%> should fail'
             Assert.equal('BOOM', err.message);
         }
     });
+});
