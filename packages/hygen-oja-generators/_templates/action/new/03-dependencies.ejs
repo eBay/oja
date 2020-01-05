@@ -1,4 +1,4 @@
 ---
 sh: <%-h.installDependenciesCmd(generator) %>
-message: <%-(!locals.skipinstall && ('installing required dependencies -> ' + h.installDependenciesCmd(generator)) || '')%>
+message: <%-(!locals.skipinstall && ('installing required dependencies -> ' + h.installDependenciesCmd(generator)) || ' ')%>
 ---
