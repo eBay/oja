@@ -79,26 +79,27 @@ class HygenOja {
                 }
                 return current;
             },
+
+            detectedTestFramework(properties) {
+                const type = properties.mocha ? 'mocha' : 'jest'
+                this.assert.ok(/^(jest|mocha)$/, `Only mocha or jest supported so far, requested: "${type}"`);
+                if (type) {
+                    return type;
+                }
+                const pkg = require(`./package.json`);
+                return /mocha/.test(this.get(pkg, 'scripts.test:actions')) ? 'mocha' : (type || 'jest');
+            },
     
             getTestMatch(type) {
-                const pkg = require(`./package.json`);
                 if (type === 'mocha') {
-                    if (/mocha/.test(this.get(pkg, 'scripts.test:actions'))) {
-                        return '';
-                    }
-                    return '**/__tests__/**/*.spec.js --exclude node_modules';
+                    return `**/${this.unitTestFolderName(type)}/**/*.spec.js --exclude node_modules`;
                 }
-                const testMatch = this.get(pkg, 'jest.testMatch');
-                if (testMatch && Object.keys(testMatch).length) {
-                    if (testMatch.indexOf('**/__tests__/**/*.spec.js') !== -1) {
-                        return '';
-                    }
-                }
-                return '**/__tests__/**/*.spec.js';
+                return `**/${this.unitTestFolderName(type)}/**/*.spec.js`;
             },
 
-            testCaseName(isMocha) {
-                return isMocha ? 'it' : 'test';
+            testCaseName(properties) {
+                const type = this.detectedTestFramework(properties);
+                return type === 'mocha' ? 'it' : 'test';
             },
     
             tryRequire(name, defaultVal) {
@@ -212,19 +213,20 @@ class HygenOja {
                     pkg.scripts = {};
                     messages.push(`> added scripts section`) ;
                 }
+                const type = this.detectedTestFramework(properties);
                 if (!pkg.scripts['test:actions']) {
-                    pkg.scripts['test:actions'] = properties.mocha ?
+                    pkg.scripts['test:actions'] = type === 'mocha' ?
                         `mocha ${this.getTestMatch('mocha')} --exit --timeout 10000` :
                         `jest`;
                     messages.push('> added test:actions to scripts section')
                 }
                 if (!pkg.scripts['test:actions:coverage']) {
-                    pkg.scripts['test:actions:coverage'] = properties.mocha ?
+                    pkg.scripts['test:actions:coverage'] = type === 'mocha' ?
                         `nyc npm run test:actions` :
                         `jest --collect-coverage`;
                     messages.push('> added test:actions:coverage to scripts section')                    
                 }
-                if (!properties.mocha) {
+                if (type === 'jest') {
                     if (!pkg.jest) {
                         pkg.jest = {};
                     }
@@ -243,7 +245,12 @@ class HygenOja {
                     return [`> Updated package.json:`, ...messages].join('\n\t');
                 }
                 return `> test scripts are already in package.json`
+            },
+
+            unitTestFolderName(type) {
+                return '__tests__';
             }
+
         });
     }
 }

@@ -1,5 +1,5 @@
 ---
-to: <%=locals.target || '.'%>/__tests__/<%=h.actionName(name)%>.spec.js
+to: <%=locals.target || '.'%>/<%= h.unitTestFolderName(locals) %>/<%=h.actionName(name)%>.spec.js
 ---
 'use strict';
 
@@ -7,13 +7,13 @@ const Assert = require('assert');
 const { createContext } = require('@ebay/oja-action');
 
 describe(__filename, () => {
-    <%= h.testCaseName(locals.mocha) %>('action <%=name%> should be called', async () => {
+    <%= h.testCaseName(locals) %>('action <%=name%> should be called', async () => {
         const context = await createContext();
         Assert.equal(`<%=name%> is called`,
             await context.action('<%=name%>'));
     });
     
-    <%= h.testCaseName(locals.mocha) %>('action <%=name%> should fail', async () => {
+    <%= h.testCaseName(locals) %>('action <%=name%> should fail', async () => {
         const context = await createContext({
             functions: {
                 '<%=name%>': new Error('BOOM')

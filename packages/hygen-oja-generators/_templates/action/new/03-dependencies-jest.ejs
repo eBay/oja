@@ -1,4 +1,4 @@
 ---
 sh: <%-h.installDependenciesCmd('jest', '-D') %>
-message: <%-(!locals.skipinstall && !locals.mocha && ('installing required dependencies -> ' + h.installDependenciesCmd('jest', '-D')) || '')%>
+message: <%-(!locals.skipinstall && h.detectedTestFramework(locals) === 'jest' && ('installing required dependencies -> ' + h.installDependenciesCmd('jest', '-D')) || '')%>
 ---

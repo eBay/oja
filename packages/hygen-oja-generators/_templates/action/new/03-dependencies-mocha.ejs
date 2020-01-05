@@ -1,4 +1,4 @@
 ---
 sh: <%-h.installDependenciesCmd('mocha', '-D') %>
-message: <%-(!locals.skipinstall && locals.mocha && ('installing required dependencies -> ' + h.installDependenciesCmd('mocha')) || '')%>
+message: <%-(!locals.skipinstall && h.detectedTestFramework(locals) === 'mocha' && ('installing required dependencies -> ' + h.installDependenciesCmd('mocha')) || '')%>
 ---
