@@ -1,6 +1,6 @@
 {
   "name": "examples",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Example of structuring app business logic using oja action with dependency injection",
   "main": "index.js",
   "scripts": {
@@ -38,7 +38,7 @@
     "eslint": "^5.16.0",
     "eslint-config-ebay": "^1.0.0",
     "eslint-plugin-mocha": "^5.3.0",
-    "hygen-oja-generators": "^2.0.9",
+    "hygen-oja-generators": "^2.0.10",
     "jest": "^24.9.0"
   },
   "engines": {

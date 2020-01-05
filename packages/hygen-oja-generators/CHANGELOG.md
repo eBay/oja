@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.10](https://github.com/eBay/oja/compare/hygen-oja-generators@2.0.9...hygen-oja-generators@2.0.10) (2020-01-05)
+
+
+### Bug Fixes
+
+* minor error related to empty message ([119e04c](https://github.com/eBay/oja/commit/119e04c7bcb7d012cb0a12a1a984333cf796ddb8))
+
+
+
+
+
 ## [2.0.9](https://github.com/eBay/oja/compare/hygen-oja-generators@2.0.8...hygen-oja-generators@2.0.9) (2020-01-05)
 
 **Note:** Version bump only for package hygen-oja-generators

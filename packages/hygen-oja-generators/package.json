@@ -1,6 +1,6 @@
 {
   "name": "hygen-oja-generators",
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "Module provides basic generators for backend and front-end",
   "main": "index.js",
   "scripts": {
