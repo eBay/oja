@@ -33,41 +33,41 @@ class HygenOja {
             accessor(name) {
                 return /-/.test(name) ? `['${name}']` : `.${name}`;
             },
-    
+
             actionName(name) {
                 return name.split('/').pop();
             },
-    
+
             require(name) {
                 return require(name);
             },
-    
+
             isEmptyPath(json = {}, path) {
                 const data = this.get(json, path) || [];
                 return Object.keys(data).length === 0;
             },
 
             Path: require('path'),
-    
+
             assertActionLocation(target) {
                 if (this.locationActionFileExists() &&
                     process.cwd() === this.Path.resolve(target)) {
-                        this.throwError('Error: action.json cannot be placed' +
+                    this.throwError('Error: action.json cannot be placed' +
                         ' at the root of the app or module');
                 }
             },
-    
+
             locationActionFileExists() {
                 const action = this.tryRequire(this.Path.resolve(process.cwd(), 'action.json'));
                 return action && Array.isArray(action);
             },
-    
+
             sourceFromTarget(target) {
                 const relative = require('relative');
                 // in addition to relative path, we need to make sure
                 return target && relative(process.cwd(), target);
             },
-    
+
             get(json = {}, path) {
                 let current = json;
                 const keys = path.split('.');
@@ -81,7 +81,7 @@ class HygenOja {
             },
 
             detectedTestFramework(properties) {
-                const type = properties.mocha ? 'mocha' : 'jest'
+                const type = properties.mocha ? 'mocha' : 'jest';
                 this.assert.ok(/^(jest|mocha)$/, `Only mocha or jest supported so far, requested: "${type}"`);
                 if (type) {
                     return type;
@@ -89,7 +89,7 @@ class HygenOja {
                 const pkg = require(`./package.json`);
                 return /mocha/.test(this.get(pkg, 'scripts.test:actions')) ? 'mocha' : (type || 'jest');
             },
-    
+
             getTestMatch(type) {
                 if (type === 'mocha') {
                     return `**/${this.unitTestFolderName(type)}/**/*.spec.js --exclude node_modules`;
@@ -101,40 +101,34 @@ class HygenOja {
                 const type = this.detectedTestFramework(properties);
                 return type === 'mocha' ? 'it' : 'test';
             },
-    
+
             tryRequire(name, defaultVal) {
                 try {
                     return require(name);
-                }
-                catch (err) {
+                } catch (err) {
                     try {
                         return require(this.Path.resolve(process.cwd(), name));
-                    }
-                    catch (err) {
+                    } catch (err) {
                         return defaultVal;
                     }
                 }
             },
-    
+
             installDependenciesCmd(generator, option = '') {
-                const Fs = require('fs');
                 const requiredDevDependencies = this.generatorDependencies[generator];
-                const dependencies = requiredDevDependencies && requiredDevDependencies.filter(dep => {
-                    return !this.fs.existsSync(`./node_modules/${dep}`);
-                });
-    
+                const dependencies = requiredDevDependencies &&
+                    requiredDevDependencies.filter(dep => !this.fs.existsSync(`./node_modules/${dep}`));
+
                 return dependencies && dependencies.length &&
                     `cd ${process.cwd()} && yarn add ${dependencies.join(' ')} ${option}` ||
                     'echo Nothing to install';
             },
-    
+
             existsSync(name) {
-                const Fs = require('fs');
                 return this.fs.existsSync(name);
             },
 
             writeTo(path, content) {
-                const Fs = require('fs');
                 return this.fs.writeFileSync(path, content);
             },
 
@@ -146,9 +140,8 @@ class HygenOja {
                 const tabMatch = content.match(/\n(\s+)/);
                 return tabMatch && tabMatch[1].length || 4;
             },
-    
+
             loadJSONFile(path) {
-                const Fs = require('fs');
                 const content = this.fs.readFileSync(path).toString();
 
                 return JSON.parse(content);
@@ -161,7 +154,7 @@ class HygenOja {
                         return `> action location already registered`;
                     }
                     const rootActionLocation = this.Path.resolve(process.cwd(), 'action.json');
-                    const action = this.fs.existsSync(rootActionLocation) ? 
+                    const action = this.fs.existsSync(rootActionLocation) ?
                         this.loadJSONFile(rootActionLocation) : {};
                     if (action.indexOf(actionLocation) > -1) {
                         return `> action location already exists in root ${actionLocation}, skipping`;
@@ -184,8 +177,8 @@ class HygenOja {
 
                 this.assertActionLocation(properties.target || '.');
 
-                const actionJsonLocation = this.Path.resolve(properties.target || '.', 'action.json')
-                
+                const actionJsonLocation = this.Path.resolve(properties.target || '.', 'action.json');
+
                 let actionJson = {};
                 if (this.existsSync(actionJsonLocation)) {
                     actionJson = this.loadJSONFile(actionJsonLocation);
@@ -211,20 +204,20 @@ class HygenOja {
                 const pkg = this.loadJSONFile(pkgLocation);
                 if (!pkg.scripts) {
                     pkg.scripts = {};
-                    messages.push(`> added scripts section`) ;
+                    messages.push(`> added scripts section`);
                 }
                 const type = this.detectedTestFramework(properties);
                 if (!pkg.scripts['test:actions']) {
                     pkg.scripts['test:actions'] = type === 'mocha' ?
                         `mocha ${this.getTestMatch('mocha')} --exit --timeout 10000` :
                         `jest`;
-                    messages.push('> added test:actions to scripts section')
+                    messages.push('> added test:actions to scripts section');
                 }
                 if (!pkg.scripts['test:actions:coverage']) {
                     pkg.scripts['test:actions:coverage'] = type === 'mocha' ?
                         `nyc npm run test:actions` :
                         `jest --collect-coverage`;
-                    messages.push('> added test:actions:coverage to scripts section')                    
+                    messages.push('> added test:actions:coverage to scripts section');
                 }
                 if (type === 'jest') {
                     if (!pkg.jest) {
@@ -238,13 +231,13 @@ class HygenOja {
                         pkg.jest.testMatch.push(testMatchStr);
                     }
                 }
-                
+
                 // conclusion
                 if (messages.length) {
                     this.writeTo(pkgLocation, JSON.stringify(pkg, null, tabLen));
                     return [`> Updated package.json:`, ...messages].join('\n\t');
                 }
-                return `> test scripts are already in package.json`
+                return `> test scripts are already in package.json`;
             },
 
             unitTestFolderName(type) {

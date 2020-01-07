@@ -12,7 +12,7 @@ describe(__filename, () => {
         Assert.equal(`<%=name%> is called`,
             await context.action('<%=name%>'));
     });
-    
+
     <%= h.testCaseName(locals) %>('action <%=name%> should fail', async () => {
         const context = await createContext({
             functions: {

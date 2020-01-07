@@ -87,6 +87,7 @@ describe(__filename, () => {
             runCmd(`npm install ../../../../oja-context ../../../../oja-action`);
             runCmd('npm run test:actions');
             runCmd('npm run test:actions:coverage');
+            runCmd(`cd ${cwd} && yarn eslint --fix  -c .eslintrc ${tmpDir}`);
         });
 
         test('should fail to add a single action to the root when actions location file is present', () => {
