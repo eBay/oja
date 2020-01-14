@@ -17,9 +17,10 @@ $ npm install @ebay/oja-pubsub --save
 
 ## Actions
 
-* action(_'oja/subscribe'_, '_topic_', listener) - subscribe to the event
-* action('_oja/unsubscribe_', '_topic_', listener) - unsubscribe from the event
-* action(_oja/dispatch_, '_topic_', eventData) - dispatch event to the subscribers
+* action(_'oja/subscribe'_, '_topic_', listener) - subscribe to the event.
+* action('_oja/unsubscribe_', '_topic_', listener): Promise<boolean> - unsubscribe from the event, returns true if subscriber was found and removed.
+* action('_oja/dispatch_', '_topic_', ...args): Promise<[subscriberResponse]> - dispatch event/args to the subscribers.
+* action('_oja/route_', '_topic_', ...args): Promise<subscriberResponse> - dispatch event/args to only one subscriber in round robin mode.
 
 ## Listener
 
@@ -44,6 +45,26 @@ const listener = await context.action('oja/subscribe', 'topic', (eventType, even
 
 ```js
 await context.action('oja/dispatch', 'topic', eventData);
+```
+
+* Routing an event to only one subscriber:
+
+```js
+const { createContext } = require('@ebay/oja-action');
+const context = await createContext();
+// subscribe
+const listener1 = await context.action('oja/subscribe', 'topic', (eventType, eventData) => {
+    console.log('sub1', eventData); // >> one, three
+    return 'ok1;
+});
+const listener2 = await context.action('oja/subscribe', 'topic', (eventType, eventData) => {
+    console.log('sub2', eventData); // >> two, four
+    return 'ok2'
+});
+await context.action('oja/route', 'topic', 'one'); // >> ok1
+await context.action('oja/route', 'topic', 'two'); // >> ok2
+await context.action('oja/route', 'topic', 'three'); // >> ok1
+await context.action('oja/route', 'topic', 'four'); // >> ok2
 ```
 
 * Unsubscribing from the event:

@@ -8,12 +8,15 @@
  * https://opensource.org/licenses/MIT.
 **/
 
-module.exports = context => {
+module.exports = (context, { loadBalancer }) => {
     // keep pub/sub state here
     const subscriptions = {};
+    let roundRobinCycle = 0;
 
     return (operation, ...args) => {
         switch (operation) {
+            case 'route':
+                return route(...args);
             case 'dispatch':
                 return dispatch(...args);
             case 'subscribe':
@@ -44,5 +47,15 @@ module.exports = context => {
     function dispatch(eventType, data) {
         const subs = subscriptions[eventType] || [];
         return Promise.all(subs.map(action => action(eventType, data)));
+    }
+
+    function route(eventType, ...args) {
+        const subs = subscriptions[eventType] || [];
+        if (subs.length > 0) {
+            const nextIndex = roundRobinCycle++ % subs.length;
+            const action = subs[nextIndex];
+            return action(eventType, ...args);
+        }
+        return null; // no workload subscribers
     }
 };

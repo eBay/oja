@@ -159,4 +159,77 @@ describe(__filename, () => {
             'sub2'
         ], events);
     });
+
+    describe('routing', () => {
+        test('should route request, no subscribers', async () => {
+            const context = await createContext();
+
+            // trigger routing
+            const response = await context.action('oja/route', 'oja:route:event', 'foov', 'barv');
+            Assert.deepEqual(null, response);
+        });
+
+        test('should route request, one subscriber', async () => {
+            const events = [];
+            const context = await createContext();
+            await context.action('oja/subscribe', 'oja:route:event', (eventType, foo, bar) => {
+                events.push([eventType, foo, bar]);
+                return 'ok';
+            });
+
+            // trigger routing
+            const response = await context.action('oja/route', 'oja:route:event', 'foov', 'barv');
+            Assert.deepEqual([['oja:route:event', 'foov', 'barv']], events);
+            Assert.equal('ok', response);
+        });
+
+        test('should route request, multiple subscribers, round robin', async () => {
+            const events1 = [];
+            const events2 = [];
+            const context = await createContext();
+            const l1 = await context.action('oja/subscribe', 'oja:route:event', (eventType, foo, bar) => {
+                events1.push([eventType, foo, bar]);
+                return 'ok1';
+            });
+            const l2 = await context.action('oja/subscribe', 'oja:route:event', (eventType, foo, bar) => {
+                events2.push([eventType, foo, bar]);
+                return 'ok2';
+            });
+
+            // trigger routing
+            Assert.equal('ok1', await context.action('oja/route', 'oja:route:event', 'foov1', 'barv1'));
+            Assert.deepEqual([['oja:route:event', 'foov1', 'barv1']], events1);
+            Assert.deepEqual([], events2);
+
+            Assert.equal('ok2', await context.action('oja/route', 'oja:route:event', 'foov2', 'barv2'));
+            Assert.deepEqual([['oja:route:event', 'foov2', 'barv2']], events2);
+
+            Assert.equal('ok1', await context.action('oja/route', 'oja:route:event', 'foov3', 'barv3'));
+            Assert.deepEqual([['oja:route:event', 'foov1', 'barv1'], ['oja:route:event', 'foov3', 'barv3']], events1);
+            Assert.deepEqual([['oja:route:event', 'foov2', 'barv2']], events2);
+
+            const events3 = [];
+            // subscribe one more
+            const l3 = await context.action('oja/subscribe', 'oja:route:event', (eventType, foo, bar) => {
+                events3.push([eventType, foo, bar]);
+                return 'ok3';
+            });
+
+            Assert.equal('ok1', await context.action('oja/route', 'oja:route:event', 'foov4', 'barv4'));
+            Assert.equal('ok2', await context.action('oja/route', 'oja:route:event', 'foov5', 'barv5'));
+            Assert.equal('ok3', await context.action('oja/route', 'oja:route:event', 'foov6', 'barv6'));
+
+            Assert.ok(await context.action('oja/unsubscribe', 'oja:route:event', l2));
+            Assert.equal(false, await context.action('oja/unsubscribe', 'oja:route:event', l2));
+            Assert.equal('ok1', await context.action('oja/route', 'oja:route:event', 'foov7', 'barv7'));
+            Assert.equal('ok3', await context.action('oja/route', 'oja:route:event', 'foov8', 'barv8'));
+
+            Assert.ok(await context.action('oja/unsubscribe', 'oja:route:event', l1));
+            Assert.equal('ok3', await context.action('oja/route', 'oja:route:event', 'foov9', 'barv9'));
+            Assert.equal('ok3', await context.action('oja/route', 'oja:route:event', 'foov10', 'barv10'));
+
+            Assert.ok(await context.action('oja/unsubscribe', 'oja:route:event', l3));
+            Assert.equal(null, await context.action('oja/route', 'oja:route:event', 'foov11', 'barv11'));
+        });
+    });
 });

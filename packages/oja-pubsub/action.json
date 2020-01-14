@@ -1,4 +1,5 @@
 {
+    "oja/route": "route",
     "oja/dispatch": "dispatch",
     "oja/subscribe": "subscribe",
     "oja/unsubscribe": "unsubscribe",

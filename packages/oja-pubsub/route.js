@@ -8,4 +8,4 @@
  * https://opensource.org/licenses/MIT.
 **/
 
-module.exports = context => (eventType, ...args) => context.action('oja/pubsub', 'dispatch', eventType, ...args);
+module.exports = context => (eventType, ...args) => context.action('oja/pubsub', 'route', eventType, ...args);
