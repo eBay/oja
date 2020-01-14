@@ -166,7 +166,7 @@ describe(__filename, () => {
 
             // trigger routing
             const response = await context.action('oja/route', 'oja:route:event', 'foov', 'barv');
-            Assert.deepEqual(null, response);
+            Assert.deepEqual(Symbol.for('noSubscribers'), response);
         });
 
         test('should route request, one subscriber', async () => {
@@ -229,7 +229,7 @@ describe(__filename, () => {
             Assert.equal('ok3', await context.action('oja/route', 'oja:route:event', 'foov10', 'barv10'));
 
             Assert.ok(await context.action('oja/unsubscribe', 'oja:route:event', l3));
-            Assert.equal(null, await context.action('oja/route', 'oja:route:event', 'foov11', 'barv11'));
+            Assert.equal(Symbol.for('noSubscribers'), await context.action('oja/route', 'oja:route:event', 'foov11', 'barv11'));
         });
     });
 });

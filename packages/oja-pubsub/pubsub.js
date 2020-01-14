@@ -1,5 +1,7 @@
 'use strict';
 
+const noSubscribersSymbol = Symbol.for('noSubscribers');
+
 /**
  * Copyright 2019 eBay Inc.
  * Author/Developer: Dmytro Semenov
@@ -56,6 +58,7 @@ module.exports = (context, { loadBalancer }) => {
             const action = subs[nextIndex];
             return action(eventType, ...args);
         }
-        return null; // no workload subscribers
+        return noSubscribersSymbol;
+        // noSubscribersSymbol when no workload subscribers
     }
 };
