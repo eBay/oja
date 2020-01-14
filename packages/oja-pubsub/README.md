@@ -55,7 +55,7 @@ const context = await createContext();
 // subscribe
 const listener1 = await context.action('oja/subscribe', 'topic', (eventType, eventData) => {
     console.log('sub1', eventData); // >> one, three
-    return 'ok1;
+    return 'ok1';
 });
 const listener2 = await context.action('oja/subscribe', 'topic', (eventType, eventData) => {
     console.log('sub2', eventData); // >> two, four
