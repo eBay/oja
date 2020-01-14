@@ -24,7 +24,7 @@ THe pipe action allows to assemble other actions into a pipelines.
 {
     "PIPE-EXAMPLE/route": {
         "function": "@ebay/oja-tools/create-and-call",
-        "action": "OJA/pipe",
+        "action": "oja/pipe",
         "arguments": {
             "pipe": [
                 "FOONS/foo",
