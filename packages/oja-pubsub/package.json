@@ -1,6 +1,6 @@
 {
   "name": "@ebay/oja-pubsub",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Organizing actions into pubblishers and subscribers",
   "main": "pubsub.js",
   "scripts": {

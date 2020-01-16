@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.8](https://github.com/eBay/oja/compare/@ebay/oja-pubsub@2.0.7...@ebay/oja-pubsub@2.0.8) (2020-01-16)
+
+**Note:** Version bump only for package @ebay/oja-pubsub
+
+
+
+
+
 ## [2.0.7](https://github.com/eBay/oja/compare/@ebay/oja-pubsub@2.0.6...@ebay/oja-pubsub@2.0.7) (2020-01-05)
 
 **Note:** Version bump only for package @ebay/oja-pubsub
