@@ -52,6 +52,9 @@ function findActionStatements(ast) {
 
         ast = Array.isArray(ast) && ast || [ast];
         ast.forEach(itm => {
+            if (!itm) {
+                return;
+            }
             if (itm.type === 'CallExpression' &&
             select(itm, 'callee.type') === 'MemberExpression' &&
             select(itm, 'callee.object.type') === 'Identifier' &&
@@ -122,6 +125,21 @@ async function createValidator() {
     const context = await createContext();
     // return check function that will accumulate errors
     return async path => {
+        try {
+            return await validate(path);
+        }
+        catch (err) {
+            errors.push({
+                message: err.message,
+                path,
+                code: 'unexpected',
+                codeType: 'error'
+            });
+            return errors;
+        }
+    };
+
+    async function validate(path) {
         if (!path) {
             return errors;
         }
@@ -196,7 +214,7 @@ async function createValidator() {
         }
 
         return errors;
-    };
+    }
 
     function tryActionLocation(loc) {
         try {
@@ -397,6 +415,9 @@ function selectErrorMessage(error) {
             return `circular call of "${
                 error.namespace.value}" action: ${
                 error.path}:${start.line},${start.column}`;
+        case 'unexpected':
+            return `unexpected error, fail to parse "${
+                error.path}" ${error.message}, please report to the linter owners`;
         case 'parse':
             return `fail to parse "${
                 error.path}" ${error.message}`;

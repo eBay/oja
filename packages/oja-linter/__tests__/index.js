@@ -60,4 +60,18 @@ describe(__filename, () => {
         Assert.equal('Line 1: Unexpected token var', errors[0].message);
         Assert.ok(errors[0].path);
     });
+
+    test('should handle empty expression', async () => {
+        const validate = await createValidator();
+        const errors = await validate(Path.resolve(
+            __dirname, './fixtures/empty-spread.js'));
+        Assert.deepEqual(0, errors.length);
+    });
+
+    test('should handle unexpected error', async () => {
+        const validate = await createValidator();
+        const errors = await validate(Path.resolve(
+            __dirname, './fixtures/non-existant.js'));
+        Assert.deepEqual(1, errors.length);
+    });
 });

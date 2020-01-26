@@ -65,6 +65,27 @@ describe(__filename, () => {
         Assert.equal(undefined, await linter.scan(appDir, true));
         expect(process.exit.mock.calls[0][0]).toEqual(1);
 
+        // parse error
+        Fs.writeFileSync(Path.join(appDir, 'index.js'), 'function (match) => { var [,last] = match; }');
+        process.exit = jest.fn();
+        Assert.equal(undefined, await linter.scan(appDir, true));
+        expect(process.exit.mock.calls[0][0]).toEqual(1);
+
+        // unexpected error
+        const filePath = Path.join(appDir, 'index.js');
+        Fs.writeFileSync(filePath, 'function () => {}');
+        process.exit = jest.fn();
+        const _readFileSync = Fs.readFileSync;
+        Fs.readFileSync = (...args) => {
+            if (args[0] === filePath) {
+                throw new Error('BOOM');
+            }
+            return _readFileSync.apply(Fs, args);
+        };
+        Assert.equal(undefined, await linter.scan(appDir, true));
+        expect(process.exit.mock.calls[0][0]).toEqual(1);
+        Fs.readFileSync = _readFileSync;
+
         // error ignore via inline command
         Fs.writeFileSync(Path.join(appDir, 'index.js'), `module.exports = () => {
             // oja-lint-disable-next-line no-error
