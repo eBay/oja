@@ -51,4 +51,13 @@ describe(__filename, () => {
             __dirname, './fixtures/template-edge-case.js'));
         Assert.deepEqual(0, errors.length);
     });
+
+    test('should handle parse error', async () => {
+        const validate = await createValidator();
+        const errors = await validate(Path.resolve(
+            __dirname, './fixtures/parse-error.js'));
+        Assert.deepEqual(1, errors.length);
+        Assert.equal('Line 1: Unexpected token var', errors[0].message);
+        Assert.ok(errors[0].path);
+    });
 });

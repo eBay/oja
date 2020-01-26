@@ -132,7 +132,19 @@ async function createValidator() {
             return await validateActionFile(path);
         }
         const code = Fs.readFileSync(path).toString();
-        const ast = parse(code);
+        let ast;
+        try {
+            ast = parse(code);
+        }
+        catch (err) {
+            errors.push({
+                message: err.message,
+                path,
+                code: 'parse',
+                codeType: 'error'
+            });
+            return errors;
+        }
         const stmts = findActionStatements(ast);
         for (let index = 0; index < stmts.length; index++) {
             const stmt = stmts[index];
@@ -385,6 +397,9 @@ function selectErrorMessage(error) {
             return `circular call of "${
                 error.namespace.value}" action: ${
                 error.path}:${start.line},${start.column}`;
+        case 'parse':
+            return `fail to parse "${
+                error.path}" ${error.message}`;
         default:
             return `action "${
                 error.namespace.value}" not found: ${
