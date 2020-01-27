@@ -57,7 +57,7 @@ describe(__filename, () => {
         const errors = await validate(Path.resolve(
             __dirname, './fixtures/parse-error.js'));
         Assert.deepEqual(1, errors.length);
-        Assert.equal('Line 1: Unexpected token var', errors[0].message);
+        Assert.equal('Line 1: Unexpected end of input', errors[0].message);
         Assert.ok(errors[0].path);
     });
 
@@ -73,5 +73,19 @@ describe(__filename, () => {
         const errors = await validate(Path.resolve(
             __dirname, './fixtures/non-existant.js'));
         Assert.deepEqual(1, errors.length);
+    });
+
+    test.skip('should handle spread operator, so far it is not supported', async () => {
+        const validate = await createValidator();
+        const errors = await validate(Path.resolve(
+            __dirname, './fixtures/spread.js'));
+        Assert.deepEqual(0, errors.length);
+    });
+
+    test.skip('should handle async generator, so far it is not supported', async () => {
+        const validate = await createValidator();
+        const errors = await validate(Path.resolve(
+            __dirname, './fixtures/async-generator.js'));
+        Assert.deepEqual(0, errors.length);
     });
 });

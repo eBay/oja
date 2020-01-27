@@ -26,7 +26,6 @@ function select(json = {}, path) {
 }
 
 function parse(code) {
-    code = `exports=${code}`;
     return esprima.parseScript(code, {
         loc: true,
         comment: true
@@ -273,7 +272,8 @@ function adjustLoc(itm, line, offsetColumn) {
 }
 
 function parseAction(path) {
-    const ast = parse(Fs.readFileSync(path).toString());
+    const code = `exports=${Fs.readFileSync(path).toString()}`;
+    const ast = parse(code);
     return findActionFunctions(ast);
 }
 

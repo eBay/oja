@@ -10,7 +10,7 @@ describe(__filename, () => {
     test('should parse action.json, simple', async () => {
         const content = Fs.readFileSync(Path.resolve(
             __dirname, './fixtures/action-parse/parse-simple/action.json')).toString();
-        const stmts = parse(content);
+        const stmts = parse(`exports=${content}`);
         Assert.deepEqual(require(
             './fixtures/action-parse/parse-simple/expected.json'), stmts);
 
@@ -43,7 +43,7 @@ describe(__filename, () => {
         const content = Fs.readFileSync(Path.resolve(
             __dirname, './fixtures/action-parse/parse-complex/action.json')).toString();
         // use action proxy to cover code coverage as well
-        const stmts = require('../action')()('parse', content);
+        const stmts = require('../action')()('parse', `exports=${content}`);
         Assert.deepEqual(
             require('./fixtures/action-parse/parse-complex/expected.json'), stmts);
 

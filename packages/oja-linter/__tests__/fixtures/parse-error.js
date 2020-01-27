@@ -1,3 +1,1 @@
-var addSorting = (function() {
-    'use strict';
-})();
+var addSorting = 
