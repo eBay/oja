@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.4](https://github.com/eBay/oja/compare/@ebay/oja-linter@2.0.3...@ebay/oja-linter@2.0.4) (2020-01-27)
+
+
+### Bug Fixes
+
+* remove json->js sumulation when parsing real js files ([c020e88](https://github.com/eBay/oja/commit/c020e8887371702e854df0bc2612a071380370a1))
+
+
+
+
+
 ## [2.0.3](https://github.com/eBay/oja/compare/@ebay/oja-linter@2.0.2...@ebay/oja-linter@2.0.3) (2020-01-27)
 
 
