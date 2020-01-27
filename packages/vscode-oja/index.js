@@ -79,6 +79,12 @@ async function _lintOnChange(diagnosticCollection, reset) {
             const range = new vscode.Range(0, 0, 0, 1);
             diagnostics.push(new vscode.Diagnostic(range, error.message, 1));
         }
+        if (/parse|unexpected/.test(error.code)) {
+            const lineMatch = error.message.match(/Line (\d+)/);
+            const startLine = lineMatch ? parseInt(lineMatch[1]) - 1 : 0;
+            const range = new vscode.Range(startLine, 0, startLine, 80);
+            diagnostics.push(new vscode.Diagnostic(range, error.message, 0));
+        }
         else {
             const namespace = error.namespace;
             const { start, end } = error.code !== 'functionNotFound' ?
