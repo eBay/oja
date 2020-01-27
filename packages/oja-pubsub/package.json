@@ -1,6 +1,6 @@
 {
   "name": "@ebay/oja-pubsub",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "Organizing actions into pubblishers and subscribers",
   "main": "pubsub.js",
   "scripts": {
@@ -28,7 +28,7 @@
   "devDependencies": {
     "@ebay/oja-action": "^2.0.6",
     "@ebay/oja-context": "^2.0.3",
-    "@ebay/oja-linter": "^2.0.2",
+    "@ebay/oja-linter": "^2.0.3",
     "async": "^2.6.3",
     "eslint": "^5.16.0",
     "eslint-config-ebay": "^1.0.0",

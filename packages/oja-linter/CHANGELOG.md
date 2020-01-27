@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.3](https://github.com/eBay/oja/compare/@ebay/oja-linter@2.0.2...@ebay/oja-linter@2.0.3) (2020-01-27)
+
+
+### Bug Fixes
+
+* linter should show parse error details ([ae5a51a](https://github.com/eBay/oja/commit/ae5a51afad8b48ad8972b87bd5eb67fc2d0b26b5))
+* should handle empty expression and unexpected error ([fd1d4ed](https://github.com/eBay/oja/commit/fd1d4edf43186eaefe18941af394082da98ebae3))
+
+
+
+
+
 ## [2.0.2](https://github.com/eBay/oja/compare/@ebay/oja-linter@2.0.1...@ebay/oja-linter@2.0.2) (2020-01-05)
 
 **Note:** Version bump only for package @ebay/oja-linter
