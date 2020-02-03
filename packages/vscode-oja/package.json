@@ -1,7 +1,7 @@
 {
 	"name": "vscode-oja",
 	"displayName": "vscode-oja",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"publisher": "oja",
 	"repository": {
 		"type": "git",
