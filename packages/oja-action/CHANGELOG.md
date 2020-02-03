@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.7](https://github.com/eBay/oja/compare/@ebay/oja-action@2.0.6...@ebay/oja-action@2.0.7) (2020-02-03)
+
+
+### Bug Fixes
+
+* action dispatcher should be able to call multiple actions ([40d0a2d](https://github.com/eBay/oja/commit/40d0a2d078963273debb590caa735430a366db13))
+
+
+
+
+
 ## [2.0.6](https://github.com/eBay/oja/compare/@ebay/oja-action@2.0.5...@ebay/oja-action@2.0.6) (2020-01-03)
 
 

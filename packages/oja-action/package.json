@@ -1,6 +1,6 @@
 {
   "name": "@ebay/oja-action",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Dependency injection via actions",
   "main": "index.js",
   "scripts": {
@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/eBay/oja/blob/master/packages/oja-action#readme",
   "devDependencies": {
-    "@ebay/oja-context": "^2.0.3",
+    "@ebay/oja-context": "^2.0.4",
     "async": "^2.6.3",
     "eslint": "^5.16.0",
     "eslint-config-ebay": "^1.1.1",

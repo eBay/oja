@@ -1,6 +1,6 @@
 {
   "name": "@ebay/oja-linter",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Instrumentation of actions via hooks",
   "main": "index.js",
   "bin": {
@@ -31,8 +31,8 @@
   },
   "homepage": "https://github.com/eBay/oja/tree/master/packages/oja-linter#readme",
   "devDependencies": {
-    "@ebay/oja-action": "^2",
-    "@ebay/oja-context": "^2",
+    "@ebay/oja-action": "^2.0.7",
+    "@ebay/oja-context": "^2.0.4",
     "async": "^2.6.3",
     "eslint": "^5.16.0",
     "eslint-config-ebay": "^1.0.0",
