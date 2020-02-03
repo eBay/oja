@@ -38,3 +38,7 @@ To mark any errors or warnings as ok, please use:
 `// oja-lint-disable-next-line no-warn` to mark the next line to ignore warnings
 
 `// oja-lint-disable-next-line no-error` to mark the next line as non-error
+
+#### TODO:
+
+* Support group of actions under the same namespace
