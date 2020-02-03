@@ -68,3 +68,4 @@ coverage
 packages/vscode-oja/vscode-oja-*
 .vscode-test
 .tmp
+_oja*
