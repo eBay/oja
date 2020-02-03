@@ -33,9 +33,10 @@ module.exports = (opts = {}) => {
 
     function normalizeActionRequest(actionRequest, systemSelectors) {
         if (typeof actionRequest === 'string') {
-            return systemSelectors ? { namespace: actionRequest, selectors: systemSelectors } : {
-                namespace: actionRequest
-            };
+            return systemSelectors && Object.keys(systemSelectors).length > 0 ?
+                { namespace: actionRequest, selectors: systemSelectors } : {
+                    namespace: actionRequest
+                };
         }
         const { name, ...selectors } = actionRequest;
         const addSelectors = { ...(systemSelectors), ...(selectors) };

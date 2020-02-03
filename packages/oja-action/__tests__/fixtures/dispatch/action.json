@@ -1,0 +1,15 @@
+{
+    "dispatcher/foo": {
+        "function": "./dispatcher",
+        "action": "foo/foo"
+    },
+
+    "dispatcher/bar": {
+        "function": "./dispatcher",
+        "action": "bar/bar"
+    },
+
+    "foo/foo": "foo",
+
+    "bar/bar": "bar"
+}

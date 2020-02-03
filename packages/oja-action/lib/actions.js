@@ -217,12 +217,13 @@ function createLazyAction(resolveAction, config) {
     return annotate((context = {}, runtime) => {
         const actionLocation = resolveAction();
         const ctaActions = context[ctxActionsSymbol] = context[ctxActionsSymbol] || {};
-        let ctxAction = ctaActions[actionLocation];
+        const key = config ? `${actionLocation}|${JSON.stringify(config)}` : actionLocation;
+        let ctxAction = ctaActions[key];
         if (ctxAction === undefined) {
             // cache resolved action
             act = act || requireAction(actionLocation);
             // cache contextualized action
-            ctxAction = ctaActions[actionLocation] = act(context, config, runtime);
+            ctxAction = ctaActions[key] = act(context, config, runtime);
         }
         return ctxAction;
     }, { [locationSymbol]: resolveAction });
