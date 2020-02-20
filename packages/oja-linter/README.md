@@ -20,7 +20,7 @@ $ yarn ojalint <project folder | cwd>
 
 ### Configuration
 
-#### .ojalitignore file
+#### .ojalintignore file
 
 Exclude specific files/folder from the linting process, please use `.ojalitignore` at app root.
 
