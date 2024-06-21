@@ -2,6 +2,6 @@
     "name": "app",
     "version": "1.0.0",
     "dependencies": {
-        "@ebay/oja-action": "2.0.0"
+        "@ebay/oja-action": "2.0.7"
     }
 }
